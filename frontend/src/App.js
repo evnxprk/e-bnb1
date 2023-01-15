@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import CreateForm from "./components/Spots/spotsForm";
+import SpotDetail from "./components/SpotDetail/SpotDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -14,7 +16,15 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && <Switch></Switch>}
+      {isLoaded && 
+      <Switch>
+      <Route path ='/spots/:spotId'>
+        <SpotDetail />
+      </Route>
+      <Route path='/new'>
+        <CreateForm />
+      </Route>
+        </Switch>}
     </>
   );
 }
