@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneSpotThunk } from "../../../store/reducer";
-// import DeleteSpot from "../DeleteSpots/DeleteSpots";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./SpotById.css"
 
 const MySpot = () => {
@@ -12,7 +11,7 @@ const MySpot = () => {
 //   console.log("the sessionUser: ", sessionUser)
 
   const spot = useSelector((state) => state.spots.singleSpot);
-  console.log("what is appearing here?????", spot);
+//   console.log("what is appearing here?????", spot);
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
@@ -26,7 +25,7 @@ return (
     </div>
     {spot.SpotImages.map((img) => (
       <div>
-        <img className = "spot-image-by-id" src={img.url} />
+        <img className = "spot-image-by-id" src={img.url} alt="spot-by-id" />
       </div>
     ))}
     <div className="home-hosted-by">

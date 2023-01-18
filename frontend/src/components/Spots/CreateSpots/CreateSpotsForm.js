@@ -54,7 +54,7 @@ const CreateForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validationError.length) return;
+    if (!validationError.length) return;
     const spotFormInfo = {
       address,
       city,
@@ -66,6 +66,7 @@ const CreateForm = () => {
     };
 
     let spotCreated = await dispatch(createSpotThunk(spotFormInfo));
+    console.log("what is this?", spotCreated)
     if (spotCreated) {
       history.push(`/spots/${spotCreated.id}`);
     }
@@ -76,9 +77,9 @@ const CreateForm = () => {
         <h2>Begin Hosting</h2>
         <ul className="errors">
           { validationError.length > 0 &&
-            validationError.map((error, idx) => (
-              <li key={idx}>
-                <i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}
+            validationError.map((error) => (
+              <li key={error}>
+                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>{error}
               </li>
             ))}
         </ul>
@@ -170,7 +171,7 @@ const CreateForm = () => {
           required
         />
         <p></p>
-        <button onClick
+        <button
         type="submit" className="submit-spot">
           Confirm
         </button>

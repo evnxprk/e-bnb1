@@ -141,10 +141,10 @@ const spotsReducer = (state = initialState, action) => {
       newState.singleSpot = action.spot;
       return newState;
     }
-    
+
     case CREATE_SPOT: {
       //mutate the copy
-      newState[action.payload.id] = action.payload;
+      newState[action.spots.id] = action.spots;
 
       //return the copy
       return newState;
