@@ -1,55 +1,46 @@
-import {csrfFetch} from "./csrf";
+import { csrfFetch } from "./csrf";
 
-const GET_SPOTS = "/spots/GET_SPOTS";
-const GET_SPOT_ID = "/spots/getSpotId";
+const GET_SPOTS = "/spots/getSpots";
 const CREATE_SPOT = "/spots/createSpot";
 const EDIT_SPOT = "/spots/editSpot";
 const DELETE_SPOT = "/spots/deleteSpot";
-const CREATE_IMAGE = "/spots/createImage";
+const ONE_SPOT = "/spots/oneSpot";
+// const CREATE_IMAGE = '/spots/createImage'
 
-const normalizedData = (data) => {
-  const res = {}
-  data.forEach(el => {
-    res[el.id] = el
-    return res
-  })
-}
 //action create
 
-const retrieveSpot = (spots) => {
-   return {
-    type: GET_SPOTS,
-    spots
-  }
-}
-
-export const getAllSpotsThunk = () => async (dispatch) => {
-  const response = await fetch ("/api/spots");
-  // console.log(response)
-
-  if (response.ok) {
-    const data = await response.json();
-    // console.log(data)
-    const normalData = normalizedData(data.Spots)
-    dispatch(retrieveSpot(normalData));
-    return data.Spots;
-  }
-};
-
-const retrieveSpotId = (spots) => {
+const getSpots = (allSpots) => {
   return {
-    type: GET_SPOT_ID,
-    spots,
+    type: GET_SPOTS,
+    allSpots,
   };
 };
 
-export const getSpotIdThunk = (spots) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${spots}`);
+export const getAllSpotsThunk = () => async (dispatch) => {
+  const response = await fetch("/api/spots");
+  // console.log(response)
+
+  if (response.ok) {
+    const allSpots = await response.json();
+    dispatch(getSpots(allSpots));
+    return allSpots;
+  }
+};
+
+const oneSpot = (spot) => {
+  return {
+    type: ONE_SPOT,
+    spot,
+  };
+};
+
+export const getOneSpotThunk = (spotId) => async (dispatch) => {
+  const response = await fetch(`/api/spots/${spotId}`);
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(retrieveSpotId(data));
-    return data;
+    dispatch(oneSpot(data));
+    // return data;
   }
 };
 
@@ -112,63 +103,69 @@ export const removeSpotThunk = (id) => async (dispatch) => {
   }
 };
 
-const createImage = (spotId) => {
-  return {
-    type: CREATE_IMAGE,
-    spotId,
-  };
-};
+// const createImage = (spotId) => {
+//   return {
+//     type: CREATE_IMAGE,
+//     spotId,
+//   };
+// };
 
-export const createImageThunk = (spotId, imageURL) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${spotId}/images`, {
-    method: "POST",
-    body: JSON.stringify(imageURL),
-  });
+// export const createImageThunk = (spotId, imageURL) => async (dispatch) => {
+//   const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+//     method: "POST",
+//     body: JSON.stringify(imageURL),
+//   });
 
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(createImage(data));
-    return response;
-  }
-};
+//   if (response.ok) {
+//     const data = await response.json();
+//     dispatch(createImage(data));
+//     return response;
+//   }
+// };
 
-//reducer 
+//reducer
+const initialState = { allSpots: {}, singleSpot: {} };
 
-const initialState = { AllSpots: {}, OneSpot: {} }
 const spotsReducer = (state = initialState, action) => {
-  const newState = {...state}
+  let newState = { ...state };
+
   switch (action.type) {
     case GET_SPOTS: {
-      newState.AllSpots = action.spots
+      action.allSpots.Spots.forEach((spot) => {
+        newState.allSpots[spot.id] = spot;
+      });
       return newState;
     }
 
-    case GET_SPOT_ID: {
-      const newState = { ...state, oneSpot: action.spot };
+    case ONE_SPOT: {
+      newState.singleSpot = action.spot;
       return newState;
     }
+    
     case CREATE_SPOT: {
-      const newState = { ...state };
+      //mutate the copy
+      newState[action.payload.id] = action.payload;
+
+      //return the copy
       return newState;
     }
     case EDIT_SPOT: {
-      const newState = { ...state };
+      newState = { ...state };
+      newState[action.payload.id] = action.payload;
       return newState;
     }
     case DELETE_SPOT: {
       const newState = { ...state };
-      delete newState.Spot[action.spotId];
-      delete newState.OneSpot;
+      delete newState[action.spotId];
       return newState;
     }
-    case CREATE_IMAGE: {
-      const newState = { ...state };
-      return newState;
-    }
+    // case CREATE_IMAGE: {
+    //   const newState = { ...state };
+    //   return newState;
+    // }
     default:
       return state;
   }
 };
 
 export default spotsReducer;
-

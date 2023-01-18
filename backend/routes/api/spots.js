@@ -205,7 +205,7 @@ router.get("/:spotId", async (req, res) => {
   const reviewCount = await Review.count({where: { spotId: spotId }})
   const starTotal = await Review.sum('stars', { where: {spotId: spotId}})
 
-  const spotImage = await SpotImage.findAll({where: {spotId: spotId},attributes: ['id', 'url', 'preview']})
+  // const spotImage = await SpotImage.findAll({where: {spotId: spotId},attributes: ['id', 'url', 'preview']})
 
   const spotOwner = await User.findByPk(spots.ownerId, {
     attributes: ['id','firstName', 'lastName']

@@ -1,0 +1,10 @@
+.star-name-middle {
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.spot-image-by-id {
+    border-radius: 8px;
+    width: 400px;
+    height: 400px;
+}

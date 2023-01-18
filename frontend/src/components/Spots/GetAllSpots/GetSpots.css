@@ -1,0 +1,30 @@
+.spot-card-rating-right {
+  justify-content: justify;
+}
+
+.spot-image-homepage {
+  border-radius: 10px;
+  width: 300px;
+  object-fit: center;
+}
+
+.spot-cards-container {
+  display: flex;
+  padding-bottom: 2em;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.spot-card {
+  text-align: right;
+  padding-left: 2em;
+  color: rgb(244, 135, 153);
+}
+h1 {
+  text-align: center;
+  color: rgb(219, 178, 127);
+}
+#spot-cards {
+  background-color: bisque;
+}
