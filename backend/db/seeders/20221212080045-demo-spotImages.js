@@ -35,6 +35,31 @@ module.exports = {
           url: "https://www.pcinvasion.com/wp-content/uploads/2020/10/Valorant-Act-III-new-map-Icebox.jpg",
           preview: true,
         },
+        {
+          spotId: 6,
+          url: "https://wallpapercave.com/dwp2x/wp8730533.jpg",
+          preview: true,
+        },
+        {
+          spotId: 7,
+          url: "https://wallpapercave.com/dwp2x/wp8730557.png",
+          preview: true,
+        },
+        {
+          spotId: 8,
+          url: "https://wallpapercave.com/dwp2x/wp8730569.jpg",
+          preview: true,
+        },
+        {
+          spotId: 9,
+          url: "https://wallpapercave.com/dwp2x/wp8730650.jpg",
+          preview: true,
+        },
+        {
+          spotId: 10,
+          url: "https://wallpapercave.com/dwp2x/wp8730643.jpg",
+          preview: true,
+        },
       ],
       {}
     );

@@ -1,4 +1,7 @@
 'use strict';
+
+const { INET } = require('sequelize');
+
 let options = {};
 if (process.env.NODE_ENV === "production") {
   options.schema = process.env.SCHEMA; // define your schema in options object
@@ -73,6 +76,71 @@ module.exports = {
           description:
             "Love BTS? Well this is it.",
           price: 150,
+        },
+        {
+          ownerId: 5,
+          address: "123 Main St",
+          city: "Anaheim",
+          state: "CA",
+          country: "USA",
+          lat: "01.0",
+          lng: "1.1",
+          name: "Heaven",
+          description:
+            "Come explore a great city with a house that has a view",
+          price: 200,
+        },
+        {
+          ownerId: 1,
+          address: "900 Minecraft Blvd",
+          city: "Minecraft",
+          state: "CA",
+          country: "USA",
+          lat: "01.1",
+          lng: "1.3",
+          name: "Minecraft Inspired House",
+          description:
+            "Do you love Minecraft? This house is inspired by Haven from Valorant.",
+          price: 100,
+        },
+        {
+          ownerId: 3,
+          address: "190 Riot Games Blvd",
+          city: "Los Angeles",
+          state: "CA",
+          country: "USA",
+          lat: "01.2",
+          lng: "1.9",
+          name: "Ascent",
+          description:
+            "Do you like fallen cities? This has a view that overlooks one",
+          price: 400,
+        },
+        {
+          ownerId: 2,
+          address: "789 Valorant Blvd",
+          city: "New York City",
+          state: "NY",
+          country: "USA",
+          lat: "01.05",
+          lng: "1.02",
+          name: "Tree",
+          description:
+            "A house that has a room with trees in it",
+          price: 1000,
+        },
+        {
+          ownerId: 4,
+          address: "300 Squishmallows Lane",
+          city: "Orlando",
+          state: "FL",
+          country: "USA",
+          lat: "01.05",
+          lng: "1.02",
+          name: "Icebox",
+          description:
+            "Love BTS? Well this is it.",
+          price: 900,
         },
       ],
       {}
