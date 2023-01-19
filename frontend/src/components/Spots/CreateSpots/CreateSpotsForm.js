@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import "./CreateSpotsForm.css";
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { createSpotThunk } from "../../../store/reducer";
+import { createImageThunk, createSpotThunk } from "../../../store/reducer";
 
 const CreateForm = () => {
   const history = useHistory();
@@ -40,7 +40,7 @@ const CreateForm = () => {
     if (description.length === 0) {
       errors.push("Please provide a valid description.");
     }
-    if (+price <= 0) {
+    if (!Number(price)) {
       errors.push("Please provide a valid price.");
     }
 
@@ -53,8 +53,10 @@ const CreateForm = () => {
   //handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("handleSubmit running: ")
 
-    if (!validationError.length) return;
+    if (validationError.length) return;
+    console.log("after error return")
     const spotFormInfo = {
       address,
       city,
@@ -63,12 +65,21 @@ const CreateForm = () => {
       name,
       description,
       price,
+      lat: 1,
+      lng: 1,
     };
 
     let spotCreated = await dispatch(createSpotThunk(spotFormInfo));
-    console.log("what is this?", spotCreated)
+    console.log("what is this?", spotCreated.id)
     if (spotCreated) {
-      history.push(`/spots/${spotCreated.id}`);
+      const img = {
+        url: imageURL,
+        preview: true
+      }
+
+     dispatch(createImageThunk(img, spotCreated.id))
+      console.log("hi", img)
+      history.push('/');
     }
   };
   return (
@@ -78,9 +89,7 @@ const CreateForm = () => {
         <ul className="errors">
           { validationError.length > 0 &&
             validationError.map((error) => (
-              <li key={error}>
-                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>{error}
-              </li>
+              <li key={error}>{error}</li>
             ))}
         </ul>
 
@@ -92,7 +101,6 @@ const CreateForm = () => {
           placeholder="Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          required
         />
 
         <label id="owner-input-title"> City </label>
@@ -103,7 +111,6 @@ const CreateForm = () => {
           placeholder="City"
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          required
         />
 
         <label id="owner-input-title"> State </label>
@@ -114,7 +121,6 @@ const CreateForm = () => {
           placeholder="State"
           value={state}
           onChange={(e) => setState(e.target.value)}
-          required
         />
 
         <label id="owner-input-title"> Country </label>
@@ -125,7 +131,6 @@ const CreateForm = () => {
           placeholder="Country"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
-          required
         />
 
         <label id="owner-input-title"> Name </label>
@@ -136,7 +141,7 @@ const CreateForm = () => {
           placeholder="Name of Spot"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
+
         />
         <label id="owner-input-title"> Description </label>
         <input
@@ -146,7 +151,6 @@ const CreateForm = () => {
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          required
         />
 
         <label id="owner-input-title"> Price </label>

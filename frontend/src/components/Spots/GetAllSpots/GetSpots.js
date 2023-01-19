@@ -31,7 +31,7 @@ if(!allSpots.length) return null
                {" "}
                {spot.city}, {spot.state}
                <div className="spot-card-rating-right">
-                 <i class="far fa-star"></i> 
+                 <i className="far fa-star"></i> 
                   {spot.avgRating}
                </div>
                <div className="spot-card-name-middle">{spot.name}</div>

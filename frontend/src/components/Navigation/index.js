@@ -14,6 +14,14 @@ function Navigation({ isLoaded }) {
           Home
         </NavLink>
       </li>
+      {sessionUser ? (<li>
+        <NavLink to="/new">
+          Create A New Listing
+        </NavLink>
+      </li>) : (
+        null
+      )}
+      
       {isLoaded && (
         <li>
           <ProfileButton user={sessionUser} />
@@ -22,5 +30,4 @@ function Navigation({ isLoaded }) {
     </ul>
   );
 }
-
 export default Navigation;
