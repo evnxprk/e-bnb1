@@ -9,24 +9,31 @@ function Navigation({ isLoaded }) {
 
   return (
     <ul>
-      <li>
+      <div className='profile-container'>
+      <div className='home-page'>
         <NavLink exact to="/">
           Home
         </NavLink>
-      </li>
-      {sessionUser ? (<li>
+ <div className='move-this'>
+   <div className='new-listing'>
+      {sessionUser ? (
         <NavLink to="/new">
           Create A New Listing
         </NavLink>
-      </li>) : (
+      ) : (
         null
-      )}
-      
+        )}
+  </div>
+      <div>
+        </div>
+      </div>
       {isLoaded && (
-        <li>
+          <div className="profile-button">
+
           <ProfileButton user={sessionUser} />
-        </li>
-      )}
+      </div>
+      )}</div>
+      </div>
     </ul>
   );
 }

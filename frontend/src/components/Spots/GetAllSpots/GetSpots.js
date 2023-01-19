@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllSpotsThunk } from "../../../store/reducer";
+import { getAllSpotsThunk } from "../../../store/spot-reducer";
 import { NavLink } from "react-router-dom";
 import "./GetSpots.css"
 
@@ -22,7 +22,7 @@ if(!allSpots.length) return null
 
    return (
      <div id="spot-cards">
-       <h1>Welcome to E-BNB</h1>
+       {/* <h1>Welcome to E-BNB</h1> */}
        {allSpots.map((spot) => (
          <NavLink to={`spots/${spot.id}`} className="spot-description">
            <div className="spot-cards-container">

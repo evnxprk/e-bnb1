@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux"
-import { removeSpotThunk } from "../../../store/reducer"
+import { useDispatch, useSelector } from "react-redux"
+import { removeSpotThunk } from "../../../store/spot-reducer"
 import React, { useEffect } from 'react'
 import { useHistory } from "react-router-dom"
 
 const DeleteSpot = ({ spotDelete }) => {
+  const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const history = useHistory()
     
@@ -15,7 +16,13 @@ const DeleteSpot = ({ spotDelete }) => {
 
 
     return (
+      <>
+      {sessionUser ? (
         <button onClick={(e) => spotRemoval(e)}>Delete</button>
+      ) : (
+        null
+      )}
+      </>
     );
 }
 

@@ -2,9 +2,9 @@ import { useDispatch } from "react-redux";
 import "./CreateSpotsForm.css";
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { createImageThunk, createSpotThunk } from "../../../store/reducer";
+import { createImageThunk, createSpotThunk } from "../../../store/spot-reducer";
 
-const CreateForm = () => {
+const CreateForm = ({setOnModalClose}) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -53,10 +53,11 @@ const CreateForm = () => {
   //handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleSubmit running: ")
+    setOnModalClose(true)
+    // console.log("handleSubmit running: ");
 
     if (validationError.length) return;
-    console.log("after error return")
+    // console.log("after error return");
     const spotFormInfo = {
       address,
       city,
@@ -70,16 +71,16 @@ const CreateForm = () => {
     };
 
     let spotCreated = await dispatch(createSpotThunk(spotFormInfo));
-    console.log("what is this?", spotCreated.id)
+    // console.log("what is this?", spotCreated.id);
     if (spotCreated) {
       const img = {
         url: imageURL,
-        preview: true
-      }
+        preview: true,
+      };
 
-     dispatch(createImageThunk(img, spotCreated.id))
-      console.log("hi", img)
-      history.push('/');
+      dispatch(createImageThunk(img, spotCreated.id));
+      // console.log("hi", img);
+      history.push("/");
     }
   };
   return (
@@ -87,10 +88,8 @@ const CreateForm = () => {
       <div className="create-new-spot-form ">
         <h2>Begin Hosting</h2>
         <ul className="errors">
-          { validationError.length > 0 &&
-            validationError.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
+          {validationError.length > 0 &&
+            validationError.map((error) => <li key={error}>{error}</li>)}
         </ul>
 
         <label id="owner-input-title"> Address </label>
@@ -141,7 +140,6 @@ const CreateForm = () => {
           placeholder="Name of Spot"
           value={name}
           onChange={(e) => setName(e.target.value)}
-
         />
         <label id="owner-input-title"> Description </label>
         <input
@@ -175,8 +173,7 @@ const CreateForm = () => {
           required
         />
         <p></p>
-        <button
-        type="submit" className="submit-spot">
+        <button type="submit" className="submit-spot">
           Confirm
         </button>
       </div>

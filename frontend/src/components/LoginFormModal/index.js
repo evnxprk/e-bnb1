@@ -29,7 +29,7 @@ function LoginFormModal() {
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
-          ))}
+            ))}
         </ul>
         <label>
           Username or Email
@@ -38,7 +38,7 @@ function LoginFormModal() {
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
-          />
+            />
         </label>
         <label>
           Password
@@ -47,7 +47,7 @@ function LoginFormModal() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />
+            />
         </label>
         <button type="submit">Log In</button>
       <button
@@ -57,7 +57,7 @@ function LoginFormModal() {
           setPassword("password");
         }}
         type="submit"
-      > Demo User Log In
+        > Demo User Log In
       </button>
       </form>
     </>

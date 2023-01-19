@@ -6,23 +6,26 @@
   border-radius: 10px;
   width: 300px;
   object-fit: center;
+  padding: 1em;
+  padding-top: 1em;
 }
 
-.spot-cards-container {
+#spot-cards {
   display: flex;
-  padding-bottom: 2em;
-  justify-content: center;
+  /* justify-content: center; */
+  gap: 3;
   flex-wrap: wrap;
-  align-items: center;
+  /* padding: 2rem; */
 }
 
 .spot-card {
-  text-align: right;
+  text-align: left;
   padding-left: 2em;
   color: rgb(244, 135, 153);
 }
 h1 {
   text-align: center;
+  display:flex;
   color: rgb(219, 178, 127);
 }
 body {

@@ -9,7 +9,18 @@
 #button {
 margin-right:170px;
 }
-a {
-  align-items:flex-start;
+
+
+.home-page {
+justify-content: space-between;
+display: flex;
+border: black 1px solid;
+}
+
+.profile-dropdown {
+border: 10px solid red;
+/* display: flex; */
+position: relative;
+/* right: 20px; */
 }
 

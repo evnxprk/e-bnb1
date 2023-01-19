@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { updateSpotThunk } from "../../../store/reducer";
+import { updateSpotThunk } from "../../../store/spot-reducer";
 
 const EditSpot = ({spot}) => {
   const dispatch = useDispatch();

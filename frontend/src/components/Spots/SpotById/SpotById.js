@@ -1,10 +1,9 @@
-import React, { Link, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useDispatch, useSelector, } from "react-redux";
-import { getOneSpotThunk, removeSpotThunk } from "../../../store/reducer";
-import { Redirect, useParams, useHistory } from "react-router-dom";
+import { getOneSpotThunk, removeSpotThunk } from "../../../store/spot-reducer";
+import { useParams, useHistory } from "react-router-dom";
 import EditSpot from "../EditSpots/EditSpots";
 import "./SpotById.css";
-import DeleteSpot from "../DeleteSpots/DeleteSpots";
 
 const MySpot = () => {
   const { spotId } = useParams();
@@ -19,8 +18,6 @@ const MySpot = () => {
 
   const spots = Object.values(spot)
 
-  const spotArr = spots.find(spot => spot.id === +spotId)
-  console.log("spot arr test: ", spot)
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
@@ -52,15 +49,19 @@ const spotRemoval = async (e) => {
 
       <h4>
         {" "}
-        {randomNumber} guests | {randomNumber} bedrooms | {randomNumber} beds | {randomNumber} baths {" "}
+        {randomNumber} guests | {randomNumber} bedrooms | {randomNumber} beds |{" "}
+        {randomNumber} baths{" "}
       </h4>
-       <div className="delete-spot">
-        <button
-          className="edit-spot"
-          onClick={(e) => {spotRemoval(e)
-          }}
-        >Delete This Spot </button>
-        <EditSpot spot={spot} />
+      <div className="delete-spot">
+        {sessionUser ? (
+          <button onClick={(e) => spotRemoval(e)}>Delete This Spot</button>
+        ) : null}
+        <div className="edit-spot">
+          {sessionUser ? (
+            <EditSpot spot={spot} />
+          ) : null}
+        </div>
+        
       </div>
     </>
   );
