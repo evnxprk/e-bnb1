@@ -11,56 +11,64 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({ credential, password }))
-      .then(closeModal)
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
-  };
+ const handleSubmit = (e) => {
+   e.preventDefault();
+   setErrors([]);
+   return dispatch(sessionActions.login({ credential, password }))
+     .then(closeModal)
+     .catch(async (res) => {
+       if (res.status === 401) {
+         setErrors(["Incorrect email or password"]);
+       } else {
+         const data = await res.json();
+         if (data && data.errors) setErrors(data.errors);
+       }
+     });
+ };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-            ))}
+          {errors.length > 0 &&
+            errors.map((error, index) => <li key={index}>{error}</li>)}
         </ul>
-            <h1 className="login-title">Log In</h1>
+
+        <h1 className="login-title">Log In</h1>
         <label className="username-input">
-          Username or Email 
+          Username or Email
           <input
-          className="username-input-box"
+            className="username-input-box"
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
-            />
+          />
         </label>
         <label className="password-input">
-          Password 
+          Password
           <input
-          className="pw-input-box"
+            className="pw-input-box"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            />
+          />
         </label>
-        <button className = "login-button" type="submit">Log In</button>
-      <button
-        className="demo-login-submit-button"
-        onClick={() => {
-          setCredential("christy@user.io");
-          setPassword("password");
-        }}
-        type="submit"
-        > Demo User Log In
-      </button>
+        <button className="login-button" type="submit">
+          Log In
+        </button>
+        <button
+          className="demo-login-submit-button"
+          onClick={() => {
+            setCredential("christy@user.io");
+            setPassword("password");
+          }}
+          type="submit"
+        >
+          {" "}
+          Demo User Log In
+        </button>
       </form>
     </>
   );
