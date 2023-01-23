@@ -1,33 +1,62 @@
 .spot-card-rating-right {
-  justify-content: justify;
+  display: flex;
+  /* align-items: center; */
+  margin-bottom: 8px;
+}
+
+.spot-card-name-middle {
+  /* font-size: 24px; */
+  font-weight: 600;
+  color: #444444;
+  margin-bottom: 8px;
+  float: left;
 }
 
 .spot-image-homepage {
+  /* border: 2px purple solid; */
   border-radius: 10px;
   width: 300px;
+  height: 300px;
   object-fit: center;
-  padding: 1em;
-  padding-top: 1em;
+  /* padding: 1em; */
+  /* padding-top: 1em; */
+  color: rgb(0, 0, 0);
+}
+.fa-star:before {
+  display: flex;
+  justify-content: justify;
+  flex-direction: row;
 }
 
 #spot-cards {
+  /* border: 1px solid blue; */
   display: flex;
-  /* justify-content: center; */
-  gap: 3;
+  justify-content: space-between;
   flex-wrap: wrap;
-  /* padding: 2rem; */
+
+}
+.spot-cards-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  padding: 2px;
+  margin: 2px;
+  /* row-gap: 25px; */
+  /* column-gap: 25px; */
+}
+.spot-image-homepage:hover {
+  box-shadow: 0px 0px 10px rgb(94, 94, 94); /* add a shadow to the box on hover */
+  cursor: pointer;
 }
 
 .spot-card {
-  text-align: left;
-  padding-left: 2em;
-  color: rgb(244, 135, 153);
+    display: flex;
+    float: right;
+    /* flex-wrap: wrap; */
+    /* font-size: 10px; */
+    object-fit: cover;
 }
-h1 {
-  text-align: center;
-  display:flex;
-  color: rgb(219, 178, 127);
-}
-body {
-  background-color: bisque;
-}
+/* body {
+  background-color: rgb(226, 233, 210);
+  display: flex;
+} */

@@ -12,52 +12,52 @@ module.exports = {
       [
         {
           spotId: 1,
-          url: "https://imageio.forbes.com/specials-images/imageserve/63b832373ef2ae3a6b84da4f/0x0.jpg?format=jpg&width=1200",
+          url: "https://a0.muscache.com/im/pictures/3d391e5a-e594-4aed-9421-62153d3016de.jpg?im_w=1200",
           preview: true,
         },
         {
           spotId: 2,
-          url: "https://images.adsttc.com/media/images/6250/5200/3e4b/315d/6d00/0012/newsletter/haven1.jpg?1649431036",
+          url: "https://a0.muscache.com/im/pictures/616bc395-644d-4089-b2c1-13c6c11c50fd.jpg?im_w=1200",
           preview: true,
         },
         {
           spotId: 3,
-          url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/breeze-screenshot-map-02-1619538189.png",
+          url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-33043667/original/9c9a4e9d-a781-437e-8d82-0dd6813535b0.jpeg?im_w=1200",
           preview: true,
         },
         {
           spotId: 4,
-          url: "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/09/valorant-map-pearl-players-divided.jpg",
+          url: "https://a0.muscache.com/im/pictures/miso/Hosting-6122648/original/7d1816d6-e2ab-4053-ae59-9d09c577cfde.jpeg?im_w=1200",
           preview: true,
         },
         {
           spotId: 5,
-          url: "https://www.pcinvasion.com/wp-content/uploads/2020/10/Valorant-Act-III-new-map-Icebox.jpg",
+          url: "https://a0.muscache.com/im/pictures/miso/Hosting-12427317/original/f26a8663-fbad-48c7-9992-22eaf93b3a98.jpeg?im_w=1200",
           preview: true,
         },
         {
           spotId: 6,
-          url: "https://wallpapercave.com/dwp2x/wp8730533.jpg",
+          url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-52991512/original/17739141-c832-4e64-8efa-e8818cd471aa.jpeg?im_w=1200",
           preview: true,
         },
         {
           spotId: 7,
-          url: "https://wallpapercave.com/dwp2x/wp8730557.png",
+          url: "https://a0.muscache.com/im/pictures/miso/Hosting-15951279/original/13e7ab39-f89a-4c8c-8685-89915ecf1957.jpeg?im_w=1200",
           preview: true,
         },
         {
           spotId: 8,
-          url: "https://wallpapercave.com/dwp2x/wp8730569.jpg",
+          url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-645949816519904365/original/077e14bb-3c59-4436-ac54-24dcb2d5f00d.jpeg?im_w=1200",
           preview: true,
         },
         {
           spotId: 9,
-          url: "https://wallpapercave.com/dwp2x/wp8730650.jpg",
+          url: "https://a0.muscache.com/im/pictures/66526778/a45cd4a4_original.jpg?im_w=1200",
           preview: true,
         },
         {
           spotId: 10,
-          url: "https://wallpapercave.com/dwp2x/wp8730643.jpg",
+          url: "https://a0.muscache.com/im/pictures/f3e42ca3-6d2a-47e5-af3a-481ec297cf54.jpg?im_w=1200",
           preview: true,
         },
       ],

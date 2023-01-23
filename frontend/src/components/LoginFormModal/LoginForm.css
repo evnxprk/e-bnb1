@@ -1,6 +1,42 @@
-button {
-    border-radius: 8px;;
+#modal-content {
+    /* border-radius: 3em; */
+    padding: 2em 2em;
+    display: flex;
+    /* position: relative; */
 }
+
+/* h1 {
+
+} */
+
+.login-button {
+     color: white;
+    background-color: rgb(234, 190, 227);
+    height: 30px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    /* margin-top: 15px; */
+    /* padding: 7px; */
+}
+
+.username-input {
+    padding: 4px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    height: 35px;
+    font-size: 20px;
+}
+.password-input {
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    height: 35px;
+    font-size: 20px;
+}
+
 
 
 .login-errors {

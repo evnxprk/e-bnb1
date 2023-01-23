@@ -21,8 +21,8 @@ export const getAllSpotsThunk = () => async (dispatch) => {
 
   if (response.ok) {
     const allSpots = await response.json();
-    dispatch(getSpots(allSpots));
-    return allSpots;
+    dispatch(getSpots(allSpots.Spots));
+    // return allSpots;
   }
 };
 
@@ -34,14 +34,14 @@ const oneSpot = (spot) => {
 };
 
 export const getOneSpotThunk = (spotId) => async (dispatch) => {
-  console.log("test spotId: ", spotId)
+  // console.log("test spotId: ", spotId)
   const response = await fetch(`/api/spots/${spotId}`);
 
   if (response.ok) {
     const data = await response.json();
-    console.log("testing one spot from db: ", data)
+    // console.log("testing one spot from db: ", data)
     dispatch(oneSpot(data));
-    // return data;
+    return data;
   }
 };
 
@@ -82,10 +82,10 @@ export const createImageThunk = (img, spotId) => async (dispatch) => {
 
 }
 
-const updateSpot = (spots) => {
+const updateSpot = (oneSpot) => {
   return {
     type: EDIT_SPOT,
-    spots,
+    oneSpot,
   };
 };
 
@@ -98,14 +98,14 @@ export const updateSpotThunk = (oneSpot, spotId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(updateSpot(data));
-    return response;
+    return data;
   }
 };
 
-const removeSpot = (spots) => {
+const removeSpot = (spot) => {
   return {
     type: DELETE_SPOT,
-    spots,
+    spot,
   };
 };
 
@@ -129,9 +129,7 @@ const spotsReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case GET_SPOTS: {
-      action.allSpots.Spots.forEach((spot) => {
-        newState.allSpots[spot.id] = spot;
-      });
+      newState.allSpots = action.allSpots
       return newState;
     }
 
@@ -148,7 +146,7 @@ const spotsReducer = (state = initialState, action) => {
     }
     case EDIT_SPOT: {
       newState = { ...state };
-      newState[action.spots.id] = action.spots;
+      newState[action.oneSpot.id] = action.oneSpot;
       return newState;
     }
     case DELETE_SPOT: {

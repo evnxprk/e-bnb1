@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { createImageThunk, createSpotThunk } from "../../../store/spot-reducer";
 
-const CreateForm = ({setOnModalClose}) => {
+const CreateForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -53,7 +53,7 @@ const CreateForm = ({setOnModalClose}) => {
   //handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setOnModalClose(true)
+    // setOnModalClose(true)
     // console.log("handleSubmit running: ");
 
     if (validationError.length) return;
@@ -154,7 +154,7 @@ const CreateForm = ({setOnModalClose}) => {
         <label id="owner-input-title"> Price </label>
         <input
           id="owner-form-inputs"
-          type="text"
+          type="number"
           name="price"
           placeholder="Price per night"
           value={price}

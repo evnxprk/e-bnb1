@@ -159,7 +159,7 @@ router.get("/", async (req, res) => {
   
     spot.avgRating = Number(rating[0].avgRating);
     if(!spot.avgRating) {
-      spot.avgRating = "No average rating yet!"
+      spot.avgRating = "New!"
     }
    
     const imageURL = await SpotImage.findOne({

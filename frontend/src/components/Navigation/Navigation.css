@@ -1,26 +1,140 @@
-.profile-dropdown {
-  position: absolute;
-}
-
 .hidden {
   display: none;
 }
+.profile-dropdown {
+  position: relative;
+  /* float: ; */
+  /* left: 20px; */
+  /* top: -10px; */
+  /* background-color: bisque; */
+  /* border: 2px solid red; */
+  /* border-radius: 8em; */
 
-#button {
-margin-right:170px;
 }
 
+.fa-bars:before {
+display: flex;
+padding: 3px;
+margin: 2px;  
+}
+.fa-user-circle:before {
+  display: flex;
+  padding: 3px;
+  margin: 2px;
+  size: 8px;
+}
+
+.profile-open-button {
+  display: flex;
+  justify-content: space-between;
+  right: 100px;
+}
+
+.link-to-home-active {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.logo{
+  width: 80px;
+    display: flex;
+    justify-content: space-between;
+  /* height: 16px; */
+}
+
+.profile {
+  width: 1600px;
+  /* position: relative; */
+  /* flex-direction: row; */
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+  padding: 5px;
+}
+/* .profile-container {
+  justify-content: space-evenly;
+  display: flex;
+  width: 100px;
+} */
+
+
+/* .profile-nav {
+  border-radius: 2em;
+  padding: 1em;
+  margin: 3px;
+  /* align-items; */
+  /* justify-content: space-between; */
+  /* display: flex; */
+  /* size: 5px; */
+  /* gap: 2; */
+/* } */ */
+
+.fa-bars:before {
+  padding: 10px;
+}
+.login-title {
+  font-size: 20px;
+}
+
+.username-input {
+  /* background-color: rgb(217, 214, 214);; */
+  padding: 10px;
+  /* margin: 2px; */
+}
+#modal-content {
+  background-color: bisque;
+}
+
+.username-input-box {
+  padding: 2px;
+  margin: 2px;
+}
 
 .home-page {
-justify-content: space-between;
-display: flex;
-border: black 1px solid;
+  justify-content: space-between;
+  display: flex;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-bottom: 2px solid lightslategray;
+  width: 100%;
+  /* margin: 10px; */
+  /* padding: 10px; */
+  /* border: black 1px solid; */
+}
+
+.create-new-listing {
+  align-items: center;
+  display: grid;
+  /* height: 100%; */
+  /* position: relative; */
+  /* justify-content: space-between; */
+  /* flex-direction: row; */
+/* flex-wrap: wrap; */
+  /* z-index: 1; */
+
+  /* padding: 2px; */
 }
 
 .profile-dropdown {
-border: 10px solid red;
-/* display: flex; */
-position: relative;
-/* right: 20px; */
+  /* border: 10px solid red; */
+  /* display: flex; */
+  position: relative;
+  cursor: pointer;
+  /* text-align: inherit; */
+  border-radius: 21px;
+  /* right: 20px; */
 }
 
+.login-button {
+  padding: 5px;
+  margin: 5px;
+}
+
+.demo-login-submit-button {
+  padding: 5px;
+  margin: 5px;
+}

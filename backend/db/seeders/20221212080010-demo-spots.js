@@ -16,7 +16,7 @@ module.exports = {
         {
           ownerId: 1,
           address: "101 Fake Address Blvd",
-          city: "Valorant",
+          city: "Palos Verdes",
           state: "CA",
           country: "USA",
           lat: "01.01",
@@ -28,7 +28,7 @@ module.exports = {
         {
           ownerId: 2,
           address: "102 Fake Address Street",
-          city: "Valo",
+          city: "Las Vegas",
           state: "NV",
           country: "USA",
           lat: "01.02",
@@ -42,7 +42,7 @@ module.exports = {
         {
           ownerId: 3,
           address: "103 Sherman Way",
-          city: "Riot Games",
+          city: "La Jolla",
           state: "CA",
           country: "USA",
           lat: "01.03",
@@ -93,19 +93,19 @@ module.exports = {
         {
           ownerId: 1,
           address: "900 Minecraft Blvd",
-          city: "Minecraft",
-          state: "CA",
+          city: "Seattle",
+          state: "WA",
           country: "USA",
           lat: "01.1",
           lng: "1.3",
-          name: "Minecraft Inspired House",
+          name: "Beachside",
           description:
             "Do you love Minecraft? This house is inspired by Haven from Valorant.",
           price: 100,
         },
         {
           ownerId: 3,
-          address: "190 Riot Games Blvd",
+          address: "190 Beachshore Blvd",
           city: "Los Angeles",
           state: "CA",
           country: "USA",
@@ -118,13 +118,13 @@ module.exports = {
         },
         {
           ownerId: 2,
-          address: "789 Valorant Blvd",
+          address: "789 Seaside Blvd",
           city: "New York City",
           state: "NY",
           country: "USA",
           lat: "01.05",
           lng: "1.02",
-          name: "Tree",
+          name: "Tree Haven",
           description:
             "A house that has a room with trees in it",
           price: 1000,
@@ -137,7 +137,7 @@ module.exports = {
           country: "USA",
           lat: "01.05",
           lng: "1.02",
-          name: "Icebox",
+          name: "Squishies",
           description:
             "Love BTS? Well this is it.",
           price: 900,
