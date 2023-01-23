@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/evnxprk/airbnb_clone/issues"
   },
-  "homepage": "https://github.com/evnxprk/airbnb_clone#readme"
+  "homepage": "https://github.com/evnxprk/airbnb_clone#readme",
+  "dependencies": {
+    "validator": "^13.7.0"
+  }
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import validator from "validator";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -15,38 +16,34 @@ function SignupFormPage() {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors({});
-      return dispatch(
-        sessionActions.signup({
-          email,
-          username,
-          firstName,
-          lastName,
-          password,
-        })
-        ).catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
-      }
-      return setErrors({
-        confirm: "Confirm Password field must be the same as the Password field",
-      });
-    };
-    
-    return (
-      <form onSubmit={handleSubmit}>
+    if (!validator.isEmail(email)) {
+      setErrors([...errors, "Invalid email format"]);
+      return;
+    }
+    if (password !== confirmPassword) {
+      setErrors([...errors, "Passwords do not match"]);
+      return;
+    }
+    setErrors([]);
+    return dispatch(
+      sessionActions.signup({ email, username, firstName, lastName, password })
+    ).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
       <ul>
-      {errors.firstName ? errors.firstName : null }
-      {errors.lastName ? errors.lastName : null }
-      {errors.email ? errors.email : null }
-      {errors.password ? errors.password : null }
-      {errors.confirmPassword ? errors.confirmPassword : null }
+        {errors.map((error, index) => (
+          <li key={index}>{error}</li>
+        ))}
       </ul>
-          <h1> Sign Up </h1>
+
       <label>
         Email
         <input
