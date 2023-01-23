@@ -19,43 +19,49 @@ const CreateForm = () => {
   const [validationError, setValidationError] = useState([]);
   const [errors, setErrors] = useState([])
 
-  //handle submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // setOnModalClose(true)
-    // console.log("handleSubmit running: ");
+const minPrice = 1;
 
-    // if (validationError.length) return;
-    // console.log("after error return");
-    const spotFormInfo = {
-      address,
-      city,
-      state,
-      country,
-      name,
-      description,
-      price,
-      lat: 1,
-      lng: 1,
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (price < minPrice) {
+    setValidationError([`Price must be at least $ ${minPrice}`]);
+    return;
+  }
+  setValidationError([]);
+
+  // Rest of the handleSubmit logic
+  const spotFormInfo = {
+    address,
+    city,
+    state,
+    country,
+    name,
+    description,
+    price,
+    lat: 1,
+    lng: 1,
+  };
+
+  let spotCreated = await dispatch(createSpotThunk(spotFormInfo)).catch(
+    async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    }
+  );
+  // console.log("what is this?", spotCreated.id);
+  if (spotCreated) {
+    const img = {
+      url: imageURL,
+      preview: true,
     };
 
-    let spotCreated = await dispatch(createSpotThunk(spotFormInfo))
-    .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
-    // console.log("what is this?", spotCreated.id);
-    if (spotCreated) {
-      const img = {
-        url: imageURL,
-        preview: true,
-      };
+    dispatch(createImageThunk(img, spotCreated.id));
+    // console.log("hi", img);
+    history.push("/");
+  }
+};
 
-      dispatch(createImageThunk(img, spotCreated.id));
-      // console.log("hi", img);
-      history.push("/");
-    }
-  };
   return (
     <form onSubmit={handleSubmit}>
       <div className="create-new-spot-form ">

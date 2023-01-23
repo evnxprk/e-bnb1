@@ -22,8 +22,8 @@ const MySpot = () => {
   const spot = useSelector((state) => state.spots.singleSpot);
   const reviews = useSelector((state) => state.reviews);
   const allReviews = Object.values(reviews);
-  console.log("what is appearing here in allReviews?????", allReviews);
-  console.log("what is appearing here in reviews?????", reviews);
+  // console.log("what is appearing here in allReviews?????", allReviews);
+  // console.log("what is appearing here in reviews?????", reviews);
 
   // const review = useSelector(state => state.reviews.userReview)
 
