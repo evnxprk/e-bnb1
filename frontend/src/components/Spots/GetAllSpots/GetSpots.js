@@ -36,7 +36,7 @@ const GetAllSpots = () => {
             <i className="far fa-star"></i>
             {spot.avgRating}
           </div>
-          <div className="spot-card-name-middle">{spot.name}</div> <p></p>
+          <div className="spot-card-name-middle">{spot.name}</div>
           <span className="spot-card-price-left">${spot.price} per night</span>
           <div className="spot-card">
             {spot.city}, {spot.state}

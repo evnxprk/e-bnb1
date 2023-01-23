@@ -38,9 +38,8 @@ function Navigation({ isLoaded }) {
         <img className="logo" src={night} sizes="32x32" />
       </NavLink>
       <div className="create-new-listing">
-        <div className="new-listing">
           {sessionUser ? (
-            <NavLink to="/new">CloudBnB</NavLink>
+            <NavLink style={{textDecoration: "none", color:"black"}} to="/new">CloudBnB</NavLink>
           ) : null}
           {isLoaded && (
             <div className="profile-nav">
@@ -49,7 +48,6 @@ function Navigation({ isLoaded }) {
           )}
         </div>
       </div>
-    </div>
   );
 }
 

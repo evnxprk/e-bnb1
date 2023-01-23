@@ -14,41 +14,10 @@ const CreateForm = () => {
   const [country, setCountry] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(1);
   const [imageURL, setImageURL] = useState("");
   const [validationError, setValidationError] = useState([]);
-
-  //errors
-
-  useEffect(() => {
-    const errors = [];
-    if (address.length === 0) {
-      errors.push("Please provide a valid address.");
-    }
-    if (city.length === 0) {
-      errors.push("Please provide a valid city.");
-    }
-    if (state.length === 0) {
-      errors.push("Please provide a valid state.");
-    }
-    if (country.length === 0) {
-      errors.push("Please provide a valid country.");
-    }
-    if (name.length === 0) {
-      errors.push("Please provide a valid name.");
-    }
-    if (description.length === 0) {
-      errors.push("Please provide a valid description.");
-    }
-    if (!Number(price)) {
-      errors.push("Please provide a valid price.");
-    }
-
-    if (!imageURL) {
-      errors.push("Please provide a valid URL");
-    }
-    setValidationError(errors);
-  }, [address, city, state, country, name, price, description, imageURL]);
+  const [errors, setErrors] = useState([])
 
   //handle submit
   const handleSubmit = async (e) => {
@@ -56,7 +25,7 @@ const CreateForm = () => {
     // setOnModalClose(true)
     // console.log("handleSubmit running: ");
 
-    if (validationError.length) return;
+    // if (validationError.length) return;
     // console.log("after error return");
     const spotFormInfo = {
       address,
@@ -70,7 +39,11 @@ const CreateForm = () => {
       lng: 1,
     };
 
-    let spotCreated = await dispatch(createSpotThunk(spotFormInfo));
+    let spotCreated = await dispatch(createSpotThunk(spotFormInfo))
+    .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     // console.log("what is this?", spotCreated.id);
     if (spotCreated) {
       const img = {
@@ -100,6 +73,7 @@ const CreateForm = () => {
           placeholder="Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          required
         />
 
         <label id="owner-input-title"> City </label>
@@ -110,6 +84,7 @@ const CreateForm = () => {
           placeholder="City"
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          required
         />
 
         <label id="owner-input-title"> State </label>
@@ -120,6 +95,7 @@ const CreateForm = () => {
           placeholder="State"
           value={state}
           onChange={(e) => setState(e.target.value)}
+          required
         />
 
         <label id="owner-input-title"> Country </label>
@@ -129,6 +105,7 @@ const CreateForm = () => {
           name="country"
           placeholder="Country"
           value={country}
+          required
           onChange={(e) => setCountry(e.target.value)}
         />
 
@@ -139,6 +116,7 @@ const CreateForm = () => {
           name="name"
           placeholder="Name of Spot"
           value={name}
+          required
           onChange={(e) => setName(e.target.value)}
         />
         <label id="owner-input-title"> Description </label>
@@ -149,6 +127,7 @@ const CreateForm = () => {
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          required
         />
 
         <label id="owner-input-title"> Price </label>

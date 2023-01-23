@@ -15,7 +15,7 @@ const MySpot = () => {
   const { spotId } = useParams();
   const history = useHistory();
   const { reviewId } = useParams();
-  const [randomNumber, setRandomNumber] = useState(2);
+  // const [randomNumber, setRandomNumber] = useState(2);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   //   console.log("the sessionUser: ", sessionUser)
@@ -31,7 +31,7 @@ const MySpot = () => {
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
-    setRandomNumber(Math.floor(Math.random() * 10));
+    // setRandomNumber(Math.floor(Math.random() * 10));
   }, [dispatch]);
 
   useEffect(() => {
@@ -64,8 +64,8 @@ const MySpot = () => {
         </div>
         <h4>
           {" "}
-          {randomNumber} guests | {randomNumber} bedrooms | {randomNumber} beds
-          | {randomNumber} baths{" "}
+          10 guests | 7 bedrooms | 6 beds
+          | 4 baths{" "}
         </h4>
 
         <div className="superhost-whoo">

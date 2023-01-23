@@ -4,12 +4,19 @@
   margin-bottom: 8px;
 }
 
+.spot-card-price-left {
+  display: flex;
+  justify-content: space-between;
+}
+
 .spot-card-name-middle {
   /* font-size: 24px; */
   font-weight: 600;
   color: #444444;
   margin-bottom: 8px;
-  float: left;
+  /* float: left; */
+  align-items: center;
+  color: rgb(124, 124, 194);
 }
 
 .spot-image-homepage {

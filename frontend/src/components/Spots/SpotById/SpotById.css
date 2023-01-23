@@ -149,10 +149,11 @@ align-items: center;
   margin: 0 0 1rem 0;
   color: rgb(0, 0, 0);
   font-weight: 600;
-  height: 38px;
-  width: 50%;
+  height: 30px;
+  /* width: 20; */
+  /* display: inline-block; */
   background-color: rgb(232, 165, 165);
-  border-radius: 8px;
+  border-radius: 5px;
   /* border: none; */
   /* display: inline-block; */
 }

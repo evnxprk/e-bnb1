@@ -1,16 +1,6 @@
 .hidden {
   display: none;
 }
-.profile-dropdown {
-  position: relative;
-  /* float: ; */
-  /* left: 20px; */
-  /* top: -10px; */
-  /* background-color: bisque; */
-  /* border: 2px solid red; */
-  /* border-radius: 8em; */
-
-}
 
 .fa-bars:before {
 display: flex;
@@ -25,9 +15,10 @@ margin: 2px;
 }
 
 .profile-open-button {
-  display: flex;
-  justify-content: space-between;
-  right: 100px;
+     display: flex;
+    justify-content: space-between;
+    border-radius: 30px;
+    border: 1px solid gray;
 }
 
 .link-to-home-active {
@@ -41,19 +32,20 @@ margin: 2px;
 
 .logo{
   width: 80px;
-    display: flex;
-    justify-content: space-between;
+  align-items: center;
   /* height: 16px; */
 }
 
 .profile {
-  width: 1600px;
-  /* position: relative; */
-  /* flex-direction: row; */
-  display: flex;
-  justify-content: space-between;
-  margin: 15px;
-  padding: 5px;
+   width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    padding: 5px;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
 }
 /* .profile-container {
   justify-content: space-evenly;
@@ -105,28 +97,26 @@ margin: 2px;
   /* padding: 10px; */
   /* border: black 1px solid; */
 }
-
 .create-new-listing {
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid green; */
+  width: 200px;
   align-items: center;
-  display: grid;
-  /* height: 100%; */
-  /* position: relative; */
-  /* justify-content: space-between; */
-  /* flex-direction: row; */
-/* flex-wrap: wrap; */
-  /* z-index: 1; */
-
-  /* padding: 2px; */
+  justify-content: space-between;
 }
 
 .profile-dropdown {
-  /* border: 10px solid red; */
+  border: 1px solid gray;
   /* display: flex; */
-  position: relative;
-  cursor: pointer;
-  /* text-align: inherit; */
-  border-radius: 21px;
-  /* right: 20px; */
+  position: absolute;
+  /* cursor: pointer; */
+  /* top:200px; */
+/* left: 300px; */
+  right: 60px;
+  background-color: white;
+  /* z-index: 7 */
+  
 }
 
 .login-button {
