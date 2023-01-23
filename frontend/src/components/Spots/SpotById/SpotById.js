@@ -134,7 +134,7 @@ const MySpot = () => {
 
           <div className="button-container">
             <div className="delete-spot">
-              {sessionUser && sessionUser.id === reviews.ownerId ? (
+              {sessionUser && sessionUser.id === spot.ownerId ? (
                 <button
                   className="delete-spot-button"
                   onClick={(e) => spotRemoval(e)}
