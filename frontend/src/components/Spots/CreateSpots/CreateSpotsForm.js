@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import "./CreateSpotsForm.css";
 import { useHistory } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createImageThunk, createSpotThunk } from "../../../store/spot-reducer";
 
 const CreateForm = () => {

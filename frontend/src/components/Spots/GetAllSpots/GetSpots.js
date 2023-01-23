@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllSpotsThunk } from "../../../store/spot-reducer";
 import { NavLink } from "react-router-dom";
 import "./GetSpots.css";
-import { getReviews } from '../../../store/review-reducer'
 
 const GetAllSpots = () => {
   const dispatch = useDispatch();

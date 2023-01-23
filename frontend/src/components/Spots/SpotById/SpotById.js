@@ -66,6 +66,13 @@ const MySpot = () => {
               </div>
             ))}
             <p></p>
+            <div className="edit-spot">
+              {sessionUser && sessionUser.id === spot.ownerId ? (
+                <NavLink to={`/manage/${spotId}`}>
+                  <button className="edit-spot-button">Edit This Spot</button>
+                </NavLink>
+              ) : null}
+            </div>
             <div className="spot-owner-name">
               Entire Home Hosted By {spot.Owner.firstName}
             </div>
@@ -136,13 +143,6 @@ const MySpot = () => {
                 </button>
               ) : null}{" "}
             </div>
-            <div className="edit-spot">
-              {sessionUser && sessionUser.id === spot.ownerId ? (
-                <NavLink to={`/manage/${spotId}`}>
-                  <button className="edit-spot-button">Edit This Spot</button>
-                </NavLink>
-              ) : null}
-            </div>
 
             <div className="review-spot">
               {sessionUser && sessionUser.id !== spot.ownerId ? (
@@ -153,16 +153,18 @@ const MySpot = () => {
                 </NavLink>
               ) : null}
             </div>
+
+              <h3> REVIEWS OF THIS HOME</h3>
             <div className="double-cards">
               {allReviews.map((review) => (
                 <div className="all-reviews-container">
-                  <h4> REVIEWS OF THIS HOME</h4>
-                  <p>
-                    <i className="fas fa-star"></i> {review.stars}
-                  </p>
-                  <p className="reviews-overview">"{review.review}" </p>
                   <div className="session-name">
-                    {review.User.firstName}
+                    What {review.User.firstName} thought of her experience: 
+                    <p>
+                    Rating: <i className="fas fa-star"></i> {review.stars}
+
+                    </p>
+                  <p className="reviews-overview">Review: {review.review} </p>
                     <div className="delete-this-review">
                       {sessionUser && sessionUser.id === review.userId ? (
                         <button
