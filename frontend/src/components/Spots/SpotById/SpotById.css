@@ -1,64 +1,64 @@
 .star-name-middle {
-    display: flex;
+  display: flex;
   /* flex-wrap: wrap; */
   /* justify-content: center; */
   /* border: 3px orange solid; */
 }
 
 .spot-name-middle {
-    /* border: 2px solid black; */
-    /* display: inline-block; */
+  /* border: 2px solid black; */
+  /* display: inline-block; */
   padding: 10px;
   font-size: 15px;
   margin: 15px 0;
   text-align: center;
-  justify-content:baseline;
-  text-decoration:underline;
+  justify-content: baseline;
+  /* text-decoration:underline; */
   display: flex;
   color: rgb(171, 121, 56);
   /* text-shadow: 3em; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.check-in{
-    display: flex;
-    justify-content: space-between;
-    font-size: 15px;
-    /* padding: 1em; */
+.check-in {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  /* padding: 1em; */
 }
 .key {
-    display: flex;
-    font-size: 15px;
-    justify-content: space-between;
-    /* padding: 1em; */
+  display: flex;
+  font-size: 15px;
+  justify-content: space-between;
+  /* padding: 1em; */
 }
 .location {
-    display: flex;
-    font-size: 15px;
-    justify-content: space-between;
-    /* padding: 1em; */
+  display: flex;
+  font-size: 15px;
+  justify-content: space-between;
+  /* padding: 1em; */
 }
 .basic-things-about-home {
-    display: grid;
-    /* justify-content: space-between; */
-    /* padding: 2px; */
-    /* margin: 2px; */
-    /* justify-content: space-between; */
-    /* margin-bottom:30px */
+  display: grid;
+  /* justify-content: space-between; */
+  /* padding: 2px; */
+  /* margin: 2px; */
+  /* justify-content: space-between; */
+  /* margin-bottom:30px */
 }
 .idk {
-    display: flex;
-    flex-direction: column;
-    /* width: 1000p; */
-    /* height: auto; */
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  /* width: 1000p; */
+  /* height: auto; */
+  justify-content: center;
+  align-items: center;
 }
 .double-cards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
 }
 
 .fa-star {
@@ -68,17 +68,16 @@
 }
 
 .air-cover-logo {
-    /* height: 30%; */
-    width: 15%;
+  /* height: 30%; */
+  width: 15%;
 }
-
 
 .spot-image-by-id {
   border-radius: 6px;
   display: flex;
   justify-content: center;
 
-align-items: center;
+  align-items: center;
   /* width:100%; */
   /* height:600px; */
   /* justify-content: center; */
@@ -89,7 +88,7 @@ align-items: center;
 
 .superhost-whoo {
   color: rgb(0, 0, 0);
-  text-align:center;
+  text-align: center;
   font-size: 20px;
   font-weight: bold;
   color: cornflowerblue;
@@ -98,11 +97,11 @@ align-items: center;
 .superhost-meaning {
   text-align: center;
   color: cornflowerblue;
-   border-bottom: 1px solid black ;
+  border-bottom: 1px solid black;
 }
 
 .reviews-overview {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .button-container {
@@ -113,13 +112,13 @@ align-items: center;
 
 .description-container {
   border: 1px solid #c6c6c6;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgb(0 0 0 / 25%);
-    /* display: inline; */
-    /* height: 50%; */
-    /* width: 50%; */
-    padding: 1em;
-    /* margin: 3px; */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 25%);
+  /* display: inline; */
+  /* height: 50%; */
+  /* width: 50%; */
+  padding: 1em;
+  /* margin: 3px; */
 }
 
 .edit-spot {
@@ -132,22 +131,21 @@ align-items: center;
 } */
 
 .button-delete {
-  background-color: rgb(220, 146, 146);
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
-  width: 50%;
-   border-radius: 8px;
-   font-weight: bold;
-}
-.delete-spot-button {
- margin: 0 0 1rem 0;
+   margin: 0 0 1rem 0;
   color: rgb(0, 0, 0);
   font-weight: 600;
   height: 30px;
   background-color: rgb(232, 165, 165);
   border-radius: 5px;
-   /* font-weight: bold; */
+}
+.delete-spot-button {
+  margin: 0 0 1rem 0;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  height: 30px;
+  background-color: rgb(232, 165, 165);
+  border-radius: 5px;
+  /* font-weight: bold; */
 }
 .edit-spot-button {
   margin: 0 0 1rem 0;
@@ -156,12 +154,11 @@ align-items: center;
   height: 30px;
   background-color: rgb(232, 165, 165);
   border-radius: 5px;
-   /* font-weight: bold; */
+  /* font-weight: bold; */
 }
 */ .review-spot-button:hover {
   box-shadow: 10px 10px 5px lightblue;
 }
-
 
 .review-spot-button {
   margin: 0 0 1rem 0;
@@ -173,33 +170,29 @@ align-items: center;
 }
 
 .all-reviews-container {
- /* border: 1px solid #c6c6c6; */
-    border-radius: 15px;
-    /* box-shadow: 0 5px 15px rgb(0 0 0 / 25%); */
-    /* display: grid; */
-    /* justify-content: flex-start; */
-    /* height: 300px; */
-    width: 1200px;
-    /* padding: 1em; */
-    margin: 3px;
+  /* border: 1px solid #c6c6c6; */
+  border-radius: 15px;
+  /* box-shadow: 0 5px 15px rgb(0 0 0 / 25%); */
+  /* display: grid; */
+  /* justify-content: flex-start; */
+  /* height: 300px; */
+  width: 1200px;
+  /* padding: 1em; */
+  margin: 3px;
 
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* margin-top: -43px; */
-    padding: 20px;
-
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* margin-top: -43px; */
+  padding: 20px;
 }
-.delete-this-review {
-  color: white;
+/* .delete-this-review {
+   margin: 0 0 1rem 0;
+  color: rgb(0, 0, 0);
   font-weight: 600;
-  height: 38px;
-  width: 100%;
+  height: 30px;
   background-color: rgb(232, 165, 165);
-  border-radius: 8px;
-  border: none;
-  display: inline;
- 
-}
+  border-radius: 5px;
+} */
 
 .fa-ribbon {
   padding: 20px;

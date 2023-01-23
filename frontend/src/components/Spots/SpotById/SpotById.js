@@ -46,6 +46,8 @@ const MySpot = () => {
     history.push("/");
   };
 
+  
+
   return (
     <div className="page-idk">
       <div className="idk">
@@ -152,7 +154,7 @@ const MySpot = () => {
                 <div className="session-name">
                   {review.User.firstName}
                   <div className="delete-this-review">
-                    {sessionUser && sessionUser.id === spotId.ownerId ? (
+                    {sessionUser && sessionUser.id !== spotId.ownerId ? (
                       <button
                         className="button-delete"
                         onClick={async (e) => {
@@ -164,7 +166,7 @@ const MySpot = () => {
                         }}
                       >
                         {" "}
-                        Delete
+                        Delete This Review
                       </button>
                     ) : null}
                   </div>

@@ -3,9 +3,9 @@
 }
 
 .fa-bars:before {
-display: flex;
-padding: 3px;
-margin: 2px;  
+  display: flex;
+  padding: 3px;
+  margin: 2px;
 }
 .fa-user-circle:before {
   display: flex;
@@ -13,12 +13,16 @@ margin: 2px;
   margin: 2px;
   size: 8px;
 }
+.cloudy {
+  color: darkcyan;
+}
 
 .profile-open-button {
-     display: flex;
-    justify-content: space-between;
-    border-radius: 30px;
-    border: 1px solid gray;
+  border: 3px solid orange;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 30px;
+  border: 1px solid gray;
 }
 
 .link-to-home-active {
@@ -30,22 +34,23 @@ margin: 2px;
   width: 100%;
 }
 
-.logo{
+.logo {
   width: 80px;
   align-items: center;
   /* height: 16px; */
 }
 
 .profile {
-   width: 100%;
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 60px;
-    padding: 5px;
-    border-bottom: 1px solid gray;
-    padding-bottom: 10px;
+  border: 3px solid green;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+  padding: 8px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
 }
 /* .profile-container {
   justify-content: space-evenly;
@@ -53,19 +58,17 @@ margin: 2px;
   width: 100px;
 } */
 
-
-/* .profile-nav {
+.profile-nav {
   border-radius: 2em;
-  padding: 1em;
-  margin: 3px;
-  /* align-items; */
-  /* justify-content: space-between; */
-  /* display: flex; */
-  /* size: 5px; */
-  /* gap: 2; */
-/* } */ */
-
-.fa-bars:before {
+  /* padding: 1em; */
+  /* margin: 3px; */
+  align-items:center;
+justify-content: space-between;
+display: flex;
+/* width: 100px */
+/* gap: 2; */
+}
+*/ .fa-bars:before {
   padding: 10px;
 }
 .login-title {
@@ -100,7 +103,7 @@ margin: 2px;
 .create-new-listing {
   display: flex;
   flex-direction: row;
-  /* border: 1px solid green; */
+  border: 1px solid green;
   width: 200px;
   align-items: center;
   justify-content: space-between;
@@ -112,11 +115,10 @@ margin: 2px;
   position: absolute;
   /* cursor: pointer; */
   /* top:200px; */
-/* left: 300px; */
+  /* left: 300px; */
   right: 60px;
   background-color: white;
   /* z-index: 7 */
-  
 }
 
 .login-button {

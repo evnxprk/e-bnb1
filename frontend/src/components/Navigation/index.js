@@ -37,6 +37,7 @@ function Navigation({ isLoaded }) {
       <NavLink exact to="/">
         <img className="logo" src={night} sizes="32x32" />
       </NavLink>
+      <h1 className="cloudy">CLOUDY NIGHTS </h1>
       <div className="create-new-listing">
           {sessionUser ? (
             <NavLink style={{textDecoration: "none", color:"black"}} to="/new">CloudBnB</NavLink>
