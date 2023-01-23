@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import validator from "validator";
+import { useModal } from "../../context/Modal";
+
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -14,27 +16,40 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const { closeModal } = useModal();
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validator.isEmail(email)) {
-      setErrors([...errors, "Invalid email format"]);
-      return;
-    }
-    if (password !== confirmPassword) {
-      setErrors([...errors, "Passwords do not match"]);
-      return;
-    }
-    setErrors([]);
-    return dispatch(
-      sessionActions.signup({ email, username, firstName, lastName, password })
-    ).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
-  };
+ const handleSubmit = (e) => {
+   e.preventDefault();
+   if (!validator.isEmail(email)) {
+     setErrors([...errors, "Invalid email format"]);
+     return;
+   }
+   if (password !== confirmPassword) {
+     setErrors([...errors, "Passwords do not match"]);
+     return;
+   }
+   setErrors([]);
+
+   return dispatch(
+     sessionActions.signup({ email, username, firstName, lastName, password })
+   )
+     .then(() => {
+       closeModal();
+     })
+     .catch(async (error) => {
+       if (
+         error.response &&
+         error.response.data &&
+         error.response.data.errors
+       ) {
+         setErrors(error.response.data.errors);
+       }
+     });
+ };
+
+
 
   return (
     <form onSubmit={handleSubmit}>

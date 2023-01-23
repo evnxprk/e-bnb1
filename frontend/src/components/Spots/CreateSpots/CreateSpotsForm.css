@@ -47,3 +47,11 @@
     text-align: block;
     border-style: dashed;
 }
+
+body {
+    background-color: bisque;
+}
+
+#owner-form-inputs {
+    background-color:rgb(227, 237, 183);
+}

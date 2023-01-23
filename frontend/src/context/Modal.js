@@ -4,8 +4,6 @@ import "./Modal.css";
 
 const ModalContext = React.createContext();
 
-export const useModal = () => useContext(ModalContext);
-
 export function ModalProvider({ children }) {
   const modalRef = useRef();
   const [modalContent, setModalContent] = useState(null);
@@ -55,3 +53,5 @@ export function Modal() {
     modalRef.current
   );
 }
+
+export const useModal = () => useContext(ModalContext);

@@ -63,7 +63,9 @@ const handleSubmit = async (e) => {
 };
 
   return (
+      < div className="spot-container">
     <form onSubmit={handleSubmit}>
+
       <div className="create-new-spot-form ">
         <h2>Begin Hosting</h2>
         <ul className="errors">
@@ -163,6 +165,7 @@ const handleSubmit = async (e) => {
         </button>
       </div>
     </form>
+    </div> 
   );
 };
 
