@@ -123,13 +123,13 @@ const MySpot = () => {
         <div className="button-container">
           <div className="delete-spot">
             {sessionUser && sessionUser.id === spot.ownerId ? (
-              <button onClick={(e) => spotRemoval(e)}>Delete This Spot</button>
+              <button className = 'delete-spot-button' onClick={(e) => spotRemoval(e)}>Delete This Spot</button>
             ) : null}{" "}
           </div>
           <div className="edit-spot">
             {sessionUser && sessionUser.id === spot.ownerId ? (
               <NavLink to={`/manage/${spotId}`}>
-                <button>Edit This Spot</button>
+                <button className="edit-spot-button">Edit This Spot</button>
               </NavLink>
             ) : null}
           </div>
