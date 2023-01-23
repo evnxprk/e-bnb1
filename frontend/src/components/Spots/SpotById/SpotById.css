@@ -11,8 +11,8 @@
   padding: 10px;
   font-size: 15px;
   margin: 15px 0;
-  text-align: center;
-  justify-content: baseline;
+  align-items: center;
+  /* justify-content: center; */
   /* text-decoration:underline; */
   display: flex;
   color: rgb(171, 121, 56);

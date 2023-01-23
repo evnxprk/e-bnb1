@@ -63,7 +63,7 @@ function LoginFormModal() {
         <button
           className="demo-login-submit-button"
           onClick={() => {
-            setCredential("christy@user.io");
+            setCredential("justin@user.io");
             setPassword("password");
           }}
           type="submit"

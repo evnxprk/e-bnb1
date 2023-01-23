@@ -18,7 +18,7 @@ const DeleteReport = () => {
         <>
         <div className="delete-this-review">
 
-        { sessionUser && sessionUser.id === spotId.ownerId ? (
+        { sessionUser && sessionUser.id !== spotId.ownerId ? (
             <button onClick={(e) => reviewRemoval(e)}>Delete This Review</button>
             ) :null }
             </div>

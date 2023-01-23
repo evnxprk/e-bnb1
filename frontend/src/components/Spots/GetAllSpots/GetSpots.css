@@ -1,12 +1,14 @@
 .spot-card-rating-right {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
+  /* justify-content: center; */
   margin-bottom: 8px;
+  justify-content: right;
 }
 
 .spot-card-price-left {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
 }
 
 .spot-card-name-middle {
@@ -14,6 +16,8 @@
   font-weight: 600;
   color: #444444;
   margin-bottom: 8px;
+  display: flex;
+  /* justify-content: center; */
   /* float: left; */
   align-items: center;
   color: rgb(124, 124, 194);
@@ -45,9 +49,8 @@
 .spot-cards-container {
   flex-direction: row;
   flex-wrap: wrap;
-
-  padding: 2px;
-  margin: 2px;
+  padding: 4px;
+  margin: 4px;
   /* row-gap: 25px; */
   /* column-gap: 25px; */
 }
@@ -58,10 +61,11 @@
 
 .spot-card {
     display: flex;
-    float: right;
+    /* float: right; */
     /* flex-wrap: wrap; */
     /* font-size: 10px; */
     object-fit: cover;
+    justify-content: left;
 }
 /* body {
   background-color: rgb(226, 233, 210);
