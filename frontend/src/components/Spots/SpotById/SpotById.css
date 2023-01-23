@@ -88,14 +88,14 @@
 
 .superhost-whoo {
   color: rgb(0, 0, 0);
-  text-align: center;
+  /* text-align: center; */
   font-size: 20px;
   font-weight: bold;
   color: cornflowerblue;
 }
 
 .superhost-meaning {
-  text-align: center;
+  /* text-align: center; */
   color: cornflowerblue;
   border-bottom: 1px solid black;
 }

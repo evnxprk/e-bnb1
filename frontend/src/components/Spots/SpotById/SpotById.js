@@ -51,6 +51,8 @@ const MySpot = () => {
   return (
     <div className="page-idk">
       <div className="idk">
+
+        <div className="entire-home-description">
         <div className="spot-name-middle">
           {spot.name} • {spot.city}, {spot.state} • <i class="far fa-star"></i>{" "}
           {spot.avgStarRating}
@@ -81,6 +83,8 @@ const MySpot = () => {
           <p></p>
         </div>
         <p></p>
+        </div>
+        {/* </div> */}
 
         <div></div>
         {/* <div className="basic-things-about-home"> */}

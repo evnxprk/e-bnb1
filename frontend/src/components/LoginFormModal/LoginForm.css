@@ -1,67 +1,14 @@
-#modal-content {
-    /* border-radius: 3em; */
-    padding: 2em 2em;
-    display: flex;
-    /* position: relative; */
-}
-
-/* h1 {
-
-} */
-
-.login-button {
-     color: white;
-    background-color: rgb(234, 190, 227);
-    height: 30px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    /* margin-top: 15px; */
-    /* padding: 7px; */
-}
-
-.username-input {
-    padding: 4px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    height: 35px;
-    font-size: 20px;
-}
-.password-input {
-    padding: 8px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    height: 35px;
-    font-size: 20px;
-}
-
-
-
-.login-errors {
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    margin-bottom: 20px;
-}
-
-.demo-login-submit-button {
+#login-button-in-modal {
     color: white;
-    background-color: rgb(234, 190, 227);
-    height: 30px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    margin-top: 15px;
+    background-color: rgba(48, 113, 66, 0.898);
+    border-radius: 15px;
+    width: 95px;
+    height: 40px;
+    /* margin-left: 20px; */
 }
 
-#login-modal-button:hover {
+#login-button-in-modal:hover {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7)
-}
-
-#login-form-inputs:hover {
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    background-color: rgb(212, 223, 215)
 }
 
 #login-form {
@@ -70,9 +17,22 @@
     width: 700px;
 }
 
+#login-form-inputs {
+    padding: 4px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    height: 35px;
+    font-size: 20px;
+}
+
+#login-form-inputs:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgb(212, 223, 215)
+}
+
 .login-submit-button {
     color: white;
-    background-color: rgb(217, 176, 233);
+    background-color: rgb(226, 211, 143);
     height: 60px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -80,10 +40,53 @@
     font-weight: bold;
 }
 
-#login-form-inputs {
-    padding: 4px;
-    margin-bottom: 15px;
+.login-submit-button:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 1.2);
+}
+
+.demo-login-submit-button {
+    color: white;
+    background-color: rgb(226, 211, 143);
+    height: 60px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    height: 35px;
-    font-size: 20px;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.demo-login-submit-button:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 1.2);
+}
+
+#login-form-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 28px;
+    color: rgb(118, 118, 118);
+}
+
+#welcome-back-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}
+
+#login-input-title {
+    margin-left: 4px;
+    margin-bottom: 2px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.login-errors {
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    margin-bottom: 20px;
 }

@@ -40,7 +40,7 @@ function Navigation({ isLoaded }) {
       <h1 className="cloudy">CLOUDY NIGHTS </h1>
       <div className="create-new-listing">
           {sessionUser ? (
-            <NavLink style={{textDecoration: "none", color:"black"}} to="/new">CloudBnB</NavLink>
+            <NavLink style={{textDecoration: "none", color:"Black"}} to="/new">CloudBnB Your Home</NavLink>
           ) : null}
           {isLoaded && (
             <div className="profile-nav">

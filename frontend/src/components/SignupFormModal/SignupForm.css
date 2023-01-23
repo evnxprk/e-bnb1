@@ -1,0 +1,74 @@
+.signup-button-in-modal {
+    color: white;
+    background-color: rgba(67, 116, 133, 0.898);
+    border-radius: 15px;
+    width: 95px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.signup-button-in-modal:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7)
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+}
+
+.signup-form-inputs {
+    padding: 4px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    height: 25px;
+    font-size: 20px;
+
+}
+
+.signup-form-inputs:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgb(212, 223, 215)
+}
+
+.signup-submit-button {
+    color: white;
+    background-color: rgba(67, 116, 133, 0.898);
+    height: 45px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.signup-submit-button:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 1.2);
+}
+
+.signup-form-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 28px;
+    color: rgb(118, 118, 118);
+}
+
+.welcome-signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(6, 6, 6);
+}
+
+
+.signup-input-title {
+    margin-left: 4px;
+    margin-bottom: 2px;
+    font-size: 15px;
+    font-weight: bold;
+}

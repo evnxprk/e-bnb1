@@ -27,35 +27,37 @@ function LoginFormModal() {
  };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="login-modal">
+      <form id="login-form" onSubmit={handleSubmit}>
         <ul>
-          {errors.length > 0 &&
-            errors.map((error, index) => <li key={index}>{error}</li>)}
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
         </ul>
 
-        <h1 className="login-title">Log In</h1>
-        <label className="username-input">
-          Username or Email
-          <input
-            className="username-input-box"
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
+
+        <label id="login-form-title">LOGIN FORM</label>
+        <label id="welcome-back-login">
+         Welcome to Cloudy Nights!
         </label>
-        <label className="password-input">
-          Password
-          <input
-            className="pw-input-box"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button className="login-button" type="submit">
+
+        <label id="login-input-title">Username or Email</label>
+        <input
+          id="login-form-inputs"
+          type="text"
+          value={credential}
+          onChange={(e) => setCredential(e.target.value)}
+          required
+        />
+        <label id="login-input-title">Password</label>
+        <input
+          id="login-form-inputs"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button className="login-submit-button" type="submit">
           Log In
         </button>
         <button
@@ -66,11 +68,10 @@ function LoginFormModal() {
           }}
           type="submit"
         >
-          {" "}
           Demo User Log In
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

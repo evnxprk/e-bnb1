@@ -41,7 +41,7 @@
 }
 
 .profile {
-  border: 3px solid green;
+  /* border: 3px solid green; */
   width: 100%;
   flex-direction: row;
   display: flex;
@@ -116,8 +116,9 @@ display: flex;
   /* cursor: pointer; */
   /* top:200px; */
   /* left: 300px; */
-  right: 60px;
-  background-color: white;
+  right: 10px;
+  top:90px;
+  background-color: bisque;
   /* z-index: 7 */
 }
 

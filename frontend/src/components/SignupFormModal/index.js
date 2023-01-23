@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import validator from "validator";
 import { useModal } from "../../context/Modal";
+import './SignupForm.css'
+import validator from 'validator'
 
 
 function SignupFormPage() {
@@ -23,7 +24,7 @@ function SignupFormPage() {
  const handleSubmit = (e) => {
    e.preventDefault();
    if (!validator.isEmail(email)) {
-     setErrors([...errors, "Invalid email format"]);
+     setErrors([...errors, "invalid email format"]);
      return;
    }
    if (password !== confirmPassword) {
@@ -52,68 +53,73 @@ function SignupFormPage() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="signup-form" onSubmit={handleSubmit}>
       <ul>
-        {errors.map((error, index) => (
-          <li key={index}>{error}</li>
+        {errors.map((error, classNamex) => (
+          <li key={classNamex}>{error}</li>
         ))}
       </ul>
 
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        First Name
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Last Name
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
+      <label className="signup-form-title">Sign Up Here!</label>
+      <label className="welcome-signup">Welcome to Cloudy Nights!</label>
+
+      <label className="signup-input-title">First Name</label>
+      <input
+        className="signup-form-inputs"
+        type="text"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        required
+      />
+
+      <label className="signup-input-title">Last Name</label>
+      <input
+        className="signup-form-inputs"
+        type="text"
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
+        required
+      />
+
+      <label className="signup-input-title">Email</label>
+      <input
+        className="signup-form-inputs"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+
+      <label className="signup-input-title">Username</label>
+      <input
+        className="signup-form-inputs"
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+      />
+
+      <label className="signup-input-title">Password</label>
+      <input
+        className="signup-form-inputs"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+
+      <label className="signup-input-title">Confirm Password</label>
+      <input
+        className="signup-form-inputs"
+        type="password"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        required
+      />
+      <div></div>
+      <button className="signup-submit-button" type="submit">
+        Sign Up
+      </button>
     </form>
   );
 }
