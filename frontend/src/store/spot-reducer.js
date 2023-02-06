@@ -17,12 +17,10 @@ const getSpots = (allSpots) => {
 
 export const getAllSpotsThunk = () => async (dispatch) => {
   const response = await fetch("/api/spots");
-  // console.log(response)
 
   if (response.ok) {
     const allSpots = await response.json();
     dispatch(getSpots(allSpots.Spots));
-    // return allSpots;
   }
 };
 
@@ -34,14 +32,11 @@ const oneSpot = (spot) => {
 };
 
 export const getOneSpotThunk = (spotId) => async (dispatch) => {
-  // console.log("test spotId: ", spotId)
   const response = await fetch(`/api/spots/${spotId}`);
 
   if (response.ok) {
     const data = await response.json();
-    // console.log("testing one spot from db: ", data)
     dispatch(oneSpot(data));
-    return data;
   }
 };
 
@@ -52,8 +47,8 @@ const createSpot = (spots) => {
   };
 };
 
-export const createSpotThunk = (spots) => async (dispatch) => {
-  const response = await csrfFetch('/api/spots/', {
+export const createSpotThunk = (spots, spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json"},
     body: JSON.stringify(spots),
@@ -62,7 +57,6 @@ export const createSpotThunk = (spots) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(createSpot(data));
-    return data;
   }
 };
 
@@ -71,16 +65,13 @@ export const createImageThunk = (img, spotId) => async (dispatch) => {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(img)
-  })
-
-  console.log("idk: ", spotId)
+  });
 
   if(response.ok) {
-    const data = await response.json()
-    return data
+    const data = await response.json();
+    return data;
   }
-
-}
+};
 
 const updateSpot = (oneSpot) => {
   return {
@@ -92,18 +83,19 @@ const updateSpot = (oneSpot) => {
 export const updateSpotThunk = (oneSpot, spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "PUT",
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(oneSpot),
   });
 
   if (response.ok) {
     const data = await response.json();
     dispatch(updateSpot(data));
-    return data;
   }
 };
 
 const removeSpot = (spot) => {
   return {
+
     type: DELETE_SPOT,
     spot,
   };

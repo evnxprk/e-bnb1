@@ -1,0 +1,58 @@
+.update-spot {
+    color: rgb(0, 0, 0);
+    border-radius: 13px;
+    width: 125px;
+    height: 40px;
+    margin-right: 20px;
+    /* border: 3px black solid; */
+}
+
+
+.update-spot-form {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+}
+
+.update-spot-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+}
+
+.update-spot-input-title {
+    margin-left: 4px;
+    margin-bottom: 2px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.update-spot-input {
+    padding: 4px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    height: 35px;
+    font-size: 20px;
+}
+
+.update-spot-input:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgb(223, 212, 222)
+}
+
+.update-spot-button {
+    color: white;
+    background-color: rgb(245, 165, 224);
+    height: 60px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 100px;
+    font-size: 17px;
+    font-weight: bold;
+    align-items: center;
+}

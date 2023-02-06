@@ -1,41 +1,43 @@
-import { useDispatch  } from "react-redux";
-import { useHistory, useParams  } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { getOneSpotThunk } from "../../../store/spot-reducer";
 import React, { useEffect, useState } from "react";
 import { updateSpotThunk } from "../../../store/spot-reducer";
+import './EditSpots.css'
 
-const EditSpot = ({spot}) => {
+const EditSpot = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const {spotId} = useParams()
-  
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
+  const { spotId } = useParams();
+
+  const { spot } = useSelector((state) => state.spots);
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
   const [validationError, setValidationError] = useState([]);
-  // if(!spot) return null
-  
+
   useEffect(() => {
-    const errors = [];
-    if (address.length === 0) errors.push("Please enter a valid address.");
-    if (city.length === 0) errors.push("Please enter a valid city.");
-    if (state.length === 0) errors.push("Please enter a valid state.");
-    if (country.length === 0) errors.push("Please enter a valid country.");
-    if (name.length === 0) errors.push("Please enter a valid name.");
-    if (description.length === 0)
-    errors.push("Please enter a valid description.");
-    if (!Number(price)) errors.push("Please enter a valid price.");
-    setValidationError(errors);
-  }, [address, city, state, country, name, description, price]);
-  
+    dispatch(getOneSpotThunk(spotId));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (spot) {
+      setAddress(spot.address);
+      setCity(spot.city);
+      setState(spot.state);
+      setCountry(spot.country);
+      setName(spot.name);
+      setDescription(spot.description);
+      setPrice(spot.price);
+    }
+  }, [spot]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (validationError.length) return;
-    
     let editSpotInfo = {
       address,
       city,
@@ -44,22 +46,26 @@ const EditSpot = ({spot}) => {
       name,
       description,
       price,
-      lat:1,
-      lng:1
+      lat: 1,
+      lng: 1,
     };
-      await dispatch(updateSpotThunk(editSpotInfo, spotId));
-      history.push('/');
-};
+    await dispatch(updateSpotThunk(editSpotInfo, spotId));
+    history.push(`/spots/${spotId}`);
+  };
 
   return (
+    <div className="update-form-container">
     <form className="update-spot" onSubmit={handleSubmit}>
-      <div className="update-current-spot-form ">
+      <div className="spot-form-errors">
+        {/* {validationError.length > 0 && */}
         <ul className="errors">
-          {validationError.length > 0 &&
-            validationError.map((error) => <li key={error}>{error}</li>)}
+          {validationError.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
         </ul>
       </div>
       <label className="update-spot-title">Edit Your Spot</label>
+
       <label className="update-spot-input-title">Address</label>
       <input
         className="update-spot-input"
@@ -77,6 +83,7 @@ const EditSpot = ({spot}) => {
         value={city}
         onChange={(e) => setCity(e.target.value)}
       ></input>
+
       <label className="update-spot-input-title">State</label>
       <input
         className="update-spot-input"
@@ -85,6 +92,7 @@ const EditSpot = ({spot}) => {
         value={state}
         onChange={(e) => setState(e.target.value)}
       ></input>
+
       <label className="update-spot-input-title">Country</label>
       <input
         className="update-spot-input"
@@ -93,6 +101,7 @@ const EditSpot = ({spot}) => {
         value={country}
         onChange={(e) => setCountry(e.target.value)}
       ></input>
+
       <label className="update-spot-input-title">Name</label>
       <input
         className="update-spot-input"
@@ -101,6 +110,7 @@ const EditSpot = ({spot}) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       ></input>
+
       <label className="update-spot-input-title">Description</label>
       <input
         className="update-spot-input"
@@ -109,20 +119,22 @@ const EditSpot = ({spot}) => {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       ></input>
+
       <label className="update-spot-input-title">Price</label>
       <input
         className="update-spot-input"
-        type="text"
+        type="number"
         name="price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       ></input>
-      <button id="update-spot-confirm" type="submit">
-        {" "}
-        Confirm Update Spot
+
+      <button className="update-spot-button" type="submit">
+        Update
       </button>
     </form>
+    </div>
   );
 };
 
-export default EditSpot
+export default EditSpot;

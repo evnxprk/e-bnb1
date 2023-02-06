@@ -1,12 +1,13 @@
 import { useDispatch } from "react-redux";
 import "./CreateSpotsForm.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import React, { useState } from "react";
 import { createImageThunk, createSpotThunk } from "../../../store/spot-reducer";
 
 const CreateForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const {spotId} = useParams()
 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -58,7 +59,7 @@ const handleSubmit = async (e) => {
 
     dispatch(createImageThunk(img, spotCreated.id));
     // console.log("hi", img);
-    history.push("/");
+    history.push('');
   }
 };
 

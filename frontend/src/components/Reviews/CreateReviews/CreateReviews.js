@@ -53,6 +53,7 @@ const CreateReviews = () => {
           placeholder="Review"
           value={review}
           onChange={(e) => setReview(e.target.value)}
+          required
         />
         <label className="review-input-title">Stars</label>
         <input
@@ -62,6 +63,7 @@ const CreateReviews = () => {
           placeholder="Rating"
           value={stars}
           onChange={(e) => setStars(e.target.value)}
+          required
         />
         <button className="create-reviews-submit" type="submit">
           Create Review
