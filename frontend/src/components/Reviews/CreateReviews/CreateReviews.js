@@ -34,7 +34,7 @@ const CreateReviews = () => {
     };
 
     await dispatch(createReviewsThunk(newReview, spotId));
-    history.push("/");
+    history.push(`/spots/${spotId}`);
     // closeModal()
   };
   return (

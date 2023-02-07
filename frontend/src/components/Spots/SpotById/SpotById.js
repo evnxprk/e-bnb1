@@ -16,20 +16,20 @@ const MySpot = () => {
   const { spotId } = useParams();
   const history = useHistory();
   const { reviewId } = useParams();
-  // const [randomNumber, setRandomNumber] = useState(2);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  //   console.log("the sessionUser: ", sessionUser)
   const spot = useSelector((state) => state.spots.singleSpot);
+  const spots = Object.values(spot);
   const reviews = useSelector((state) => state.reviews);
   const allReviews = Object.values(reviews);
+  // const [randomNumber, setRandomNumber] = useState(2);
+  // console.log("the sessionUser: ", sessionUser)
   // console.log("what is appearing here in allReviews?????", allReviews);
   // console.log("what is appearing here in reviews?????", reviews);
   // console.log("need ownerId: ", spot);
   // const review = useSelector(state => state.reviews.userReview)
-
-  const spots = Object.values(spot);
-  console.log(spots);
+  // console.log("i need stars: ", reviews)
+  //   console.log(spots);
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
@@ -44,9 +44,14 @@ const MySpot = () => {
 
   const spotRemoval = async (e) => {
     e.preventDefault();
-    await dispatch(removeSpotThunk(spot.id));
+    await dispatch(removeSpotThunk(spotId));
     history.push("/");
   };
+
+  const refreshPage = async () => {
+    await dispatch(getAllReviewsThunk(spotId))
+    await dispatch(getOneSpotThunk(spotId))
+  }
 
   return (
     <div className="spot-details-container">
@@ -90,113 +95,101 @@ const MySpot = () => {
             <button className="edit-spot-button">Edit Spot</button>
           </NavLink>
         ) : null}
-        <div className="delete-spot">
-          {sessionUser && sessionUser.id === spot.ownerId ? (
-            <button className="delete-spot" onClick={(e) => spotRemoval(e)}>
-              Delete Spot
-            </button>
-          ) : null}
-        </div>
+      </div>
+      <div className="delete-spot">
+        {sessionUser && sessionUser.id === spot.ownerId ? (
+          <button className="delete-spot" onClick={(e) => spotRemoval(e)}>
+            Delete Spot
+          </button>
+        ) : null}
       </div>
       <div className="basic-things-about-home">
         <span className="check-in">
-          <i className="fas fa-lock-open"></i>Self Checkin
+          <i className="fas fa-lock"></i>Self Checkin
         </span>
         <span className="location">
-          <i className="fas fa-home"></i>
+          <i className="fas fa-home"></i>Great Location
         </span>
-        <span className="key"></span>
+        <span className="key">
+          <i class="fas fa-key"></i>Easy Checkins
+        </span>
+      </div>
+      <div className="description-container">
+        <div className="cancellations-notice"></div>
+        <img
+          className="air-cover-logo"
+          src="https://a0.muscache.com/im/pictures/f4a1e0fb-bd06-4f11-91e3-8d3979d3431a.jpg"
+        ></img>
+        <div className="aircover-guarantee">
+          Every booking includes free protection from Host cancellations,
+          listing inaccuracies, and other issues like trouble checking in.
+        </div>
+      </div>
+      <div className="house-amenities">What this place offers:</div>
+      <span className="amenities-list">
+        <ul>
+          <i className="fas fa-utensils"></i>Kitchen
+        </ul>
+        <ul>
+          <i className="fas fa-car"></i>Free Parking{" "}
+        </ul>
+        <ul>
+          <i className="fas fa-swimming-pool"></i>Swimming Pool
+        </ul>
+        <ul>
+          <i className="fas fa-umbrella-beach"></i>Beach Access
+        </ul>
+        <ul>
+          <i className="fas fa-tv"></i>Smart TV
+        </ul>
+        <ul>
+          <i className="fas fa-wifi"></i>Fast Internet
+        </ul>
+      </span>
+      <div className="review-container">
+        <div className="review-spot">
+          {sessionUser && sessionUser.id !== spot.ownerId ? (
+            <NavLink to={`/create/${spot.id}`}>
+              <button className="review-spot-button">Review Spot</button>
+            </NavLink>
+          ) : null}
+        </div>
+        <div className="all-reviews">
+          Reviews of this home
+          <div className="double-cards">
+            {allReviews.map((review) => (
+              <div className="all-reviews">
+                <div className="session-name">
+                  <ul>
+                    What {review.User.firstName} thought of their experience:
+                  </ul>
+                  <ul>
+                    Rating: <i className="fas fa-star"></i> {review.stars}
+                  </ul>
+                  <ul className="reviews-overview">Review: {review.review}</ul>
+                </div>
+                <div className="delete-review">
+                  {sessionUser && sessionUser.id === review.userId ? (
+                    <button
+                      className="delete-review-button"
+                      onClick={async (e) => {
+                        e.preventDefault();
+                        const deleteReview = await dispatch(
+                          deleteReviewsThunk(review.id)
+                        );
+                        refreshPage()
+                      }}
+                    >
+                      Delete Review
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
-
-    // <div className="basic-things-about-home">
-    // <span className="check-in">
-    // <i className="fas fa-lock-open"></i> Self checkin
-    //  </span>
-    //  <span className="location">
-    // <i className="fas fa-home"></i> Great Location
-    // </span>
-    //  <span className="key">
-    //  <i className="fas fa-key"></i> Great Checkins
-    // </span>
-
-    //  <div className="description-container">
-    //       <h4 className="cancellations-notice">
-    //         <img */}
-    //           className="air-cover-logo"
-    //           src="https://a0.muscache.com/im/pictures/f4a1e0fb-bd06-4f11-91e3-8d3979d3431a.jpg"
-    //         ></img>
-    //         <p></p>
-    //       </h4>
-    //       <div className="aircover-guarantee">
-    //         Every booking includes free protection from Host cancellations,
-    //         listing inaccuracies, and other issues like trouble checking in.
-    //       </div>
-
-    //       <h4 className="offers">What this place offers:</h4>
-    //       <div className="amenities-list">
-    //         <li>Kitchen</li>
-    //         <li>Free Parking</li>
-    //         <li>Washer</li>
-    //         <li>Dryer</li>
-    //         <li>Bathtub</li>
-    //         <li>Beach Access</li>
-    //         <li>Wifi</li>
-    //         <li>TV</li>
-    //       </div>
-    //     </div>
-    //     <div className="button-container">
-    //       <div className="review-spot">
-    //         {sessionUser && sessionUser.id !== spot.ownerId ? (
-    //           <NavLink to={`/create/${spot.id}`}>
-    //             <button className="review-spot-button">Review This Spot</button>
-    //           </NavLink>
-    //         ) : null}
-    //       </div>
-    //         <img src='nights.png'/>
-
-    //       <h3> REVIEWS OF THIS HOME</h3>
-    //       <div className="double-cards">
-    //         {allReviews.map((review) => (
-    //           <div className="all-reviews-container">
-    //             <div className="session-name">
-    //               What {review.User.firstName} thought of their  experience:
-    //               <p>
-    //                 Rating: <i className="fas fa-star"></i> {review.stars}
-    //               </p>
-    //               <p className="reviews-overview">Review: {review.review} </p>
-    //                 </div>
-    //               <div className="delete-this-review">
-    //                 {sessionUser && sessionUser.id === review.userId ? (
-    //                   <button
-    //                     className="button-delete"
-    //                     onClick={async (e) => {
-    //                       e.preventDefault();
-    //                       const reviewRemove = await dispatch(
-    //                         deleteReviewsThunk(review.id)
-    //                       );
-    //                       if (reviewRemove) history.push("/");
-    //                     }}
-    //                   >
-    //                     {" "}
-    //                     Delete This Review
-    //                   </button>
-    //                 ) : null}
-    //               </div>
-    //           </div>
-    //         ))}
-    //       </div>
-    //     </div>
-    //   </div>
-    //   {/* <div className="owner-contact">
-    //     <ul>Hosted by {spot.Owner.firstName}</ul>
-    //     <ul>During your stay:</ul>
-    //     <ul>
-    //       Please contact me with any questions or requests.
-    //     </ul>
-    //     <ul>Response rate: 100% Response time: within an hour</ul>
-    //   </div> */}
-    // </div>
   );
 };
 
