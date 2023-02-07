@@ -37,6 +37,9 @@ function App() {
       <Route path='/new'>
         <CreateForm />
       </Route>
+      <Route path = '/listings'>
+        <
+      </Route>
         </Switch>}
     </>
   );

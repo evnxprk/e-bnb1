@@ -59,8 +59,8 @@ const MySpot = () => {
         <h2 className="spot-name">{spot.name}</h2>
         <span className="review-count">
           <i class="far fa-star"></i>
-          {spot.avgStarRating} ∙ <i class="fas fa-award"></i> Superhost ∙{" "}
-          {spot.city}, {spot.state}, {spot.country}
+           {spot.avgStarRating} ∙ {spot.numReviews} reviews ∙ <i class="fas fa-award"></i>{" "}
+          Superhost ∙ {spot.city}, {spot.state}, {spot.country}
         </span>
         {spot.SpotImages.map((img) => (
           <div>
@@ -79,16 +79,6 @@ const MySpot = () => {
           8 guests ∙ 3 bedrooms ∙ 3 beds ∙ 3 baths{" "}
         </span>
       </div>
-      <div className="superhost">
-        <div className="owner-superhost">
-          {" "}
-          {spot.Owner.firstName} is a Superhost
-        </div>
-        <span className="superhost-meaning">
-          Superhosts are experienced, highly rated hosts who are committed to
-          providing great stays for guests.{" "}
-        </span>
-      </div>
       <div className="edit-spot-button">
         {sessionUser && sessionUser.id === spot.ownerId ? (
           <NavLink to={`/manage/${spotId}`}>
@@ -103,6 +93,16 @@ const MySpot = () => {
           </button>
         ) : null}
       </div>
+      <div className="superhost">
+        <div className="owner-superhost">
+          {" "}
+          {spot.Owner.firstName} is a Superhost
+        </div>
+        <span className="superhost-meaning">
+          Superhosts are experienced, highly rated hosts who are committed to
+          providing great stays for guests.{" "}
+        </span>
+      </div>
       <div className="basic-things-about-home">
         <ul className="check-in">
           <i className="fas fa-lock"></i>Self Checkin
@@ -116,10 +116,9 @@ const MySpot = () => {
         <ul className="location-description">
           100% of recent guests gave the location a 5-star rating.
         </ul>
-        <ul className="key">
+        <ul className="cancellation">
           <i class="fas fa-key"></i>Free cancellations for 48 hours
         </ul>
-        
       </div>
       <div className="description-container">
         <div className="cancellations-notice"></div>

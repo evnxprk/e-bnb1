@@ -62,11 +62,11 @@
   border-radius: 2em;
   /* padding: 1em; */
   /* margin: 3px; */
-  align-items:center;
-justify-content: space-between;
-display: flex;
-/* width: 100px */
-/* gap: 2; */
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  /* width: 100px */
+  /* gap: 2; */
 }
 */ .fa-bars:before {
   padding: 10px;
@@ -117,7 +117,7 @@ display: flex;
   /* top:200px; */
   /* left: 300px; */
   right: 10px;
-  top:90px;
+  top: 90px;
   background-color: bisque;
   /* z-index: 7 */
 }
@@ -130,4 +130,21 @@ display: flex;
 .demo-login-submit-button {
   padding: 5px;
   margin: 5px;
+}
+
+.my-listings {
+  display: flex;
+  background-color: bisque;
+  /* align-items: center; */
+  border: none;
+  width: 100%;
+  /* padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px; */
+  height: 2rem;
+  
+}
+.my-listings:hover {
+   background-color: #eaeaea;
 }
