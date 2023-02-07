@@ -24,8 +24,9 @@
 
 .owner-container {
   border-bottom: 1px solid gray;
-  margin: 2px;
-  margin-bottom: 6px;
+   padding-top: 10px;
+  padding-bottom: 22px;
+
 }
 
 .house-stats {
@@ -36,7 +37,18 @@
 }
 
 .owner-superhost {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
   color: rgb(239, 137, 154);
+}
+
+.superhost {
+  padding: 6px;
+  border-bottom: 1px solid gray;
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+.superhost-meaning {
+  margin: 3px;
 }

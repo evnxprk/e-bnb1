@@ -10,7 +10,8 @@ const EditSpot = () => {
   const history = useHistory();
   const { spotId } = useParams();
 
-  const { spot } = useSelector((state) => state.spots);
+  const spot  = useSelector((state) => state.spots.singleSpot);
+  console.log("hello spot: ", spot)
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -26,6 +27,7 @@ const EditSpot = () => {
 
   useEffect(() => {
     if (spot) {
+      console.log("spot description: ", spot)
       setAddress(spot.address);
       setCity(spot.city);
       setState(spot.state);

@@ -26,7 +26,7 @@ const MySpot = () => {
   // console.log("the sessionUser: ", sessionUser)
   // console.log("what is appearing here in allReviews?????", allReviews);
   // console.log("what is appearing here in reviews?????", reviews);
-  // console.log("need ownerId: ", spot);
+  console.log("need ownerId: ", spot);
   // const review = useSelector(state => state.reviews.userReview)
   // console.log("i need stars: ", reviews)
   //   console.log(spots);
@@ -79,17 +79,17 @@ const MySpot = () => {
           8 guests ∙ 3 bedrooms ∙ 3 beds ∙ 3 baths{" "}
         </span>
       </div>
-
-      <div className="owner-superhost">
-        {" "}
-        {spot.Owner.firstName} is a Superhost
+      <div className="superhost">
+        <div className="owner-superhost">
+          {" "}
+          {spot.Owner.firstName} is a Superhost
+        </div>
+        <span className="superhost-meaning">
+          Superhosts are experienced, highly rated hosts who are committed to
+          providing great stays for guests.{" "}
+        </span>
       </div>
-      <span className="superhost-meaning">
-        Superhosts are experienced, highly rated hosts who are committed to
-        providing great stays for guests.{" "}
-      </span>
       <div className="edit-spot-button">
-        {" "}
         {sessionUser && sessionUser.id === spot.ownerId ? (
           <NavLink to={`/manage/${spotId}`}>
             <button className="edit-spot-button">Edit Spot</button>
@@ -104,15 +104,22 @@ const MySpot = () => {
         ) : null}
       </div>
       <div className="basic-things-about-home">
-        <span className="check-in">
+        <ul className="check-in">
           <i className="fas fa-lock"></i>Self Checkin
-        </span>
-        <span className="location">
+        </ul>
+        <ul className="checkin-description">
+          Check yourself in with the keypad.
+        </ul>
+        <ul className="location">
           <i className="fas fa-home"></i>Great Location
-        </span>
-        <span className="key">
-          <i class="fas fa-key"></i>Easy Checkins
-        </span>
+        </ul>
+        <ul className="location-description">
+          100% of recent guests gave the location a 5-star rating.
+        </ul>
+        <ul className="key">
+          <i class="fas fa-key"></i>Free cancellations for 48 hours
+        </ul>
+        
       </div>
       <div className="description-container">
         <div className="cancellations-notice"></div>
@@ -125,6 +132,7 @@ const MySpot = () => {
           listing inaccuracies, and other issues like trouble checking in.
         </div>
       </div>
+      <div className="spot-description">{spot.description}</div>
       <div className="house-amenities">What this place offers:</div>
       <span className="amenities-list">
         <ul>
@@ -154,16 +162,17 @@ const MySpot = () => {
             </NavLink>
           ) : null}
         </div>
+        <div className="review-container-title">Reviews of this home</div>
         <div className="all-reviews">
-          Reviews of this home
           <div className="double-cards">
             {allReviews.map((review) => (
               <div className="all-reviews">
                 <div className="session-name">
-                  <ul>
-                    What {review.User.firstName} thought of their experience:
+                  <ul className="review-user">
+                    <i className="fas fa-user-circle"></i>
+                    {review.User.firstName}
                   </ul>
-                  <ul>
+                  <ul className="review-stars">
                     Rating: <i className="fas fa-star"></i> {review.stars}
                   </ul>
                   <ul className="reviews-overview">Review: {review.review}</ul>
@@ -177,7 +186,7 @@ const MySpot = () => {
                         const deleteReview = await dispatch(
                           deleteReviewsThunk(review.id)
                         );
-                        refreshPage()
+                        refreshPage();
                       }}
                     >
                       Delete Review
