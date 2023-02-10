@@ -38,7 +38,7 @@ function App() {
         <CreateForm />
       </Route>
       <Route path = '/listings'>
-        <
+        
       </Route>
         </Switch>}
     </>

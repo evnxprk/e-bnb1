@@ -2,12 +2,12 @@
   display: none;
 }
 
-.fa-bars:before {
+.fa-bars {
   display: flex;
   padding: 3px;
   margin: 2px;
 }
-.fa-user-circle:before {
+.fa-user-circle {
   display: flex;
   padding: 3px;
   margin: 2px;
@@ -111,15 +111,18 @@
 
 .profile-dropdown {
   border: 1px solid gray;
-  /* display: flex; */
-  position: absolute;
+  /* display: grid; */
+  position:absolute;
   /* cursor: pointer; */
   /* top:200px; */
   /* left: 300px; */
-  right: 10px;
+  right: 15px;
   top: 90px;
+  padding: 20px;
   background-color: bisque;
   /* z-index: 7 */
+  align-items: center;
+  justify-content: center;
 }
 
 .login-button {
@@ -132,19 +135,11 @@
   margin: 5px;
 }
 
-.my-listings {
-  display: flex;
-  background-color: bisque;
-  /* align-items: center; */
-  border: none;
-  width: 100%;
-  /* padding-left: 60px;
-  padding-right: 60px;
-  padding-top: 20px;
-  padding-bottom: 20px; */
-  height: 2rem;
-  
-}
-.my-listings:hover {
-   background-color: #eaeaea;
+.logout-button {
+background-color: beige;
+border-radius: 3em;
+width: 100%;
+display: block;
+align-items: center;
+justify-content: center;
 }

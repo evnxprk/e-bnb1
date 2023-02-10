@@ -49,19 +49,39 @@ const MySpot = () => {
   };
 
   const refreshPage = async () => {
-    await dispatch(getAllReviewsThunk(spotId))
-    await dispatch(getOneSpotThunk(spotId))
-  }
+    await dispatch(getAllReviewsThunk(spotId));
+    await dispatch(getOneSpotThunk(spotId));
+  };
 
   return (
     <div className="spot-details-container">
-      <div className="spotd-description">
-        <h2 className="spot-name">{spot.name}</h2>
-        <span className="review-count">
-          <i class="far fa-star"></i>
-           {spot.avgStarRating} ∙ {spot.numReviews} reviews ∙ <i class="fas fa-award"></i>{" "}
-          Superhost ∙ {spot.city}, {spot.state}, {spot.country}
-        </span>
+      <div className="spots-description">
+        <div className="spot-name">{spot.name}</div>
+        <div className="review-location-container">
+          <div className="review-count">
+            <div className="location-details">
+              <i class="far fa-star"></i>
+              {spot.avgStarRating} ∙ {spot.numReviews} reviews ∙{" "}
+              <i class="fas fa-award"></i> Superhost ∙ {spot.city}, {spot.state} {spot.country}
+            </div>
+          </div>
+          <div className="owner-spot-buttons">
+            <div className="edit-spot-button">
+              {sessionUser && sessionUser.id === spot.ownerId ? (
+                <NavLink to={`/manage/${spotId}`}>
+                  <button className="edit-spot-button">Edit Spot</button>
+                </NavLink>
+              ) : null}
+            </div>
+            <div className="delete-spot">
+              {sessionUser && sessionUser.id === spot.ownerId ? (
+                <button className="delete-spot" onClick={(e) => spotRemoval(e)}>
+                  Delete Spot
+                </button>
+              ) : null}
+            </div>
+          </div>
+        </div>
         {spot.SpotImages.map((img) => (
           <div>
             <img className="spot-image" src={img.url} alt="spot-image" />
@@ -69,30 +89,18 @@ const MySpot = () => {
         ))}
       </div>
       <div className="owner-container">
-        <h2 className="entire-home-description">
+        <div className="entire-home-description">
           {" "}
           Entire home hosted by {spot.Owner.firstName}
-        </h2>
+        </div>
 
         <span className="house-stats">
           {" "}
           8 guests ∙ 3 bedrooms ∙ 3 beds ∙ 3 baths{" "}
         </span>
+        <div className="spots-description">{spot.description}</div>
       </div>
-      <div className="edit-spot-button">
-        {sessionUser && sessionUser.id === spot.ownerId ? (
-          <NavLink to={`/manage/${spotId}`}>
-            <button className="edit-spot-button">Edit Spot</button>
-          </NavLink>
-        ) : null}
-      </div>
-      <div className="delete-spot">
-        {sessionUser && sessionUser.id === spot.ownerId ? (
-          <button className="delete-spot" onClick={(e) => spotRemoval(e)}>
-            Delete Spot
-          </button>
-        ) : null}
-      </div>
+
       <div className="superhost">
         <div className="owner-superhost">
           {" "}
@@ -131,9 +139,8 @@ const MySpot = () => {
           listing inaccuracies, and other issues like trouble checking in.
         </div>
       </div>
-      <div className="spot-description">{spot.description}</div>
-      <div className="house-amenities">What this place offers:</div>
-      <span className="amenities-list">
+      <div className="amenities-list">
+        <div className="house-amenities">What this place offers:</div>
         <ul>
           <i className="fas fa-utensils"></i>Kitchen
         </ul>
@@ -152,8 +159,14 @@ const MySpot = () => {
         <ul>
           <i className="fas fa-wifi"></i>Fast Internet
         </ul>
-      </span>
+      </div>
       <div className="review-container">
+        {/* <div className="review-container-title">Reviews of this home</div> */}
+        <div className="all-reviews-container">
+
+        <div className="reviews-total">
+          <i className="fas fa-star"></i> {spot.avgStarRating} ∙
+          {spot.numReviews} Reviews
         <div className="review-spot">
           {sessionUser && sessionUser.id !== spot.ownerId ? (
             <NavLink to={`/create/${spot.id}`}>
@@ -161,36 +174,37 @@ const MySpot = () => {
             </NavLink>
           ) : null}
         </div>
-        <div className="review-container-title">Reviews of this home</div>
+        </div>
+        </div>
         <div className="all-reviews">
           <div className="double-cards">
             {allReviews.map((review) => (
               <div className="all-reviews">
                 <div className="session-name">
-                  <ul className="review-user">
-                    <i className="fas fa-user-circle"></i>
+                  <span className="review-user">
+                    <i className="fas fa-user-circle"></i>{" "}
                     {review.User.firstName}
-                  </ul>
+                  </span>
                   <ul className="review-stars">
-                    Rating: <i className="fas fa-star"></i> {review.stars}
+                    Rating: <i className="fas fa-star"></i> {review.stars} 
                   </ul>
                   <ul className="reviews-overview">Review: {review.review}</ul>
-                </div>
-                <div className="delete-review">
-                  {sessionUser && sessionUser.id === review.userId ? (
-                    <button
-                      className="delete-review-button"
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        const deleteReview = await dispatch(
-                          deleteReviewsThunk(review.id)
-                        );
-                        refreshPage();
-                      }}
-                    >
-                      Delete Review
-                    </button>
-                  ) : null}
+                  <div className="delete-review">
+                    {sessionUser && sessionUser.id === review.userId ? (
+                      <button
+                        className="delete-review-button"
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          const deleteReview = await dispatch(
+                            deleteReviewsThunk(review.id)
+                          );
+                          refreshPage();
+                        }}
+                      >
+                        Delete Review
+                      </button>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             ))}

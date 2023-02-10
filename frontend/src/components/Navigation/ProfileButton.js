@@ -40,10 +40,10 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
-  const handleSubmit = () => {
-    closeMenu();
-    history.push("/listings");
-  };
+  // const handleSubmit = () => {
+  //   closeMenu();
+  //   history.push("/listings");
+  // };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
@@ -58,11 +58,11 @@ function ProfileButton({ user }) {
           <>
             <span>{user.username}</span>
             <p></p>
-            {sessionUser ? (
+            {/* {sessionUser ? (
               <button onClick={handleSubmit} className="my-listings">
                 My listings
               </button>
-            ) : null}
+            ) : null} */}
             <span>
               {user.firstName} {user.lastName}
             </span>
@@ -71,7 +71,9 @@ function ProfileButton({ user }) {
             <p></p>
 
             <span>
-              <button onClick={logout}>Log Out</button>
+              <button className="logout-button" onClick={logout}>
+                Log Out
+              </button>
             </span>
           </>
         ) : (

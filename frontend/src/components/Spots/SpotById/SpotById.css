@@ -3,43 +3,123 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.reviews-total {
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.spot-name {
+  /* color: rgb(239, 137, 154); */
+  font-size: 30px;
+}
 .fa-award {
-  /* padding: 4px; */
-  margin: 2px;
+  padding-right: 6px;
+  padding-left:2px;
+  /* margin: 2px; */
   display: flex;
   align-items: center;
 }
 
+.fa-utensils {
+  padding-right: 6px;
+  display: inline-block;
+  align-items: center;
+}
+.fa-car {
+ padding-right: 6px;
+  display: inline-block;
+  align-items: center;
+}
 
+.fa-star {
+  align-items: center;
+ padding-right: 6px;
+  
+}
+.fa-swimming-pool {
+  padding-right: 6px;
+  display: inline-block;
+  align-items: center;
+}
+
+.fa-umbrella-beach {
+  padding-right: 6px;
+  display: inline-block;
+  align-items: center;
+}
+.fa-tv {
+  padding-right: 6px;
+  display: inline-block;
+  align-items: center;
+}
+.fa-wifi {
+  padding-right: 6px;
+  display: inline-block;
+  align-items: center;
+}
+.review-count {
+  display: flex;
+  /* margin: 2px; */
+  /* padding-bottom: 20px; */
+  padding-top: 6px;
+  /* font-weight: bold; */
+  align-items: center;
+}
+.location-details {
+display: flex;
+align-items: center;
+padding-bottom: 6px;
+}
+.review-location-container {
+  display: flex;
+  justify-content: space-between;
+}
 
 .review-count {
   display: flex;
-  margin: 2px;
-  padding: 6px;
+  /* margin: 2px; */
+  padding-bottom: 6px;
+  /* justify-content: flex-start; */
+  font-weight: bold;
+  /* align-items: center; */
+}
+
+.owner-spot-buttons {
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: center; */
 }
 
 .entire-home-description {
-  color: rgb(239, 137, 154);
+  /* color: rgb(239, 137, 154); */
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 8px;
+  padding-top: 7px;
 }
 
 .owner-container {
   border-bottom: 1px solid gray;
-   padding-top: 10px;
+  /* padding-top: 10px; */
   padding-bottom: 22px;
-
 }
 
 .house-stats {
-  padding: 3px;
-  margin: 2px;
+  /* padding: 3px; */
+  /* margin: 2px; */
   margin-bottom: 6px;
   display: flex;
+  font-weight: bold;
 }
 
 .owner-superhost {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
-  color: rgb(239, 137, 154);
+  /* color: rgb(239, 137, 154); */
+  padding-bottom: 10px;
+  padding-top:10px;
 }
 
 .superhost {
@@ -53,18 +133,30 @@
   margin: 3px;
 }
 
+
+
 .edit-spot-button {
- margin: 5px;
+  margin: 5px;
+  border: none;
+  background-color: bisque;
+  text-decoration: underline;
+  display: inline;
+  
 }
 
 .delete-spot {
-margin: 5px;
+  margin: 5px;
+  border: none;
+  background-color: bisque;
+  text-decoration: underline;
+  display: inline;
+  float: right;
 }
 
 .fa-lock {
-  padding-right: 6px
+  padding-right: 6px;
 }
-.check-in { 
+.check-in {
   font-weight: bold;
 }
 .checkin-description {
@@ -79,7 +171,7 @@ margin: 5px;
 }
 
 .location-description {
- font-size: 15px;
+  font-size: 15px;
   color: rgb(107, 98, 98);
 }
 
@@ -88,17 +180,17 @@ margin: 5px;
 }
 
 .cancellation {
- font-weight: bold;
+  font-weight: bold;
 }
 
 .basic-things-about-home {
-  border-bottom: 1px solid gray
+  border-bottom: 1px solid gray;
 }
 
 .air-cover-logo {
-  width: 150px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .description-container {
@@ -106,11 +198,53 @@ margin: 5px;
   border-bottom: 1px solid gray;
 }
 
-.spot-description {
-  padding: 20px;
-  border-bottom: 1px solid gray;
+.spots-description {
+  /* padding: 10px; */
+  /* border-bottom: 1px solid gray; */
+  display: block;
+  /* width:150px; */
+  /* word-wrap:break-word; */
 }
 
 .house-amenities {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  /* color: rgb(239, 137, 154); */
+}
+
+.review-container-title {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  /* color: rgb(239, 137, 154); */
+}
+
+.fa-user-circle {
+  padding: 5px;
+  display: inline-block;
+}
+
+.session-name {
+  border-bottom: 1px solid gray;
   padding: 10px;
 }
+
+.all-reviews-container {
+  display: flex;
+  justify-content: space-between;
+}
+.review-spot-button {
+  border: none;
+  background-color: bisque;
+  text-decoration: underline;
+  /* color: rgb(218, 117, 134); */
+}
+.review-spot {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+ .amenities-list {
+  border-bottom: 1px solid gray;
+ }
