@@ -31,11 +31,13 @@ const GetAllSpots = () => {
               alt="preview"
             />
           </NavLink>
+          <div className="spots-container">
+          <div className="spot-card-name-middle">{spot.name}</div>
           <div className="spot-card-rating-right">
             <i className="far fa-star"></i>
             {spot.avgRating}
+            </div>
           </div>
-          <div className="spot-card-name-middle">{spot.name}</div>
           <span className="spot-card-price-left">${spot.price} per night</span>
           <div className="spot-card">
             {spot.city}, {spot.state}

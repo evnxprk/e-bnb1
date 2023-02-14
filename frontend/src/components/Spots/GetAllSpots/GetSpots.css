@@ -1,9 +1,9 @@
 .spot-card-rating-right {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  margin-bottom: 8px;
-  justify-content: right;
+  /* margin-bottom: 8px; */
+  justify-content: space-between;
+  /* justify-content: right; */
 }
 
 .spot-card-price-left {
@@ -32,6 +32,12 @@
   /* padding: 1em; */
   /* padding-top: 1em; */
   color: rgb(0, 0, 0);
+}
+
+.spots-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .fa-star:before {
   display: flex;

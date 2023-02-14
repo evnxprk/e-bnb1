@@ -62,7 +62,8 @@ const MySpot = () => {
             <div className="location-details">
               <i class="far fa-star"></i>
               {spot.avgStarRating} ∙ {spot.numReviews} reviews ∙{" "}
-              <i class="fas fa-award"></i> Superhost ∙ {spot.city}, {spot.state} {spot.country}
+              <i class="fas fa-award"></i> Superhost ∙ {spot.city}, {spot.state}{" "}
+              {spot.country}
             </div>
           </div>
           <div className="owner-spot-buttons">
@@ -82,11 +83,14 @@ const MySpot = () => {
             </div>
           </div>
         </div>
-        {spot.SpotImages.map((img) => (
-          <div>
-            <img className="spot-image" src={img.url} alt="spot-image" />
-          </div>
-        ))}
+        {spot.SpotImages.map((image, idx) => {
+          if (image.preview === true)
+            return <img className="spot-image" src={image.url}></img>;
+        })}
+        {spot.SpotImages.map((image, idx) => {
+          if (image.preview === false)
+            return <img className={`spot-images-${idx}`} src={image.url}></img>;
+        })}
       </div>
       <div className="owner-container">
         <div className="entire-home-description">
@@ -141,41 +145,49 @@ const MySpot = () => {
       </div>
       <div className="amenities-list">
         <div className="house-amenities">What this place offers:</div>
-        <ul>
+        <div className="kitchen">
           <i className="fas fa-utensils"></i>Kitchen
-        </ul>
-        <ul>
+        </div>
+        <p></p>
+        <div className="parking">
           <i className="fas fa-car"></i>Free Parking{" "}
-        </ul>
-        <ul>
+        </div>
+        <p></p>
+        <div className="pool">
           <i className="fas fa-swimming-pool"></i>Swimming Pool
-        </ul>
-        <ul>
+        </div>
+        <p></p>
+        <div className="beach">
           <i className="fas fa-umbrella-beach"></i>Beach Access
-        </ul>
-        <ul>
+        </div>
+        <p></p>
+        <div className="tv">
           <i className="fas fa-tv"></i>Smart TV
-        </ul>
-        <ul>
+        </div>
+        <p></p>
+        <div className="wifi">
           <i className="fas fa-wifi"></i>Fast Internet
-        </ul>
+        </div>
+        <p></p>
       </div>
       <div className="review-container">
-        {/* <div className="review-container-title">Reviews of this home</div> */}
-        <div className="all-reviews-container">
-
-        <div className="reviews-total">
-          <i className="fas fa-star"></i> {spot.avgStarRating} ∙
-          {spot.numReviews} Reviews
-        <div className="review-spot">
-          {sessionUser && sessionUser.id !== spot.ownerId ? (
-            <NavLink to={`/create/${spot.id}`}>
-              <button className="review-spot-button">Review Spot</button>
-            </NavLink>
-          ) : null}
-        </div>
-        </div>
-        </div>
+        {/* <div className="reviews-container"> */}
+          <div className="reviews-total">
+            <div className="all-reviews-container">
+              <div className="review-stars-and-number">
+              <i className="fas fa-star"></i> {spot.avgStarRating} ∙
+              {spot.numReviews} Reviews
+              <div className="review-spot">
+                {sessionUser && sessionUser.id !== spot.ownerId ? (
+                  <NavLink to={`/create/${spot.id}`}>
+                    <button className="review-spot-button">Review Spot</button>
+                  </NavLink>
+                ) : null}
+              </div>
+              </div>
+            </div>
+          </div>
+        {/* </div> */}
         <div className="all-reviews">
           <div className="double-cards">
             {allReviews.map((review) => (
@@ -185,10 +197,14 @@ const MySpot = () => {
                     <i className="fas fa-user-circle"></i>{" "}
                     {review.User.firstName}
                   </span>
-                  <ul className="review-stars">
-                    Rating: <i className="fas fa-star"></i> {review.stars} 
-                  </ul>
-                  <ul className="reviews-overview">Review: {review.review}</ul>
+                  <p></p>
+                  <span className="review-stars">
+                    Rating: <i className="fas fa-star"></i> {review.stars}
+                  </span>
+                  <p></p>
+                  <span className="reviews-overview">
+                    Review: {review.review}
+                  </span>
                   <div className="delete-review">
                     {sessionUser && sessionUser.id === review.userId ? (
                       <button
