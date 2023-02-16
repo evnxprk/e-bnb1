@@ -82,7 +82,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
       attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
     });
 
-    spot.avgRating = Number(starRatings[0].toJSON().avgRating);
+    spot.avgRating = Number(starRatings[0].toFixed(1).toJSON().avgRating);
 
     const image = await SpotImage.findOne({
       where: { spotId: spot.id, preview: true },
@@ -157,7 +157,7 @@ router.get("/", async (req, res) => {
       raw: true,
     });
   
-    spot.avgRating = Number(rating[0].avgRating);
+    spot.avgRating = Number(rating[0].toFixed(1).avgRating);
     if(!spot.avgRating) {
       spot.avgRating = "New!"
     }
