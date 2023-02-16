@@ -157,8 +157,8 @@ router.get("/", async (req, res) => {
       raw: true,
     });
   
-    spot.avgRating = Number(rating[0].toFixed(1).avgRating);
-    if(!spot.avgRating) {
+    spot.avgRating = Number(rating[0].avgRating).toFixed(1);
+    if(spot.avgRating == "0.0") {
       spot.avgRating = "New!"
     }
    
