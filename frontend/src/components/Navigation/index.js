@@ -38,9 +38,16 @@ function Navigation({ isLoaded }) {
         <img className="logo" src={night} sizes="32x32" />
       </NavLink>
       <h1 className="cloudy">CLOUDY NIGHTS </h1>
-      <div className="create-new-listing">
+      <div className="login-space-container">
+        <div className="create-new-listing">
           {sessionUser ? (
-            <NavLink style={{textDecoration: "none", color:"Black"}} to="/new">CloudBnB Your Home</NavLink>
+            <NavLink
+              className="cloudbnb"
+              style={{ textDecoration: "none", color: "Black" }}
+              to="/new"
+            >
+              Create New Listing
+            </NavLink>
           ) : null}
           {isLoaded && (
             <div className="profile-nav">
@@ -49,6 +56,7 @@ function Navigation({ isLoaded }) {
           )}
         </div>
       </div>
+    </div>
   );
 }
 

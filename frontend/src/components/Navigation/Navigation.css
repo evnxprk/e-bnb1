@@ -6,12 +6,13 @@
   display: flex;
   padding: 3px;
   margin: 2px;
+  font-size: 20px;
 }
 .fa-user-circle {
   display: flex;
   padding: 3px;
   margin: 2px;
-  size: 8px;
+  font-size: 20px;
 }
 .cloudy {
   color: darkcyan;
@@ -49,9 +50,11 @@
   align-items: center;
   margin-bottom: 60px;
   padding: 8px;
+  position: relative;
   border-bottom: 1px solid gray;
   padding-bottom: 10px;
 }
+
 /* .profile-container {
   justify-content: space-evenly;
   display: flex;
@@ -65,6 +68,7 @@
   align-items: center;
   justify-content: space-between;
   display: flex;
+  padding-right: 6px;
   /* width: 100px */
   /* gap: 2; */
 }
@@ -100,27 +104,28 @@
   /* padding: 10px; */
   /* border: black 1px solid; */
 }
+
+.cloudbnb { 
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
 .create-new-listing {
   display: flex;
   flex-direction: row;
-  /* border: 1px solid green; */
-  width: 200px;
+ 
+  width: 170px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .profile-dropdown {
   border: 1px solid gray;
-  /* display: grid; */
   position:absolute;
-  /* cursor: pointer; */
-  /* top:200px; */
-  /* left: 300px; */
   right: 15px;
-  top: 90px;
+  top: 60px;
   padding: 20px;
   background-color: bisque;
-  /* z-index: 7 */
   align-items: center;
   justify-content: center;
 }

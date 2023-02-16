@@ -171,23 +171,21 @@ const MySpot = () => {
         <p></p>
       </div>
       <div className="review-container">
-        {/* <div className="reviews-container"> */}
+        <div className="review-count-container">
           <div className="reviews-total">
             <div className="all-reviews-container">
-              <div className="review-stars-and-number">
               <i className="fas fa-star"></i> {spot.avgStarRating} ∙
               {spot.numReviews} Reviews
-              <div className="review-spot">
-                {sessionUser && sessionUser.id !== spot.ownerId ? (
-                  <NavLink to={`/create/${spot.id}`}>
-                    <button className="review-spot-button">Review Spot</button>
-                  </NavLink>
-                ) : null}
-              </div>
-              </div>
             </div>
           </div>
-        {/* </div> */}
+        </div>
+        <div className="review-spot">
+          {sessionUser && sessionUser.id !== spot.ownerId ? (
+            <NavLink to={`/create/${spot.id}`}>
+              <button className="review-spot-button">Review Spot</button>
+            </NavLink>
+          ) : null}
+        </div>
         <div className="all-reviews">
           <div className="double-cards">
             {allReviews.map((review) => (

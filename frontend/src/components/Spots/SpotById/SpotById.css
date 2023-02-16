@@ -235,13 +235,12 @@
 
 .all-reviews-container {
   display: flex;
-  /* justify-content: space-between; */
+  /* justify-content: center; */
 }
 
-.reviews-container {
+.reviews-count-container {
   display: flex;
-  /* justify-content: space-between; */
-  float: right;
+  justify-content: space-between;
 }
 .review-spot-button {
 font-size: 18px;
@@ -253,16 +252,13 @@ font-size: 18px;
   float: right;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-.review-stars-and-number {
-    display: flex;
-  justify-content: space-between;
 
-}
 
 .review-spot {
   padding: 5px;
   display: flex;
   justify-content: space-between;
+  
 }
 .amenities-list {
   border-bottom: 1px solid gray;
