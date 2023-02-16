@@ -47,21 +47,21 @@ const createSpot = (spots) => {
   };
 };
 
-export const createSpotThunk = (spots, spotId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/spots/${spotId}`, {
+export const createSpotThunk = (spotFormInfo) => async (dispatch) => {
+  const response = await csrfFetch('/api/spots', {
     method: "POST",
     headers: { "Content-Type": "application/json"},
-    body: JSON.stringify(spots),
+    body: JSON.stringify(spotFormInfo),
   });
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(createSpot(data));
+    return data
   }
 };
 
 export const createImageThunk = (img, spotId) => async (dispatch) => {
-  const response = await csrfFetch(`api/spots/${spotId}/images`, {
+  const response = await csrfFetch(`/api/spots/${spotId}/images`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(img)
@@ -130,12 +130,12 @@ const spotsReducer = (state = initialState, action) => {
       return newState;
     }
 
-    case CREATE_SPOT: {
-      //mutate the copy
-      newState[action.spots.id] = action.spots;
-      //return the copy
-      return newState;
-    }
+    // case CREATE_SPOT: {
+    //   //mutate the copy
+    //   newState[action.spots.id] = action.spots;
+    //   //return the copy
+    //   return newState;
+    // }
     case EDIT_SPOT: {
       newState = { ...state };
       newState[action.oneSpot.id] = action.oneSpot;

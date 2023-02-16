@@ -26,12 +26,11 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   if (price < minPrice) {
-    setValidationError([`Price must be at least $ ${minPrice}`]);
+    setValidationError([`Price must be at least $${minPrice}`]);
     return;
   }
   setValidationError([]);
 
-  // Rest of the handleSubmit logic
   const spotFormInfo = {
     address,
     city,
@@ -58,8 +57,8 @@ const handleSubmit = async (e) => {
     };
 
     dispatch(createImageThunk(img, spotCreated.id));
-    // console.log("hi", img);
-    history.push('');
+    // console.log("spot created: ", spotCreated)
+    history.push('/');
   }
 };
 
