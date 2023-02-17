@@ -12,6 +12,7 @@ const CreateReviews = () => {
   console.log("what the fuck is spotId: ", spotId);
   // const { closeModal } = useModal();
   const minVal = 1;
+   const maxVal = 5;
 
   const [review, setReview] = useState("");
   const [stars, setStars] = useState(1);
@@ -21,8 +22,8 @@ const CreateReviews = () => {
   //   console.log("this is the current spot: ", currentSpot)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (stars < minVal) {
-      setValidationError(['Rating must be at least 1']);
+    if (stars < minVal || stars > maxVal ) {
+      setValidationError(['Rating must be between 1 and 5']);
       return;
     }
     setValidationError([]);

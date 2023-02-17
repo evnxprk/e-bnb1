@@ -38,6 +38,7 @@
 .logo {
   width: 80px;
   align-items: center;
+  cursor: pointer;
   /* height: 16px; */
 }
 
