@@ -248,13 +248,13 @@
 .review-spot-button {
 font-size: 18px;
   border-radius: 10em;
-  margin: 5px;
+  /* margin: 5px; */
   border: none;
+  cursor: pointer;
   background-color: rgb(235, 117, 117);
   display: flex;
   float: right;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  cursor: pointer;
 }
 
 
@@ -262,6 +262,7 @@ font-size: 18px;
   padding: 5px;
   display: flex;
   justify-content: space-between;
+  /* cursor: pointer; */
   
 }
 .amenities-list {

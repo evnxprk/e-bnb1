@@ -29,7 +29,7 @@ const MySpot = () => {
   console.log("need ownerId: ", spot);
   // const review = useSelector(state => state.reviews.userReview)
   // console.log("i need stars: ", reviews)
-  //   console.log(spots);
+    // console.log("i need spots: ", spots);
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
@@ -61,9 +61,9 @@ const MySpot = () => {
           <div className="review-count">
             <div className="location-details">
               <i class="far fa-star"></i>
-              {spot.avgStarRating} ∙ {spot.numReviews} reviews ∙{" "}
+              {spot.avgStarRating} ∙ {spot.numReviews} reviews ∙
               <i class="fas fa-award"></i> Superhost ∙ {spot.city}, {spot.state}{" "}
-              {spot.country}
+              {spot.country} ∙ ${spot.price} per night
             </div>
           </div>
           <div className="owner-spot-buttons">
