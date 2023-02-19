@@ -9,24 +9,24 @@ const CreateReviews = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { spotId } = useParams();
-  console.log("what the fuck is spotId: ", spotId);
+  // console.log("what the fuck is spotId: ", spotId);
   // const { closeModal } = useModal();
   const minVal = 1;
    const maxVal = 5;
 
   const [review, setReview] = useState("");
   const [stars, setStars] = useState(1);
-  const [validationError, setValidationError] = useState([]);
+  const [errors, setErrors] = useState([]);
   //   const currentSpot = Object.values(state => state.spots.allSpots)
 
   //   console.log("this is the current spot: ", currentSpot)
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (stars < minVal || stars > maxVal ) {
-      setValidationError(['Rating must be between 1 and 5']);
+      setErrors(['Rating must be between 1 and 5']);
       return;
     }
-    setValidationError([]);
+    setErrors([]);
 
     // if (validationError.length) return;
     const newReview = {
@@ -34,16 +34,21 @@ const CreateReviews = () => {
       stars,
     };
 
-    await dispatch(createReviewsThunk(newReview, spotId));
-    history.push(`/spots/${spotId}`);
+   let myReview = await dispatch(createReviewsThunk(newReview, spotId)).catch(
+    async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    }
+    );
+   if(myReview) history.push(`/spots/${spotId}`);
     // closeModal()
   };
   return (
     <div className="review-form">
       <form className="create-review-form" onSubmit={handleSubmit}>
         <ul className="errors">
-          {validationError.length > 0 &&
-            validationError.map((error) => <li key={error}>{error}</li>)}
+          {errors.length > 0 &&
+            errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
         <h3>How was your stay? </h3>
         <label className="review-input-title">Reviews</label>

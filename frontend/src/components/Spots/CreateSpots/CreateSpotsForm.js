@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import "./CreateSpotsForm.css";
 import { useHistory, useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createImageThunk, createSpotThunk } from "../../../store/spot-reducer";
 
 const CreateForm = () => {
@@ -17,8 +17,8 @@ const CreateForm = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(1);
   const [imageURL, setImageURL] = useState("");
-  const [validationError, setValidationError] = useState([]);
   const [errors, setErrors] = useState([])
+
 
 const minPrice = 1;
 
@@ -26,10 +26,10 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   if (price < minPrice) {
-    setValidationError([`Price must be at least $${minPrice}`]);
+    setErrors([`Price must be at least $${minPrice}`]);
     return;
   }
-  setValidationError([]);
+  setErrors([]);
 
   const spotFormInfo = {
     address,
@@ -69,8 +69,8 @@ const handleSubmit = async (e) => {
       <div className="create-new-spot-form ">
         <h2>Begin Hosting</h2>
         <ul className="errors">
-          {validationError.length > 0 &&
-            validationError.map((error) => <li key={error}>{error}</li>)}
+          {errors.length > 0 &&
+            errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
 
         <label id="owner-input-title"> Address </label>

@@ -22,12 +22,24 @@ const e = require("express");
 const validateSpot = [
   check("address")
     .exists({ checkFalsy: true })
-    .withMessage("Street address is required"),
-  check("city").exists({ checkFalsy: true }).withMessage("City is required"),
-  check("state").exists({ checkFalsy: true }).withMessage("State is required"),
+    .withMessage("Street address is required")
+    .isLength({ max: 250 })
+    .withMessage("Street address must be less than 250 characters"),
+  check("city")
+    .exists({ checkFalsy: true })
+    .withMessage("City is required")
+    .isLength({ max: 45 })
+    .withMessage("City must be less than 45 characters"),
+  check("state")
+    .exists({ checkFalsy: true })
+    .withMessage("State is required")
+    .isLength({ max: 20 })
+    .withMessage("State must be less than 20 characters"),
   check("country")
     .exists({ checkFalsy: true })
-    .withMessage("Country is required"),
+    .withMessage("Country is required")
+    .isLength({ max: 60 })
+    .withMessage("Country must be less than 60 characters"),
   check("lat").exists({ checkFalsy: true }),
   check("lng")
     .exists({ checkFalsy: true })
@@ -39,7 +51,9 @@ const validateSpot = [
     .withMessage("Name must be less than 50 characters"),
   check("description")
     .exists({ checkFalsy: true })
-    .withMessage("Description is required"),
+    .withMessage("Description is required")
+    .isLength({ max: 250 })
+    .withMessage("Description must be less than 250 characters"),
   check("price")
     .exists({ checkFalsy: true })
     .withMessage("Price per day is required"),
@@ -49,7 +63,9 @@ const validateSpot = [
 const validateReview = [
   check("review")
     .exists({ checkFalsy: true })
-    .withMessage("Review text is required"),
+    .withMessage("Review text is required")
+    .isLength({ max: 250 })
+    .withMessage("Review text must be less than 250 characters"),
   check("stars")
     .exists({ checkFalsy: true })
     .withMessage("Stars is required")
@@ -65,7 +81,6 @@ router.get("/current", requireAuth, async (req, res, next) => {
     where: {
       ownerId: ownerId,
     },
-
   });
 
   const spotArr = [];
@@ -89,19 +104,19 @@ router.get("/current", requireAuth, async (req, res, next) => {
       attributes: ["url"],
     });
 
-    if(image) {
-      spot.previewImage = image.url
+    if (image) {
+      spot.previewImage = image.url;
     } else {
-      spot.previewImage = "No preview image available" 
+      spot.previewImage = "No preview image available";
     }
-    console.log(image)
+    console.log(image);
 
     spotArr.push(spot);
   }
 
-  res.status(200)
-  res.json({ 
-    Spots: spotArr 
+  res.status(200);
+  res.json({
+    Spots: spotArr,
   });
 });
 
@@ -116,7 +131,7 @@ router.get("/", async (req, res) => {
     size = 20;
   }
 
-  page = parseInt(page);  
+  page = parseInt(page);
   size = parseInt(size);
 
   let pagination = {};
@@ -148,7 +163,7 @@ router.get("/", async (req, res) => {
   let spotsArr = [];
 
   for (let spot of spots) {
-    spot = spot.toJSON()
+    spot = spot.toJSON();
     const rating = await Review.findAll({
       where: {
         spotId: spot.id,
@@ -156,24 +171,24 @@ router.get("/", async (req, res) => {
       attributes: [[Sequelize.fn("AVG", Sequelize.col("stars")), "avgRating"]],
       raw: true,
     });
-  
+
     spot.avgRating = Number(rating[0].avgRating).toFixed(1);
-    if(spot.avgRating == "0.0") {
-      spot.avgRating = "New!"
+    if (spot.avgRating == "0.0") {
+      spot.avgRating = "New!";
     }
-   
+
     const imageURL = await SpotImage.findOne({
       where: {
         spotId: spot.id,
-        preview: true
+        preview: true,
       },
-      attributes: ['url']
-    })
+      attributes: ["url"],
+    });
 
-    if(imageURL) {
-      spot.previewImage = imageURL.url
+    if (imageURL) {
+      spot.previewImage = imageURL.url;
     } else {
-      spot.previewImage = "No preview image available"
+      spot.previewImage = "No preview image available";
     }
     spotsArr.push(spot);
   }
@@ -196,36 +211,36 @@ router.get("/:spotId", async (req, res) => {
   });
   if (!spots) {
     res.status(404);
-    res.json({ 
-      message: "Spot can't be found", 
-      statusCode: 404 
+    res.json({
+      message: "Spot can't be found",
+      statusCode: 404,
     });
   }
 
-  const reviewCount = await Review.count({where: { spotId: spotId }})
-  const starTotal = await Review.sum('stars', { where: {spotId: spotId}})
+  const reviewCount = await Review.count({ where: { spotId: spotId } });
+  const starTotal = await Review.sum("stars", { where: { spotId: spotId } });
 
   // const spotImage = await SpotImage.findAll({where: {spotId: spotId},attributes: ['id', 'url', 'preview']})
 
   const spotOwner = await User.findByPk(spots.ownerId, {
-    attributes: ['id','firstName', 'lastName']
-  })
+    attributes: ["id", "firstName", "lastName"],
+  });
 
   let avgRating;
-  if(starTotal === null) {
-    avgRating = 0
+  if (starTotal === null) {
+    avgRating = 0;
   } else {
-    avgRating = (starTotal / reviewCount)
+    avgRating = starTotal / reviewCount;
   }
 
-  const spotDetails = spots.toJSON()
+  const spotDetails = spots.toJSON();
 
- spotDetails.numReviews = reviewCount
- spotDetails.avgStarRating = avgRating
- spotDetails.spotImage = SpotImage
- spotDetails.Owner = spotOwner
+  spotDetails.numReviews = reviewCount;
+  spotDetails.avgStarRating = avgRating;
+  spotDetails.spotImage = SpotImage;
+  spotDetails.Owner = spotOwner;
 
- res.json(spotDetails)
+  res.json(spotDetails);
 });
 
 //? Create a spot
@@ -362,7 +377,7 @@ router.get("/:spotId/reviews", async (req, res, next) => {
       },
       {
         model: ReviewImage,
-        attributes: {exclude : ['reviewId', 'createdAt' ,'updatedAt']}
+        attributes: { exclude: ["reviewId", "createdAt", "updatedAt"] },
       },
     ],
   });
@@ -486,16 +501,19 @@ router.post("/:spotId/bookings", requireAuth, async (req, res) => {
     },
   });
 
-  if ((new Date (startDate).getTime() < new Date().getTime()) || (new Date (endDate).getTime() < new Date().getTime())) {
-     res.status(403);
-     return res.json({
-       message: "Cannot be created in the past",
-       statusCode: 403,
-       errors: {
-         endDate: "Cannot be created in the past",
-         startDat: "Cannot be created in the past"
-       },
-     });
+  if (
+    new Date(startDate).getTime() < new Date().getTime() ||
+    new Date(endDate).getTime() < new Date().getTime()
+  ) {
+    res.status(403);
+    return res.json({
+      message: "Cannot be created in the past",
+      statusCode: 403,
+      errors: {
+        endDate: "Cannot be created in the past",
+        startDat: "Cannot be created in the past",
+      },
+    });
   }
 
   if (!startDate || !endDate || endDate <= startDate) {
@@ -511,8 +529,8 @@ router.post("/:spotId/bookings", requireAuth, async (req, res) => {
 
   for (let booking of myBooking) {
     if (
-      (Date.parse(startDate) >= Date.parse(booking.startDate) && Date.
-      parse(endDate) <= Date.parse(booking.endDate))
+      Date.parse(startDate) >= Date.parse(booking.startDate) &&
+      Date.parse(endDate) <= Date.parse(booking.endDate)
     ) {
       res.status(403);
       return res.json({
@@ -532,7 +550,7 @@ router.post("/:spotId/bookings", requireAuth, async (req, res) => {
     startDate: startDate,
     endDate: endDate,
   });
- return res.json(newBooking);
+  return res.json(newBooking);
 });
 
 module.exports = router;
