@@ -46,7 +46,7 @@ function Navigation({ isLoaded }) {
               style={{ textDecoration: "none", color: "Black" }}
               to="/new"
             >
-              Create New Listing
+              Create Listing
             </NavLink>
           ) : null}
           {isLoaded && (
