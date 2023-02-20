@@ -19,7 +19,6 @@ const EditSpot = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [validationError, setValidationError] = useState([]);
   const [errors, setErrors] = useState([])
   const minPrice = 1;
 
@@ -59,8 +58,11 @@ const EditSpot = () => {
       lat: 1,
       lng: 1,
     };
-    await dispatch(updateSpotThunk(editSpotInfo, spotId));
-    history.push(`/spots/${spotId}`);
+    let editedSpot = await dispatch(updateSpotThunk(editSpotInfo, spotId)).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
+    if(editedSpot) history.push(`/spots/${spotId}`);
   };
 
   return (
@@ -69,7 +71,7 @@ const EditSpot = () => {
         <div className="spot-form-errors">
           {/* {validationError.length > 0 && */}
           <ul className="errors">
-            {validationError.map((error) => (
+            {errors.map((error) => (
               <li key={error}>{error}</li>
             ))}
           </ul>

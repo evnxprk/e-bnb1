@@ -29,7 +29,7 @@ const MySpot = () => {
   console.log("need ownerId: ", spot);
   // const review = useSelector(state => state.reviews.userReview)
   // console.log("i need stars: ", reviews)
-    // console.log("i need spots: ", spots);
+  // console.log("i need spots: ", spots);
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
@@ -53,6 +53,14 @@ const MySpot = () => {
     await dispatch(getOneSpotThunk(spotId));
   };
 
+  let hasReview = false
+  if (allReviews.length && sessionUser) {
+    allReviews.forEach((review) => {
+      if (review.userId === sessionUser.id) {
+        hasReview = true
+      }
+    });
+  }
   return (
     <div className="spot-details-container">
       <div className="spots-description">
@@ -180,7 +188,7 @@ const MySpot = () => {
           </div>
         </div>
         <div className="review-spot">
-          {sessionUser && sessionUser.id !== spot.ownerId ? (
+          {sessionUser && sessionUser.id !== spot.ownerId && hasReview === false ? (
             <NavLink to={`/create/${spot.id}`}>
               <button className="review-spot-button">Review Spot</button>
             </NavLink>
