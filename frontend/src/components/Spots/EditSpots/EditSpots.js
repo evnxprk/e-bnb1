@@ -20,6 +20,7 @@ const EditSpot = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [validationError, setValidationError] = useState([]);
+  const [errors, setErrors] = useState([])
   const minPrice = 1;
 
   useEffect(() => {
