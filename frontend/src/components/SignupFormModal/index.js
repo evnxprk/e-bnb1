@@ -28,7 +28,7 @@ function SignupFormPage() {
      return;
    }
    if (password !== confirmPassword) {
-     setErrors([...errors, "Passwords do not match"]);
+     setErrors(["Passwords do not match"]);
      return;
    }
    setErrors([]);

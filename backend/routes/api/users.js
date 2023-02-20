@@ -29,7 +29,10 @@ const validateSignup = [
     .withMessage("Last name is required")
     .isLength({ min: 2 })
     .withMessage("Last Name must be longer than 2 characters"),
-  check("password").exists({ checkFalsy: true }).isLength({ min: 5 }).withMessage("Password must be longer than 5 characters"),
+  check("password")
+  .exists({ checkFalsy: true })
+  .isLength({ min: 5 })
+  .withMessage("Password must be longer than 5 characters"),
   handleValidationErrors,
 ];
 
@@ -68,6 +71,7 @@ router.post("/", validateSignup, async (req, res, next) => {
     lastName: user.lastName,
     email: user.email,
     username: user.username,
+    password:user.password,
     token: token,
   });
 });
