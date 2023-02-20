@@ -24,6 +24,7 @@
   justify-content: space-between;
   border-radius: 30px;
   border: 1px solid gray;
+  cursor: pointer;
 }
 
 .link-to-home-active {
