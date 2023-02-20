@@ -245,15 +245,15 @@
   justify-content: space-between;
 }
 .review-spot-button {
-font-size: 18px;
+font-size: 15px;
   border-radius: 10em;
   /* margin: 5px; */
   border: none;
   cursor: pointer;
-  background-color: rgb(235, 117, 117);
+  background-color: rgb(251, 174, 144);
   display: flex;
   float: right;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
 }
 
 
