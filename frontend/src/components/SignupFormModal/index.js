@@ -33,6 +33,23 @@ function SignupFormPage() {
    }
    setErrors([]);
 
+   if(username.length < 3 ) {
+    setErrors(["Username must be longer than 3 characters"])
+    return;
+   }
+   if(firstName.length < 3 ) {
+    setErrors(["First Name must be longer than 2 characters"])
+    return;
+   }
+   if(lastName.length < 3 ) {
+    setErrors(["Last Name must be longer than 2 characters"])
+    return;
+   }
+   if(password.length < 5 ) {
+    setErrors(["Password must be longer than 5 characters"])
+    return;
+   }
+
    return dispatch(
      sessionActions.signup({ email, username, firstName, lastName, password })
    )

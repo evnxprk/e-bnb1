@@ -16,18 +16,18 @@ const validateSignup = [
   check("username")
     .exists({ checkFalsy: true })
     .withMessage("Username is required")
-    .isLength({ min: 5 })
-    .withMessage("Username must be longer than 5 characters"),
+    .isLength({ min: 3 })
+    .withMessage("Username must be longer than 3 characters"),
   check("username").not().isEmail().withMessage("Username cannot be an email."),
   check("firstName")
     .exists({ checkFalsy: true })
     .withMessage("First name is required")
     .isLength({ min: 3 })
-    .withMessage("First Name must be longer tha 3 characters"),
+    .withMessage("First Name must be longer than 3 characters"),
   check("lastName")
     .exists({ checkFalsy: true })
     .withMessage("Last name is required")
-    .isLength({ min: 2 })
+    .isLength({ min: 3 })
     .withMessage("Last Name must be longer than 2 characters"),
   check("password")
   .exists({ checkFalsy: true })
