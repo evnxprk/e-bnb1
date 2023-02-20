@@ -21,7 +21,7 @@ const EditSpot = () => {
   const [price, setPrice] = useState("");
   const [validationError, setValidationError] = useState([]);
   const minPrice = 1;
-  
+
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
   }, [dispatch]);
@@ -46,6 +46,7 @@ const EditSpot = () => {
       return;
     }
     setErrors([]);
+
     let editSpotInfo = {
       address,
       city,
@@ -80,6 +81,7 @@ const EditSpot = () => {
           type="text"
           name="address"
           value={address}
+          required
           onChange={(e) => setAddress(e.target.value)}
         ></input>
 
@@ -89,6 +91,7 @@ const EditSpot = () => {
           type="text"
           name="city"
           value={city}
+          required
           onChange={(e) => setCity(e.target.value)}
         ></input>
 
@@ -98,6 +101,7 @@ const EditSpot = () => {
           type="text"
           name="state"
           value={state}
+          required
           onChange={(e) => setState(e.target.value)}
         ></input>
 
@@ -107,6 +111,7 @@ const EditSpot = () => {
           type="text"
           name="country"
           value={country}
+          required
           onChange={(e) => setCountry(e.target.value)}
         ></input>
 
@@ -116,6 +121,7 @@ const EditSpot = () => {
           type="text"
           name="name"
           value={name}
+          required
           onChange={(e) => setName(e.target.value)}
         ></input>
 
@@ -125,6 +131,7 @@ const EditSpot = () => {
           type="text"
           name="description"
           value={description}
+          required
           onChange={(e) => setDescription(e.target.value)}
         ></input>
 
@@ -134,6 +141,7 @@ const EditSpot = () => {
           type="number"
           name="price"
           value={price}
+          required
           onChange={(e) => setPrice(e.target.value)}
         ></input>
 
