@@ -15,15 +15,21 @@ const validateSignup = [
     .withMessage("Invalid email"),
   check("username")
     .exists({ checkFalsy: true })
-    .withMessage("Username is required"),
+    .withMessage("Username is required")
+    .isLength({ min: 5 })
+    .withMessage("Username must be longer than 5 characters"),
   check("username").not().isEmail().withMessage("Username cannot be an email."),
   check("firstName")
     .exists({ checkFalsy: true })
-    .withMessage("First name is required"),
+    .withMessage("First name is required")
+    .isLength({ min: 3 })
+    .withMessage("Username must be longer tha 3 characters"),
   check("lastName")
     .exists({ checkFalsy: true })
-    .withMessage("Last name is required"),
-  check("password").exists({ checkFalsy: true }),
+    .withMessage("Last name is required")
+    .isLength({ min: 2 })
+    .withMessage("Last Name must be longer than 2 characters"),
+  check("password").exists({ checkFalsy: true }).isLength({ min: 5 }).withMessage("Password must be longer than 5 characters"),
   handleValidationErrors,
 ];
 
