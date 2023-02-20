@@ -10,4 +10,5 @@ Cloudy Nights is a web application inspired by by Airbnb that primarily provides
 - React
 - Redux
 
-###### Splash Page <img width="1679" alt="Screenshot 2023-01-22 at 10 49 15 PM" src="https://user-images.githubusercontent.com/107530902/213980639-30096fca-757f-43e2-828b-d49415fb9696.png">
+###### Splash Page 
+<img width="1672" alt="Screenshot 2023-02-19 at 9 39 00 PM" src="https://user-images.githubusercontent.com/107530902/220018051-b8e70d17-cb73-4ecc-813b-155091b2c7fd.png">
