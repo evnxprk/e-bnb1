@@ -38,7 +38,7 @@ function Navigation({ isLoaded }) {
         <img className="logo" src={night} sizes="32x32" />
       </NavLink>
       <h1 className="cloudy">CLOUDY NIGHTS </h1>
-      <div className="login-space-container">
+      <div className="login-space">
         <div className="create-new-listing">
           {sessionUser ? (
             <NavLink

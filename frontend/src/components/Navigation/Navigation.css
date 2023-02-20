@@ -129,6 +129,7 @@
   background-color: bisque;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .login-button {

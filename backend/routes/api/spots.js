@@ -412,6 +412,8 @@ router.post(
         spotId,
       },
     });
+
+
     if (myReview) {
       res.status(403);
       res.json({

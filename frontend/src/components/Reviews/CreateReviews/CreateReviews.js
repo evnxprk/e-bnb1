@@ -28,6 +28,11 @@ const CreateReviews = () => {
     }
     setErrors([]);
 
+  if(!review.trim()){
+    setErrors(['Review cannot be left empty.'])
+    return;
+  }
+
     // if (validationError.length) return;
     const newReview = {
       review,
@@ -40,6 +45,7 @@ const CreateReviews = () => {
       if (data && data.errors) setErrors(data.errors);
     }
     );
+
    if(myReview) history.push(`/spots/${spotId}`);
     // closeModal()
   };
