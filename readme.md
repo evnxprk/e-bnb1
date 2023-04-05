@@ -1,6 +1,6 @@
 # Cloudy Nights
 
-Cloudy Nights is a web application inspired by by Airbnb that primarily provides an online marketplace for lodging for homestays, vacation rentals, tourism activities, as well as buisness endeavors. Click here to visit the live site [Cloudy Nights](https://e-bnb.onrender.com/)
+Cloudy Nights is a web application inspired by Airbnb that primarily provides an online marketplace for lodging for homestays, vacation rentals, tourism activities, as well as business endeavors. Click here to visit the live site [Cloudy Nights](https://e-bnb.onrender.com/)
 
 **This project was built using:**
 - JavaScript
