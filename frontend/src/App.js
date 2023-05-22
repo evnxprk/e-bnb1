@@ -9,6 +9,9 @@ import GetAllSpots from "./components/Spots/GetAllSpots/GetSpots";
 import EditSpot from "./components/Spots/EditSpots/EditSpots";
 // import CreateReviews from "./components/Reviews/CreateReviews/CreateReviews";
 import CreateReviews from "./components/Reviews/CreateReviews/CreateReviews";
+// import MySpotLists from "./components/CurrentSpots";
+import UserReviews from "./components/Reviews/UserReviews";
+import UserSpots from "./components/Spots/UserSpots/userspots";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +30,12 @@ function App() {
         </Route>
         <Route exact path='/spots/:spotId'>
         <MySpot />
+        </Route>
+        <Route exact path='/listings'>
+        <UserSpots />
+        </Route>
+        <Route exact path='/my-reviews'>
+        <UserReviews />
         </Route>
         <Route path = "/manage/:spotId">
         <EditSpot />

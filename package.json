@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/evnxprk/airbnb_clone#readme",
   "dependencies": {
+    "datepicker": "^0.0.0",
+    "react-datepicker": "^4.11.0",
     "sqlite3": "^5.1.6",
     "validator": "^13.7.0"
   }

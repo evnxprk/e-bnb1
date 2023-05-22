@@ -6,6 +6,8 @@ import "./SpotById.css";
 import AllReviews from "../../Reviews/AllReviews/AllReviews";
 import CreateReviews from "../../Reviews/CreateReviews/CreateReviews";
 // import AllReviews from '../../Reviews/AllReviews/AllReviews'
+import Bookings from "./booking";
+
 
 import {
   deleteReviewsThunk,
@@ -24,7 +26,7 @@ const MySpot = () => {
   const allReviews = Object.values(reviews);
   // const [randomNumber, setRandomNumber] = useState(2);
   // console.log("the sessionUser: ", sessionUser)
-  // console.log("what is appearing here in allReviews?????", allReviews);
+  console.log("what is appearing here in allReviews?????", allReviews);
   // console.log("what is appearing here in reviews?????", reviews);
   console.log("need ownerId: ", spot);
   // const review = useSelector(state => state.reviews.userReview)
@@ -75,20 +77,20 @@ const MySpot = () => {
             </div>
           </div>
           <div className="owner-spot-buttons">
-            <div className="edit-spot-button">
+            {/* <div className="edit-spot-button">
               {sessionUser && sessionUser.id === spot.ownerId ? (
                 <NavLink to={`/manage/${spotId}`}>
                   <button className="edit-spot-button">Edit Spot</button>
                 </NavLink>
               ) : null}
-            </div>
-            <div className="delete-spot">
+            </div> */}
+            {/* <div className="delete-spot">
               {sessionUser && sessionUser.id === spot.ownerId ? (
                 <button className="delete-spot" onClick={(e) => spotRemoval(e)}>
                   Delete Spot
                 </button>
               ) : null}
-            </div>
+            </div> */}
           </div>
         </div>
         {spot.SpotImages.map((image, idx) => {
@@ -176,6 +178,8 @@ const MySpot = () => {
         <div className="wifi">
           <i className="fas fa-wifi"></i>Fast Internet
         </div>
+        <Bookings />
+
         <p></p>
       </div>
       <div className="review-container">
@@ -188,7 +192,9 @@ const MySpot = () => {
           </div>
         </div>
         <div className="review-spot">
-          {sessionUser && sessionUser.id !== spot.ownerId && hasReview === false ? (
+          {sessionUser &&
+          sessionUser.id !== spot.ownerId &&
+          hasReview === false ? (
             <NavLink to={`/create/${spot.id}`}>
               <button className="review-spot-button">Review Spot</button>
             </NavLink>
@@ -201,7 +207,7 @@ const MySpot = () => {
                 <div className="session-name">
                   <span className="review-user">
                     <i className="fas fa-user-circle"></i>{" "}
-                    {review.User.firstName}
+                    {review.User.username}
                   </span>
                   <p></p>
                   <span className="review-stars">

@@ -5,11 +5,12 @@ import OpenModalMenuItem from "../OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
+import GetAllSpots from "../Spots/GetAllSpots/GetSpots";
 
 function ProfileButton({ user }) {
-  const sessionUser = useSelector(state => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -17,6 +18,18 @@ function ProfileButton({ user }) {
     if (showMenu) return;
     setShowMenu(true);
   };
+
+  const handleClick = () => {
+    closeMenu();
+    history.push("/listings");
+  };
+
+  const reviewClick = () => {
+    closeMenu();
+    history.push("/my-reviews");
+  };
+
+  const closeMenu = () => setShowMenu(false);
 
   useEffect(() => {
     if (!showMenu) return;
@@ -32,18 +45,11 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const closeMenu = () => setShowMenu(false);
-
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
   };
-
-  // const handleSubmit = () => {
-  //   closeMenu();
-  //   history.push("/listings");
-  // };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
@@ -51,26 +57,38 @@ function ProfileButton({ user }) {
     <>
       <button className="profile-open-button" onClick={openMenu}>
         <i className="fas fa-bars"></i>
-        <i class="fas fa-user-circle"></i>
+        <i className="fas fa-user-circle"></i>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <span>{user.username}</span>
-            <p></p>
-            {/* {sessionUser ? (
-              <button onClick={handleSubmit} className="my-listings">
-                My listings
-              </button>
-            ) : null} */}
-            <span>
-              {user.firstName} {user.lastName}
-            </span>
-            <p></p>
             <span>{user.email}</span>
-            <p></p>
-
+            {sessionUser ? (
+              <button
+                className="linkedin-button"
+                style={{ border: "none", backgroundColor: "transparent" }}
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/steven-picazo-994042225",
+                    "_blank"
+                  )
+                }
+              >
+                LinkedIn
+              </button>
+            ) : null}
+            <div className="linkedin-border"></div>
             <span>
+              {sessionUser ? (
+                <button onClick={handleClick} className="my-listings">
+                  My Listings
+                </button>
+              ) : null}
+              {sessionUser ? (
+                <button onClick={reviewClick} className="my-reviews">
+                  My Reviews
+                </button>
+              ) : null}
               <button className="logout-button" onClick={logout}>
                 Log Out
               </button>

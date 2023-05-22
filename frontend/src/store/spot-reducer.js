@@ -1,10 +1,19 @@
 import { csrfFetch } from "./csrf";
 
-const GET_SPOTS = "/spots/getSpots";
-const CREATE_SPOT = "/spots/createSpot";
-const EDIT_SPOT = "/spots/editSpot";
-const DELETE_SPOT = "/spots/deleteSpot";
-const ONE_SPOT = "/spots/oneSpot";
+const GET_SPOTS = "/spots/GET_SPOTS";
+const CREATE_SPOT = "/spots/CREATE_SPOT";
+const EDIT_SPOT = "/spots/EDIT_SPOT";
+const DELETE_SPOT = "/spots/DELETE_SPOT";
+const ONE_SPOT = "/spots/ONE_SPOT";
+const CURRENT_SPOTS = '/spots/CURRENT_SPOTS'
+
+const normalizeData = (data) => {
+    const normalizedData = {}
+    for (let spotData of data) {
+        normalizedData[spotData.id] = spotData
+    }
+    return normalizedData
+}
 
 //action create
 
@@ -113,6 +122,22 @@ export const removeSpotThunk = (id) => async (dispatch) => {
   }
 };
 
+export const getCurrentUserSpots = (userSpot) => {
+  return {
+    type: CURRENT_SPOTS,
+    userSpot,
+  };
+};
+
+export const thunkCurrentUsersSpots = () => async (dispatch) => {
+  const response = await csrfFetch("/api/spots/current");
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getCurrentUserSpots(data.Spots));
+    return data;
+  }
+};
+
 //reducer
 const initialState = { allSpots: {}, singleSpot: {} };
 
@@ -121,7 +146,7 @@ const spotsReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case GET_SPOTS: {
-      newState.allSpots = action.allSpots
+      newState.allSpots = action.allSpots;
       return newState;
     }
 
@@ -129,13 +154,13 @@ const spotsReducer = (state = initialState, action) => {
       newState.singleSpot = action.spot;
       return newState;
     }
+    case CURRENT_SPOTS: {
+      let newState = Object.assign({}, state);
 
-    // case CREATE_SPOT: {
-    //   //mutate the copy
-    //   newState[action.spots.id] = action.spots;
-    //   //return the copy
-    //   return newState;
-    // }
+      const userSpots = normalizeData(action.userSpot);
+      newState = userSpots;
+      return newState;
+    }
     case EDIT_SPOT: {
       newState = { ...state };
       newState[action.oneSpot.id] = action.oneSpot;
