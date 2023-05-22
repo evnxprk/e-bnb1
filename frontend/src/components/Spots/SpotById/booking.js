@@ -5,10 +5,12 @@ import { useModal } from "../../../context/Modal";
 import { createBookingsThunk } from "../../../store/bookings";
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useParams } from "react-router-dom";
 
 export default function Bookings() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
+  const { spotId } = useParams()
 const mySpot = useSelector((state) => state.spots.singleSpot);
 
   const [startDate, setStartDate] = useState(null);
@@ -26,7 +28,7 @@ const mySpot = useSelector((state) => state.spots.singleSpot);
       startDate,
       endDate,
     };
-    return dispatch(createBookingsThunk(bookingData))
+    return dispatch(createBookingsThunk(bookingData, spotId))
       .then(() => {
         closeModal();
       })
@@ -65,8 +67,8 @@ const mySpot = useSelector((state) => state.spots.singleSpot);
               <input
                 className="booking-input"
                 type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
               />
             </label>
             <button className="button form-button" type="submit">

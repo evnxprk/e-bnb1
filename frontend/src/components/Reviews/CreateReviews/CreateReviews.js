@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
-import { createReviewsThunk } from "../../../store/review-reducer";
+import {createReviewsThunk} from '../../../store/review-reducer'
 import "./CreateReviews.css";
 
 const CreateReviews = () => {

@@ -23,7 +23,8 @@ const MySpot = () => {
   const spot = useSelector((state) => state.spots.singleSpot);
   const spots = Object.values(spot);
   const reviews = useSelector((state) => state.reviews);
-  const allReviews = Object.values(reviews);
+  // const allReviews = Object.values(reviews);
+  const allReviews = reviews ? Object.values(reviews) : [];
   // const [randomNumber, setRandomNumber] = useState(2);
   // console.log("the sessionUser: ", sessionUser)
   console.log("what is appearing here in allReviews?????", allReviews);
@@ -179,6 +180,7 @@ const MySpot = () => {
           <i className="fas fa-wifi"></i>Fast Internet
         </div>
         <Bookings />
+        
 
         <p></p>
       </div>
