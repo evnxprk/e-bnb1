@@ -5,20 +5,21 @@ import { useModal } from "../../../context/Modal";
 import { createBookingsThunk } from "../../../store/bookings";
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export default function Bookings() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
-  const { spotId } = useParams()
-const mySpot = useSelector((state) => state.spots.singleSpot);
+  const history = useHistory();
+  const { spotId } = useParams();
+  const mySpot = useSelector((state) => state.spots.singleSpot);
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [errors, setErrors] = useState([]);
 
-//   const newStartDate = (date) => setStartDate(date);
-//   const newEndDate = (date) => setEndDate(date);
+  //   const newStartDate = (date) => setStartDate(date);
+  //   const newEndDate = (date) => setEndDate(date);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,11 +32,13 @@ const mySpot = useSelector((state) => state.spots.singleSpot);
     return dispatch(createBookingsThunk(bookingData, spotId))
       .then(() => {
         closeModal();
+        history.push("/dashboard"); 
       })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(Object.values(data.errors));
       });
+
   };
 
   return (
