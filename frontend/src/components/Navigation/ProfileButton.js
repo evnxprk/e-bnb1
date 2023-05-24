@@ -12,7 +12,7 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
+  const ulRef = useRef(null);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -27,6 +27,10 @@ function ProfileButton({ user }) {
   const reviewClick = () => {
     closeMenu();
     history.push("/my-reviews");
+  };
+  const bookingClick = () => {
+    closeMenu();
+    history.push("/bookings");
   };
 
   const closeMenu = () => setShowMenu(false);
@@ -69,8 +73,7 @@ function ProfileButton({ user }) {
                 style={{ border: "none", backgroundColor: "transparent" }}
                 onClick={() =>
                   window.open(
-                    "https://www.linkedin.com/in/steven-picazo-994042225",
-                    "_blank"
+                    "https://www.linkedin.com/in/eunicexpark01"
                   )
                 }
               >
@@ -82,6 +85,11 @@ function ProfileButton({ user }) {
               {sessionUser ? (
                 <button onClick={handleClick} className="my-listings">
                   My Listings
+                </button>
+              ) : null}
+              {sessionUser ? (
+                <button onClick={bookingClick} className="my-bookings">
+                  My Bookings
                 </button>
               ) : null}
               {sessionUser ? (

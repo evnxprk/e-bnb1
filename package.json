@@ -26,8 +26,13 @@
   "homepage": "https://github.com/evnxprk/airbnb_clone#readme",
   "dependencies": {
     "datepicker": "^0.0.0",
+    "react": "^18.2.0",
     "react-datepicker": "^4.11.0",
+    "react-dom": "^18.2.0",
     "sqlite3": "^5.1.6",
     "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0"
   }
 }

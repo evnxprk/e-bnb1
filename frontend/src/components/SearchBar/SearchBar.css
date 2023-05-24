@@ -1,0 +1,118 @@
+.search-wrapper {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search-container {
+    border-radius: 50px;
+    border: 1px lightgray solid;
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.05);
+    width: 25rem;
+}
+
+.search-bar-input {
+    width: 21rem;
+    border-radius: 50px;
+    border: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: 300;
+    outline: none;
+    border: 1px solid white;
+}
+
+.search-bar-input::placeholder {
+    color: #00000050;
+}
+
+.nav-search-icon {
+    color: white;
+    background-color: #ff395c;
+    border-radius: 50%;
+    padding: 7px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.fa-xmark {
+    cursor: pointer;
+    padding: 7px;
+    margin-right: 10px;
+}
+
+.search-results-container {
+    position: absolute;
+    background-color: white;
+    border: 1px rgb(210, 210, 210) solid;
+    width: 25%;
+    min-width: 400px;
+    top: 68px;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+.search-result {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    padding-left: 17px;
+    cursor: pointer;
+}
+
+.search-result-info-top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.search-result-image {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    margin-right: 8px;
+}
+
+.search-result-name {
+    font-family: system-ui, -apple-system, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+.search-result-location {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: gray;
+    font-size: 15px;
+}
+
+.search-result:hover {
+    background-color: #f5f5f5;
+}
+
+.no-search-results {
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    border: 1px rgb(210, 210, 210) solid;
+    width: 25%;
+    top: 68px;
+    padding: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}

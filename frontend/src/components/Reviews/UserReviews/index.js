@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReviewsThunk } from "../../../store/review-reducer";
 import { useModal } from "../../../context/Modal";
+import './myreviews.css'
 
 function UserReviews() {
   const dispatch = useDispatch();
@@ -25,14 +26,17 @@ function UserReviews() {
   return (
     <div className="my-Reviews">
       <div className="my-reviews-header-div">
-        <h1>My Reviews</h1>
+        <h1>
+          My Reviews <i className="fas fa-pencil-alt"></i>
+        </h1>
       </div>
       <div className="my-reviews-modal-div">
         {Object.values(userReviews).length ? (
           Object.values(userReviews).map((review) => (
             <div className="my-reviews-card-div" key={review.id}>
-              <div>{review.review}</div>
-              <div>{review.stars}</div>
+              <div style={{ marginTop: "10px" }}>Place: {review.Spot.name}</div>
+              <div>Review: {review.review}</div>
+              <div style={{ marginBottom: "10px" }}>Stars: {review.stars}</div>
             </div>
           ))
         ) : (

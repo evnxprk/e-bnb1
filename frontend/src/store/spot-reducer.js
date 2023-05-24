@@ -1,26 +1,24 @@
 import { csrfFetch } from "./csrf";
 
 const GET_SPOTS = "/spots/GET_SPOTS";
+const READ_SPOTS = "/spots/READ";
 const CREATE_SPOT = "/spots/CREATE_SPOT";
 const EDIT_SPOT = "/spots/EDIT_SPOT";
 const DELETE_SPOT = "/spots/DELETE_SPOT";
 const ONE_SPOT = "/spots/ONE_SPOT";
-const CURRENT_SPOTS = '/spots/CURRENT_SPOTS'
-
-const normalizeData = (data) => {
-    const normalizedData = {}
-    for (let spotData of data) {
-        normalizedData[spotData.id] = spotData
-    }
-    return normalizedData
-}
-
-//action create
+// const CURRENT_SPOTS = "/spots/CURRENT_SPOTS";
 
 const getSpots = (allSpots) => {
   return {
     type: GET_SPOTS,
     allSpots,
+  };
+};
+
+export const actionReadSpots = (spots) => {
+  return {
+    type: READ_SPOTS,
+    spots,
   };
 };
 
@@ -57,26 +55,26 @@ const createSpot = (spots) => {
 };
 
 export const createSpotThunk = (spotFormInfo) => async (dispatch) => {
-  const response = await csrfFetch('/api/spots', {
+  const response = await csrfFetch("/api/spots", {
     method: "POST",
-    headers: { "Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(spotFormInfo),
   });
 
   if (response.ok) {
     const data = await response.json();
-    return data
+    return data;
   }
 };
 
 export const createImageThunk = (img, spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}/images`, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(img)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(img),
   });
 
-  if(response.ok) {
+  if (response.ok) {
     const data = await response.json();
     return data;
   }
@@ -92,7 +90,7 @@ const updateSpot = (oneSpot) => {
 export const updateSpotThunk = (oneSpot, spotId) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: "PUT",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(oneSpot),
   });
 
@@ -102,12 +100,19 @@ export const updateSpotThunk = (oneSpot, spotId) => async (dispatch) => {
   }
 };
 
-const removeSpot = (spot) => {
+const removeSpot = (spotId) => {
   return {
-
     type: DELETE_SPOT,
-    spot,
+    spotId,
   };
+};
+
+export const readThunk = () => async (dispatch) => {
+  const res = await csrfFetch("/api/spots");
+  if (res.ok) {
+    const spots = await res.json();
+    dispatch(actionReadSpots(spots));
+  }
 };
 
 export const removeSpotThunk = (id) => async (dispatch) => {
@@ -117,29 +122,30 @@ export const removeSpotThunk = (id) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(removeSpot(data));
+    dispatch(removeSpot(data.spotId));
     return data;
   }
 };
 
-export const getCurrentUserSpots = (userSpot) => {
-  return {
-    type: CURRENT_SPOTS,
-    userSpot,
-  };
-};
+// const getCurrentUserSpots = (userSpot) => {
+//   return {
+//     type: CURRENT_SPOTS,
+//     userSpot,
+//   };
+// };
 
-export const thunkCurrentUsersSpots = () => async (dispatch) => {
-  const response = await csrfFetch("/api/spots/current");
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(getCurrentUserSpots(data.Spots));
-    return data;
-  }
-};
+// export const getCurrentUserSpotsThunk = () => async (dispatch) => {
+//   const response = await csrfFetch("/api/spots/current");
+//   if (response.ok) {
+//     const data = await response.json();
+//     dispatch(getCurrentUserSpots(data.Spots));
+//     return data.Spots;
+//   }
+// };
 
-//reducer
-const initialState = { allSpots: {}, singleSpot: {} };
+
+
+const initialState = { allSpots: {}, singleSpot: {}, currentUserSpots: {} };
 
 const spotsReducer = (state = initialState, action) => {
   let newState = { ...state };
@@ -154,23 +160,30 @@ const spotsReducer = (state = initialState, action) => {
       newState.singleSpot = action.spot;
       return newState;
     }
-    case CURRENT_SPOTS: {
-      let newState = Object.assign({}, state);
 
-      const userSpots = normalizeData(action.userSpot);
-      newState = userSpots;
-      return newState;
-    }
     case EDIT_SPOT: {
-      newState = { ...state };
       newState[action.oneSpot.id] = action.oneSpot;
       return newState;
     }
+
     case DELETE_SPOT: {
-      const newState = { ...state };
       delete newState[action.spotId];
       return newState;
     }
+
+    // case CURRENT_SPOTS: {
+    //   newState.currentUserSpots = action.userSpot;
+    //   return newState;
+    // }
+
+    case READ_SPOTS: {
+      let newState = Object.assign({}, state);
+      for (let spot of action.spots.Spots) {
+        newState[spot.id] = spot;
+      }
+      return newState;
+    }
+
     default:
       return state;
   }

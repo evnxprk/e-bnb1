@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUserSpots } from "../../../store/spot-reducer";
+import { getCurrentUserSpotsThunk } from "../../../store/spot-reducer";
 import { useModal } from "../../../context/Modal";
 
 function UserSpots() {
@@ -9,18 +9,22 @@ function UserSpots() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
-  const userSpots = useSelector((state) => state.spots.user);
+  const userSpots = useSelector((state) => state.spots.currentUserSpots);
+    // const sessionUser = useSelector((state) => state.session.user)
 
   useEffect(() => {
-    dispatch(getCurrentUserSpots()).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
-  }, [dispatch, setErrors]);
+    // console.log('session', sessionUser.id)
+        dispatch(getCurrentUserSpotsThunk())
+//     .catch(async (res) => {
+//       const data = await res.json();
+//       if (data && data.errors) setErrors(data.errors);
+//     });
+//   }, [dispatch]);
+  }, [dispatch])
 
-  if (!userSpots) {
-    return null;
-  }
+//   if (!userSpots) {
+//     return null;
+//   }
 
   return (
     <div className="my-spots">
@@ -31,7 +35,7 @@ function UserSpots() {
         {Object.values(userSpots).length ? (
           Object.values(userSpots).map((spot) => (
             <div className="my-spots-card-div" key={spot.id}>
-              <div>{spot.spot}</div>
+              <div>{spot.name}</div>
               <div>{spot.stars}</div>
             </div>
           ))

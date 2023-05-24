@@ -32,12 +32,12 @@ export default function Bookings() {
     return dispatch(createBookingsThunk(bookingData, spotId))
       .then(() => {
         closeModal();
-        history.push("/dashboard"); 
+        history.push("/"); 
       })
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(Object.values(data.errors));
-      });
+    //   .catch(async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) setErrors(Object.values(data.errors));
+    //   });
 
   };
 

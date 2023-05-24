@@ -11,7 +11,8 @@ import EditSpot from "./components/Spots/EditSpots/EditSpots";
 import CreateReviews from "./components/Reviews/CreateReviews/CreateReviews";
 // import MySpotLists from "./components/CurrentSpots";
 import UserReviews from "./components/Reviews/UserReviews";
-import UserSpots from "./components/Spots/UserSpots/userspots";
+import UserBookings from "./components/Bookings/UserBookings";
+// import UserSpots from "./components/Spots/UserSpots/userspots";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,15 +27,15 @@ function App() {
         <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <Switch>
-            <Route exact path="/dashboard">
+            <Route exact path="/">
               <GetAllSpots />
             </Route>
             <Route exact path="/spots/:spotId">
               <MySpot />
             </Route>
-            <Route exact path="/listings">
+            {/* <Route exact path="/listings">
               <UserSpots />
-            </Route>
+            </Route> */}
             <Route exact path="/my-reviews">
               <UserReviews />
             </Route>
@@ -46,6 +47,9 @@ function App() {
             </Route>
             <Route path="/new">
               <CreateForm />
+            </Route>
+            <Route path= '/bookings'>
+              <UserBookings />
             </Route>
           </Switch>
         )}

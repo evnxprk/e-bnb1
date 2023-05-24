@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 import * as sessionActions from "../../store/session";
 import night from "../../nights.png";
 import "./Navigation.css";
+import SearchBar from "../SearchBar";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -38,6 +39,7 @@ function Navigation({ isLoaded }) {
         <img className="logo" src={night} sizes="32x32" />
       </NavLink>
       <h1 className="cloudy">CLOUDY NIGHTS </h1>
+      <SearchBar />
       <div className="login-space">
         <div className="create-new-listing">
           {sessionUser ? (
