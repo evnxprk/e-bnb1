@@ -22,7 +22,7 @@ const MySpot = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const spot = useSelector((state) => state.spots.singleSpot);
   const spots = Object.values(spot);
-  const reviews = useSelector((state) => state.reviews);
+  const reviews = useSelector((state) => state.review);
   // const allReviews = Object.values(reviews);
   const allReviews = reviews ? Object.values(reviews) : [];
   // const [randomNumber, setRandomNumber] = useState(2);
@@ -30,18 +30,21 @@ const MySpot = () => {
   console.log("what is appearing here in allReviews?????", allReviews);
   // console.log("what is appearing here in reviews?????", reviews);
   console.log("need ownerId: ", spot);
+  console.log('reviews', allReviews)
+  // console.log('this', reviews)
+  // console.log('x', useSelector((state) => state))
   // const review = useSelector(state => state.reviews.userReview)
   // console.log("i need stars: ", reviews)
   // console.log("i need spots: ", spots);
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
+      dispatch(getAllReviewsThunk(spotId));
     // setRandomNumber(Math.floor(Math.random() * 10));
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
-  useEffect(() => {
-    dispatch(getAllReviewsThunk(spotId));
-  }, [dispatch]);
+  // useEffect(() => {
+  // }, [dispatch]);
 
   if (!spots.length) return null;
 
@@ -78,20 +81,20 @@ const MySpot = () => {
             </div>
           </div>
           <div className="owner-spot-buttons">
-            {/* <div className="edit-spot-button">
+            <div className="edit-spot-button">
               {sessionUser && sessionUser.id === spot.ownerId ? (
                 <NavLink to={`/manage/${spotId}`}>
                   <button className="edit-spot-button">Edit Spot</button>
                 </NavLink>
               ) : null}
-            </div> */}
-            {/* <div className="delete-spot">
+            </div>
+            <div className="delete-spot">
               {sessionUser && sessionUser.id === spot.ownerId ? (
                 <button className="delete-spot" onClick={(e) => spotRemoval(e)}>
                   Delete Spot
                 </button>
               ) : null}
-            </div> */}
+            </div>
           </div>
         </div>
         {spot.SpotImages.map((image, idx) => {
@@ -155,6 +158,7 @@ const MySpot = () => {
         </div>
       </div>
       <div className="amenities-list">
+        <div className='box-one'>
         <div className="house-amenities">What this place offers:</div>
         <div className="kitchen">
           <i className="fas fa-utensils"></i>Kitchen
@@ -179,10 +183,10 @@ const MySpot = () => {
         <div className="wifi">
           <i className="fas fa-wifi"></i>Fast Internet
         </div>
+        </div>
+        <div className='box-two'>
         <Bookings />
-        
-
-        <p></p>
+        </div>
       </div>
       <div className="review-container">
         <div className="review-count-container">
@@ -204,12 +208,15 @@ const MySpot = () => {
         </div>
         <div className="all-reviews">
           <div className="double-cards">
-            {allReviews.map((review) => (
+            {allReviews.map((review) => {
+              const reviewUser = review.User || {};
+              return (
               <div className="all-reviews">
                 <div className="session-name">
                   <span className="review-user">
-                    <i className="fas fa-user-circle"></i>{" "}
-                    {review.User.username}
+                    <i className="fas fa-user-circle"></i>
+                    {/* {review.User.firstName} */}
+                    {reviewUser.firstName}
                   </span>
                   <p></p>
                   <span className="review-stars">
@@ -219,6 +226,7 @@ const MySpot = () => {
                   <span className="reviews-overview">
                     Review: {review.review}
                   </span>
+                  <span>Hi</span>
                   <div className="delete-review">
                     {sessionUser && sessionUser.id === review.userId ? (
                       <button
@@ -233,11 +241,11 @@ const MySpot = () => {
                       >
                         Delete Review
                       </button>
-                    ) : null}
+                    ) : (null)}
                   </div>
                 </div>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       </div>

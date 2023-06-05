@@ -1,7 +1,10 @@
 .spot-image {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .reviews-total {
@@ -11,76 +14,33 @@
 }
 
 .spot-name {
-  /* color: rgb(239, 137, 154); */
+  color: #ef899a;
   font-size: 30px;
 }
-.fa-award {
-  padding-right: 6px;
-  padding-left: 3px;
-  /* margin: 2px; */
-  display: flex;
-  align-items: center;
-}
 
-.fa-utensils {
-  padding-right: 6px;
-  display: inline-block;
-  align-items: center;
-}
-.fa-car {
-  padding-right: 6px;
-  display: inline-block;
-  align-items: center;
-}
-
-.fa-star {
-  align-items: center;
-  padding-right: 6px;
-}
-.fa-swimming-pool {
+.fa-award,
+.fa-utensils,
+.fa-car,
+.fa-star,
+.fa-swimming-pool,
+.fa-umbrella-beach,
+.fa-tv,
+.fa-wifi,
+.fa-lock,
+.fa-home,
+.fa-key,
+.fa-user-circle {
   padding-right: 6px;
   display: inline-block;
   align-items: center;
 }
 
-.fa-umbrella-beach {
-  padding-right: 6px;
-  display: inline-block;
-  align-items: center;
-}
-.fa-tv {
-  padding-right: 6px;
-  display: inline-block;
-  align-items: center;
-}
-.fa-wifi {
-  padding-right: 6px;
-  display: inline-block;
-  align-items: center;
-}
+.review-count,
+.location-details,
+.review-location-container,
 .review-count {
   display: flex;
-  /* margin: 2px; */
-  /* padding-bottom: 20px; */
-  padding-top: 6px;
-  /* font-weight: bold; */
-  align-items: center;
-}
-.location-details {
-  display: flex;
-  align-items: center;
   padding-bottom: 6px;
-}
-.review-location-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.review-count {
-  display: flex;
-  /* margin: 2px; */
-  padding-bottom: 6px;
-  /* justify-content: flex-start; */
   font-weight: bold;
   align-items: center;
 }
@@ -89,11 +49,10 @@
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
-  /* align-items: center; */
 }
 
 .entire-home-description {
-  /* color: rgb(239, 137, 154); */
+  color: #ef899a;
   font-size: 25px;
   font-weight: bold;
   padding-bottom: 8px;
@@ -102,13 +61,10 @@
 
 .owner-container {
   border-bottom: 1px solid gray;
-  /* padding-top: 10px; */
   padding-bottom: 22px;
 }
 
 .house-stats {
-  /* padding: 3px; */
-  /* margin: 2px; */
   margin-bottom: 6px;
   display: flex;
   font-weight: bold;
@@ -117,15 +73,13 @@
 .owner-superhost {
   font-size: 22px;
   font-weight: bold;
-  /* color: rgb(239, 137, 154); */
+  color: #ef899a;
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
 .superhost {
-  /* padding: 6px; */
   border-bottom: 1px solid gray;
-  /* padding-top: 22px; */
   padding-bottom: 22px;
 }
 
@@ -133,50 +87,24 @@
   margin: 3px;
 }
 
-.edit-spot-button {
-  margin: 5px;
-  border-radius: 8em;
-  border: none;
-  background-color: rgb(235, 117, 117);
-  /* display: inline; */
-  /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
-  font-size: 16px;
-  cursor: pointer;
-}
-
+.edit-spot-button,
 .delete-spot {
-  font-size: 16px;
-  border-radius: 8em;
   margin: 5px;
+  border-radius: 8em;
   border: none;
-  background-color: rgb(235, 117, 117);
-  /* text-decoration: underline; */
-  display: inline;
-  /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
-  float: right;
+  background-color: #eb7575;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.fa-lock {
-  padding-right: 6px;
-}
 .check-in {
   font-weight: bold;
 }
-.checkin-description {
-  font-size: 15px;
-  color: rgb(107, 98, 98);
-}
-.fa-home {
-  padding-right: 6px;
-}
-.fa-key {
-  padding-right: 6px;
-}
 
+.checkin-description,
 .location-description {
   font-size: 15px;
-  color: rgb(107, 98, 98);
+  color: #6b6262;
 }
 
 .location {
@@ -203,11 +131,7 @@
 }
 
 .spots-description {
-  /* padding: 10px; */
-  /* border-bottom: 1px solid gray; */
   display: block;
-  /* width:150px; */
-  /* word-wrap:break-word; */
 }
 
 .house-amenities {
@@ -215,19 +139,12 @@
   padding-top: 20px;
   font-size: 20px;
   font-weight: bold;
-  /* color: rgb(239, 137, 154); */
 }
 
 .review-container-title {
   padding: 10px;
   font-size: 20px;
   font-weight: bold;
-  /* color: rgb(239, 137, 154); */
-}
-
-.fa-user-circle {
-  padding: 5px;
-  display: inline-block;
 }
 
 .session-name {
@@ -237,66 +154,48 @@
 
 .all-reviews-container {
   display: flex;
-  /* justify-content: center; */
 }
 
 .reviews-count-container {
   display: flex;
   justify-content: space-between;
 }
+
 .review-spot-button {
-font-size: 15px;
+  font-size: 15px;
   border-radius: 10em;
-  /* margin: 5px; */
   border: none;
   cursor: pointer;
-  background-color: rgb(251, 174, 144);
+  background-color: #fbae90;
   display: flex;
   float: right;
   cursor: pointer;
-  /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
 }
-
 
 .review-spot {
   padding: 5px;
   display: flex;
   justify-content: space-between;
-  /* cursor: pointer; */
-  
 }
+
 .amenities-list {
-  border-bottom: 1px solid gray;
+  /* border-bottom: 1px solid gray; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .delete-review-button {
-  /* padding-top: 20px; */
   border-radius: 8em;
-  background-color: rgb(236, 161, 133);
+  background-color: #eca185;
   cursor: pointer;
-  /* text-decoration: underline; */
 }
 
-.kitchen {
-  font-size: 20px;
-}
-
-.parking {
-  font-size: 20px;
-}
-
-.beach {
-  font-size: 20px;
-}
-
-.pool {
-  font-size: 20px;
-}
-
-.tv {
-  font-size: 20px;
-}
-
+.kitchen,
+.parking,
+.beach,
+.pool,
+.tv,
 .wifi {
   font-size: 20px;
 }

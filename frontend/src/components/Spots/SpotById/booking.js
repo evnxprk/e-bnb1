@@ -6,13 +6,15 @@ import { createBookingsThunk } from "../../../store/bookings";
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory, useParams } from "react-router-dom";
+import './Bookings.css'
 
-export default function Bookings() {
+export default function Bookings({spot}) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
   const history = useHistory();
   const { spotId } = useParams();
   const mySpot = useSelector((state) => state.spots.singleSpot);
+  // const spot = useSelector(state => state.spots.singleSpot)
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -74,7 +76,27 @@ export default function Bookings() {
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </label>
-            <button className="button form-button" type="submit">
+            <div className="cleaning-fees" style={{ fontSize: "20px" }}>
+              {" "}
+              Cleaning fee: $120
+            </div>
+            <div className="taxes-fees" style={{ fontSize: "20px" }}>
+              Taxes and fees: $80
+            </div>
+            <div
+              className="total-price"
+              style={{
+                fontSize: "20px",
+                // borderBottom: "1px solid gray",
+                paddingBottom: "5px",
+                padding: "5px" 
+              }}
+            >Total before taxes: ${mySpot.price}
+            </div>
+            <button
+              className="button form-button"
+              type="submit"
+            >
               Confirm your stay with us
             </button>
           </form>
