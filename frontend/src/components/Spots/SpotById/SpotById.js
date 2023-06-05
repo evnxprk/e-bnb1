@@ -157,35 +157,41 @@ const MySpot = () => {
           listing inaccuracies, and other issues like trouble checking in.
         </div>
       </div>
-      <div className="amenities-list">
-        <div className='box-one'>
-        <div className="house-amenities">What this place offers:</div>
-        <div className="kitchen">
-          <i className="fas fa-utensils"></i>Kitchen
+      <div className="amenities-list" style={{borderBottom: '1px gray solid'}}>
+        <div className="box-one">
+          <div className="house-amenities">What this place offers:</div>
+          <div className="kitchen">
+            <i className="fas fa-utensils"></i>Kitchen
+          </div>
+          <p></p>
+          <div className="parking">
+            <i className="fas fa-car"></i>Free Parking{" "}
+          </div>
+          <p></p>
+          <div className="pool">
+            <i className="fas fa-swimming-pool"></i>Swimming Pool
+          </div>
+          <p></p>
+          <div className="beach">
+            <i className="fas fa-umbrella-beach"></i>Beach Access
+          </div>
+          <p></p>
+          <div className="tv">
+            <i className="fas fa-tv"></i>Smart TV
+          </div>
+          <p></p>
+          <div className="wifi">
+            <i className="fas fa-wifi"></i>Fast Internet
+          </div>
+          <div className="shower">
+            <i className="fas fa-shower"></i>Shower
+          </div>
+          <div className="ac">
+            <i className="fas fa-wind"></i> Air Conditioner
+          </div>
         </div>
-        <p></p>
-        <div className="parking">
-          <i className="fas fa-car"></i>Free Parking{" "}
-        </div>
-        <p></p>
-        <div className="pool">
-          <i className="fas fa-swimming-pool"></i>Swimming Pool
-        </div>
-        <p></p>
-        <div className="beach">
-          <i className="fas fa-umbrella-beach"></i>Beach Access
-        </div>
-        <p></p>
-        <div className="tv">
-          <i className="fas fa-tv"></i>Smart TV
-        </div>
-        <p></p>
-        <div className="wifi">
-          <i className="fas fa-wifi"></i>Fast Internet
-        </div>
-        </div>
-        <div className='box-two'>
-        <Bookings />
+        <div className="box-two">
+          <Bookings />
         </div>
       </div>
       <div className="review-container">
@@ -211,41 +217,41 @@ const MySpot = () => {
             {allReviews.map((review) => {
               const reviewUser = review.User || {};
               return (
-              <div className="all-reviews">
-                <div className="session-name">
-                  <span className="review-user">
-                    <i className="fas fa-user-circle"></i>
-                    {/* {review.User.firstName} */}
-                    {reviewUser.firstName}
-                  </span>
-                  <p></p>
-                  <span className="review-stars">
-                    Rating: <i className="fas fa-star"></i> {review.stars}
-                  </span>
-                  <p></p>
-                  <span className="reviews-overview">
-                    Review: {review.review}
-                  </span>
-                  <span>Hi</span>
-                  <div className="delete-review">
-                    {sessionUser && sessionUser.id === review.userId ? (
-                      <button
-                        className="delete-review-button"
-                        onClick={async (e) => {
-                          e.preventDefault();
-                          const deleteReview = await dispatch(
-                            deleteReviewsThunk(review.id)
-                          );
-                          refreshPage();
-                        }}
-                      >
-                        Delete Review
-                      </button>
-                    ) : (null)}
+                <div className="all-reviews">
+                  <div className="session-name">
+                    <span className="review-user">
+                      <i className="fas fa-user-circle"></i>
+                      {/* {review.User.firstName} */}
+                      {reviewUser.firstName}
+                    </span>
+                    <p></p>
+                    <span className="review-stars">
+                      Rating: <i className="fas fa-star"></i> {review.stars}
+                    </span>
+                    <p></p>
+                    <span className="reviews-overview">
+                      Review: {review.review}
+                    </span>
+                    <div className="delete-review">
+                      {sessionUser && sessionUser.id === review.userId ? (
+                        <button
+                          className="delete-review-button"
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            const deleteReview = await dispatch(
+                              deleteReviewsThunk(review.id)
+                            );
+                            refreshPage();
+                          }}
+                        >
+                          Delete Review
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )})}
+              );
+            })}
           </div>
         </div>
       </div>

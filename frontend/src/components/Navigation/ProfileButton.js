@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
 import GetAllSpots from "../Spots/GetAllSpots/GetSpots";
+import './profilebutton.css'
 
 function ProfileButton({ user }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -19,7 +20,7 @@ function ProfileButton({ user }) {
     setShowMenu(true);
   };
 
-  const handleClick = () => {
+  const listingClick = () => {
     closeMenu();
     history.push("/listings");
   };
@@ -79,11 +80,12 @@ function ProfileButton({ user }) {
               >
                 LinkedIn
               </button>
+              
             ) : null}
-            <div className="linkedin-border"></div>
+            {/* <div className="linkedin-border"></div> */}
             <span>
               {sessionUser ? (
-                <button onClick={handleClick} className="my-listings">
+                <button onClick={listingClick} className="my-listings">
                   My Listings
                 </button>
               ) : null}

@@ -29,10 +29,15 @@
 .fa-lock,
 .fa-home,
 .fa-key,
-.fa-user-circle {
-  padding-right: 6px;
-  display: inline-block;
+.fa-user-circle,
+.fa-wind,
+.fa-shower {
+  padding-right: 3px;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
 }
 
 .review-count,
@@ -196,6 +201,8 @@
 .beach,
 .pool,
 .tv,
-.wifi {
+.wifi,
+.ac,
+.shower {
   font-size: 20px;
 }

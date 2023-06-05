@@ -38,7 +38,7 @@ function Navigation({ isLoaded }) {
       <NavLink exact to="/">
         <img className="logo" src={night} sizes="32x32" />
       </NavLink>
-      <h1 className="cloudy">CLOUDY NIGHTS </h1>
+      {/* <h1 className="cloudy">CLOUDY NIGHTS </h1> */}
       <SearchBar />
       <div className="login-space">
         <div className="create-new-listing">

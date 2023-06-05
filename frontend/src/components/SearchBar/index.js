@@ -51,7 +51,7 @@ const SearchBar = () => {
           />
 
           {search === "" ? (
-            <i className="fa-solid fa-magnifying-glass nav-search-icon"></i>
+            <i className="fas fa-search"></i>
           ) : (
             <i
               className="fa-solid fa-xmark nav-search-x"

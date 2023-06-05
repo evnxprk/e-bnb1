@@ -1,27 +1,22 @@
-import React from "react"; // Import useState from 'react'
+import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { createBookingsThunk } from "../../../store/bookings";
-// import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { useHistory, useParams } from "react-router-dom";
-import './Bookings.css'
+import "./Bookings.css";
 
-export default function Bookings({spot}) {
+export default function Bookings({ spot }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
   const history = useHistory();
   const { spotId } = useParams();
   const mySpot = useSelector((state) => state.spots.singleSpot);
-  // const spot = useSelector(state => state.spots.singleSpot)
+  const sessionUser = useSelector((state) => state.session.user);
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [errors, setErrors] = useState([]);
-
-  //   const newStartDate = (date) => setStartDate(date);
-  //   const newEndDate = (date) => setEndDate(date);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,21 +26,34 @@ export default function Bookings({spot}) {
       startDate,
       endDate,
     };
-    return dispatch(createBookingsThunk(bookingData, spotId))
-      .then(() => {
-        closeModal();
-        history.push("/"); 
-      })
-    //   .catch(async (res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) setErrors(Object.values(data.errors));
-    //   });
+    return dispatch(createBookingsThunk(bookingData, spotId)).then(() => {
+      closeModal();
+      history.push("/");
+    });
+  };
 
+  const renderLoginMessage = () => {
+    if (!sessionUser) {
+      return (
+        <div className="login-message" style={{ fontWeight: "bold" }}>
+          Please
+          <span
+            className="login-link"
+            style={{ fontWeight: "bold" }}>
+            {" "}
+            log in
+          </span>
+          to create a booking.
+        </div>
+      );
+    }
+    return null;
   };
 
   return (
     <div>
       <div className="create-booking-container">
+        {renderLoginMessage()}
         <div>
           <ul className="errors-list">
             {errors.map((error) => (
@@ -76,29 +84,32 @@ export default function Bookings({spot}) {
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </label>
-            <div className="cleaning-fees" style={{ fontSize: "20px" }}>
-              {" "}
-              Cleaning fee: $120
+            <div className="cleaning-fees" style={{ fontSize: "20px" }}>Cleaning fee: $17
             </div>
-            <div className="taxes-fees" style={{ fontSize: "20px" }}>
+            {/* <div className="taxes-fees" style={{ fontSize: "20px" }}>
               Taxes and fees: $80
-            </div>
+            </div> */}
             <div
               className="total-price"
               style={{
                 fontSize: "20px",
-                // borderBottom: "1px solid gray",
-                paddingBottom: "5px",
-                padding: "5px" 
+                paddingBottom: "15px",
+                // padding: "5px",
               }}
             >Total before taxes: ${mySpot.price}
             </div>
-            <button
-              className="button form-button"
-              type="submit"
-            >
-              Confirm your stay with us
-            </button>
+            {sessionUser ? (
+              <button className="button form-button" type="submit">
+                Confirm your stay with us
+              </button>
+            ) : (
+              <button
+                className="button form-button"
+                onClick={() => history.push("/login")}
+              >
+                Log in to create a booking
+              </button>
+            )}
           </form>
         </section>
       </div>
