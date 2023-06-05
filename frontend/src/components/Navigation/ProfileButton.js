@@ -71,6 +71,7 @@ function ProfileButton({ user }) {
             {sessionUser ? (
               <button
                 className="linkedin-button"
+                color="black"
                 style={{ border: "none", backgroundColor: "transparent" }}
                 onClick={() =>
                   window.open(
@@ -84,11 +85,11 @@ function ProfileButton({ user }) {
             ) : null}
             {/* <div className="linkedin-border"></div> */}
             <span>
-              {sessionUser ? (
+              {/* {sessionUser ? (
                 <button onClick={listingClick} className="my-listings">
                   My Listings
                 </button>
-              ) : null}
+              ) : null} */}
               {sessionUser ? (
                 <button onClick={bookingClick} className="my-bookings">
                   My Bookings

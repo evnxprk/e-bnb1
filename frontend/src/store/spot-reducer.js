@@ -6,7 +6,7 @@ const CREATE_SPOT = "/spots/CREATE_SPOT";
 const EDIT_SPOT = "/spots/EDIT_SPOT";
 const DELETE_SPOT = "/spots/DELETE_SPOT";
 const ONE_SPOT = "/spots/ONE_SPOT";
-// const CURRENT_SPOTS = "/spots/CURRENT_SPOTS";
+const CURRENT_SPOTS = "/spots/CURRENT_SPOTS";
 
 const getSpots = (allSpots) => {
   return {
@@ -127,21 +127,21 @@ export const removeSpotThunk = (id) => async (dispatch) => {
   }
 };
 
-// const getCurrentUserSpots = (userSpot) => {
-//   return {
-//     type: CURRENT_SPOTS,
-//     userSpot,
-//   };
-// };
+const getCurrentUserSpots = (userSpot) => {
+  return {
+    type: CURRENT_SPOTS,
+    userSpot,
+  };
+};
 
-// export const getCurrentUserSpotsThunk = () => async (dispatch) => {
-//   const response = await csrfFetch("/api/spots/current");
-//   if (response.ok) {
-//     const data = await response.json();
-//     dispatch(getCurrentUserSpots(data.Spots));
-//     return data.Spots;
-//   }
-// };
+export const getCurrentUserSpotsThunk = () => async (dispatch) => {
+  const response = await csrfFetch("/api/spots/current");
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getCurrentUserSpots(data.Spots));
+    return data.Spots;
+  }
+};
 
 
 
@@ -171,10 +171,10 @@ const spotsReducer = (state = initialState, action) => {
       return newState;
     }
 
-    // case CURRENT_SPOTS: {
-    //   newState.currentUserSpots = action.userSpot;
-    //   return newState;
-    // }
+    case CURRENT_SPOTS: {
+      newState.currentUserSpots = action.userSpot;
+      return newState;
+    }
 
     case READ_SPOTS: {
       let newState = Object.assign({}, state);

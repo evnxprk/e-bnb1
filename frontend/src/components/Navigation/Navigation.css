@@ -21,6 +21,7 @@
 .profile-open-button {
   /* border: 3px solid orange; */
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border-radius: 30px;
   border: 1px solid gray;

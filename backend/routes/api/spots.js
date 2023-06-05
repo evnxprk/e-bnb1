@@ -88,7 +88,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
     let spot = spots[i];
     spot = spot.toJSON();
 
-    console.log(spot);
+    console.log(spotArr);
 
     const starRatings = await Review.findAll({
       where: {

@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneSpotThunk, removeSpotThunk } from "../../../store/spot-reducer";
+import { getOneSpotThunk, removeSpotThunk, updateSpotThunk } from "../../../store/spot-reducer";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import "./SpotById.css";
 import AllReviews from "../../Reviews/AllReviews/AllReviews";
 import CreateReviews from "../../Reviews/CreateReviews/CreateReviews";
-// import AllReviews from '../../Reviews/AllReviews/AllReviews'
 import Bookings from "./booking";
-
-
 import {
   deleteReviewsThunk,
   getAllReviewsThunk,
@@ -17,34 +14,17 @@ import {
 const MySpot = () => {
   const { spotId } = useParams();
   const history = useHistory();
-  const { reviewId } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const spot = useSelector((state) => state.spots.singleSpot);
   const spots = Object.values(spot);
   const reviews = useSelector((state) => state.review);
-  // const allReviews = Object.values(reviews);
   const allReviews = reviews ? Object.values(reviews) : [];
-  // const [randomNumber, setRandomNumber] = useState(2);
-  // console.log("the sessionUser: ", sessionUser)
-  console.log("what is appearing here in allReviews?????", allReviews);
-  // console.log("what is appearing here in reviews?????", reviews);
-  console.log("need ownerId: ", spot);
-  console.log('reviews', allReviews)
-  // console.log('this', reviews)
-  // console.log('x', useSelector((state) => state))
-  // const review = useSelector(state => state.reviews.userReview)
-  // console.log("i need stars: ", reviews)
-  // console.log("i need spots: ", spots);
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
-      dispatch(getAllReviewsThunk(spotId));
-    // setRandomNumber(Math.floor(Math.random() * 10));
+    dispatch(getAllReviewsThunk(spotId));
   }, [dispatch, spotId]);
-
-  // useEffect(() => {
-  // }, [dispatch]);
 
   if (!spots.length) return null;
 
@@ -53,17 +33,22 @@ const MySpot = () => {
     await dispatch(removeSpotThunk(spotId));
     history.push("/");
   };
+  const editSpot = async (e) => {
+    e.preventDefault();
+    await dispatch(updateSpotThunk(spotId));
+    history.push("/");
+  };
 
   const refreshPage = async () => {
     await dispatch(getAllReviewsThunk(spotId));
     await dispatch(getOneSpotThunk(spotId));
   };
 
-  let hasReview = false
+  let hasReview = false;
   if (allReviews.length && sessionUser) {
     allReviews.forEach((review) => {
       if (review.userId === sessionUser.id) {
-        hasReview = true
+        hasReview = true;
       }
     });
   }
@@ -80,22 +65,30 @@ const MySpot = () => {
               {spot.country} ∙ ${spot.price} per night
             </div>
           </div>
-          <div className="owner-spot-buttons">
-            <div className="edit-spot-button">
-              {sessionUser && sessionUser.id === spot.ownerId ? (
-                <NavLink to={`/manage/${spotId}`}>
-                  <button className="edit-spot-button">Edit Spot</button>
-                </NavLink>
-              ) : null}
+          <>
+            <div className="owner-spot-buttons">
+              <div className="edit-spot">
+                {sessionUser && sessionUser.id === spot.ownerId ? (
+                  <button
+                    className="edit-spot"
+                    onClick={(e) => editSpot(e)}
+                  >
+                    Edit Spot
+                  </button>
+                ) : null}
+              </div>
+              <div className="delete-spot">
+                {sessionUser && sessionUser.id === spot.ownerId ? (
+                  <button
+                    className="delete-spot"
+                    onClick={(e) => spotRemoval(e)}
+                  >
+                    Delete Spot
+                  </button>
+                ) : null}
+              </div>
             </div>
-            <div className="delete-spot">
-              {sessionUser && sessionUser.id === spot.ownerId ? (
-                <button className="delete-spot" onClick={(e) => spotRemoval(e)}>
-                  Delete Spot
-                </button>
-              ) : null}
-            </div>
-          </div>
+          </>
         </div>
         {spot.SpotImages.map((image, idx) => {
           if (image.preview === true)
@@ -157,7 +150,10 @@ const MySpot = () => {
           listing inaccuracies, and other issues like trouble checking in.
         </div>
       </div>
-      <div className="amenities-list" style={{borderBottom: '1px gray solid'}}>
+      <div
+        className="amenities-list"
+        style={{ borderBottom: "1px gray solid" }}
+      >
         <div className="box-one">
           <div className="house-amenities">What this place offers:</div>
           <div className="kitchen">

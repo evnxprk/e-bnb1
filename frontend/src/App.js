@@ -12,7 +12,7 @@ import CreateReviews from "./components/Reviews/CreateReviews/CreateReviews";
 // import MySpotLists from "./components/CurrentSpots";
 import UserReviews from "./components/Reviews/UserReviews";
 import UserBookings from "./components/Bookings/UserBookings";
-// import UserSpots from "./components/Spots/UserSpots/userspots";
+import UserSpots from "./components/Spots/UserSpots/userspots";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,9 +33,9 @@ function App() {
             <Route exact path="/spots/:spotId">
               <MySpot />
             </Route>
-            {/* <Route exact path="/listings">
+            <Route exact path="/listings">
               <UserSpots />
-            </Route> */}
+            </Route>
             <Route exact path="/my-reviews">
               <UserReviews />
             </Route>
