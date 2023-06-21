@@ -8,24 +8,26 @@
   margin: 2px;
   font-size: 20px;
 }
+
 .fa-user-circle {
   display: flex;
   padding: 3px;
   margin: 2px;
   font-size: 20px;
 }
+
 .cloudy {
   color: darkcyan;
 }
 
 .profile-open-button {
-  /* border: 3px solid orange; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 30px;
   border: 1px solid gray;
   cursor: pointer;
+  /* padding: 2px; */
 }
 
 .link-to-home-active {
@@ -41,11 +43,9 @@
   width: 80px;
   align-items: center;
   cursor: pointer;
-  /* height: 16px; */
 }
 
 .profile {
-  /* border: 3px solid green; */
   width: 100%;
   flex-direction: row;
   display: flex;
@@ -58,37 +58,28 @@
   padding-bottom: 10px;
 }
 
-/* .profile-container {
-  justify-content: space-evenly;
-  display: flex;
-  width: 100px;
-} */
-
 .profile-nav {
   border-radius: 2em;
-  /* padding: 1em; */
-  /* margin: 3px; */
   align-items: center;
   justify-content: space-between;
   display: flex;
   padding-right: 6px;
-  /* width: 100px */
-  /* gap: 2; */
 }
-*/ .fa-bars:before {
+
+.fa-bars:before {
   padding: 10px;
 }
+
 .login-title {
   font-size: 20px;
 }
 
 .username-input {
-  /* background-color: rgb(217, 214, 214);; */
   padding: 10px;
-  /* margin: 2px; */
 }
+
 #modal-content {
-  background-color: bisque;
+  background-color: white;
 }
 
 .username-input-box {
@@ -103,20 +94,17 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-bottom: 2px solid lightslategray;
   width: 100%;
-  /* margin: 10px; */
-  /* padding: 10px; */
-  /* border: black 1px solid; */
 }
 
-.cloudbnb { 
+.cloudbnb {
   display: flex;
   flex-direction: row;
   position: relative;
 }
+
 .create-new-listing {
   display: flex;
   flex-direction: row;
- 
   width: 170px;
   align-items: center;
   justify-content: flex-end;
@@ -124,14 +112,14 @@
 
 .profile-dropdown {
   border: 1px solid gray;
-  position:absolute;
+  position: absolute;
   right: 15px;
   top: 60px;
   padding: 20px;
-  background-color: bisque;
+  background-color: white;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .login-button {
@@ -145,10 +133,10 @@
 }
 
 .logout-button {
-background-color: beige;
-border-radius: 3em;
-width: 100%;
-display: block;
-align-items: center;
-justify-content: center;
+  /* background-color: beige; */
+  border-radius: 3em;
+  width: 100%;
+  display: block;
+  align-items: center;
+  justify-content: center;
 }

@@ -65,7 +65,7 @@ export default function Bookings({ spot }) {
           <h1>Book your stay with us!</h1>
         </div>
         <section className="form-body-container">
-          <form className="form-body" onSubmit={handleSubmit}>
+          <form className="form-body" onSubmit={handleSubmit} style={{padding:'10px'}}>
             <label className="form-label">
               Start date:
               <input

@@ -6,13 +6,14 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
 import GetAllSpots from "../Spots/GetAllSpots/GetSpots";
-import './profilebutton.css'
+import "./profilebutton.css";
 
 function ProfileButton({ user }) {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
+  const [localUser, setLocalUser] = useState(sessionUser); // Track sessionUser locally
   const ulRef = useRef(null);
 
   const openMenu = () => {
@@ -20,15 +21,12 @@ function ProfileButton({ user }) {
     setShowMenu(true);
   };
 
-  const listingClick = () => {
-    closeMenu();
-    history.push("/listings");
-  };
 
   const reviewClick = () => {
     closeMenu();
     history.push("/my-reviews");
   };
+
   const bookingClick = () => {
     closeMenu();
     history.push("/bookings");
@@ -37,18 +35,23 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   useEffect(() => {
-    if (!showMenu) return;
+    // Update localUser when sessionUser changes
+    setLocalUser(sessionUser);
+  }, [sessionUser]);
 
-    const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
-      }
-    };
+useEffect(() => {
+  if (!showMenu) return;
 
-    document.addEventListener("click", closeMenu);
+  const closeMenu = (e) => {
+    if (ulRef.current && !ulRef.current.contains(e.target)) {
+      setShowMenu(false);
+    }
+  };
 
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  document.addEventListener("click", closeMenu);
+
+  return () => document.removeEventListener("click", closeMenu);
+}, [showMenu]);
 
   const logout = (e) => {
     e.preventDefault();
@@ -68,40 +71,47 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <span>{user.email}</span>
-            {sessionUser ? (
+            {localUser ? (
               <button
                 className="linkedin-button"
                 color="black"
-                style={{ border: "none", backgroundColor: "transparent" }}
+                style={{
+                  border: "none",
+                  backgroundColor: "transparent",
+                  cursor: "pointer",
+                }}
                 onClick={() =>
-                  window.open(
-                    "https://www.linkedin.com/in/eunicexpark01"
-                  )
+                  window.open("https://www.linkedin.com/in/eunicexpark01")
                 }
               >
                 LinkedIn
               </button>
-              
             ) : null}
-            {/* <div className="linkedin-border"></div> */}
             <span>
-              {/* {sessionUser ? (
-                <button onClick={listingClick} className="my-listings">
-                  My Listings
-                </button>
-              ) : null} */}
-              {sessionUser ? (
-                <button onClick={bookingClick} className="my-bookings">
+              {localUser ? (
+                <button
+                  onClick={bookingClick}
+                  className="my-bookings"
+                  style={{ cursor: "pointer" }}
+                >
                   My Bookings
                 </button>
               ) : null}
-              {sessionUser ? (
-                <button onClick={reviewClick} className="my-reviews">
+              {localUser ? (
+                <button
+                  onClick={reviewClick}
+                  className="my-reviews"
+                  style={{ cursor: "pointer" }}
+                >
                   My Reviews
                 </button>
               ) : null}
-              <button className="logout-button" onClick={logout}>
-                Log Out
+              <button
+                className="logout-button"
+                onClick={logout}
+                style={{ cursor: "pointer" }}
+              >
+                Log aOut
               </button>
             </span>
           </>

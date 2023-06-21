@@ -21,8 +21,9 @@ module.exports = {
           country: "USA",
           lat: "01.01",
           lng: "1.00",
-          name: "Lotus",
-          description: "Great spot for getaway from the real world for a bit.",
+          name: "Sea Turtle Suite",
+          description:
+            "Step through the gates of paradise and experience true luxury at Rancho Magdalena.",
           price: 103,
         },
         {
@@ -33,9 +34,9 @@ module.exports = {
           country: "USA",
           lat: "01.02",
           lng: "1.01",
-          name: "Haven",
+          name: "Casa Vinedo Estate",
           description:
-            "Awesome spot for sightseeing the city and its near public transportation",
+            "This is the retreat that you see on TV or in the movies. Come and enjoy one of the most unique and spectacular properties in the country.",
           price: 300,
         },
 
@@ -47,8 +48,9 @@ module.exports = {
           country: "USA",
           lat: "01.03",
           lng: "1.02",
-          name: "Breeze",
-          description: "At the top of the mountain that overlooks the city.",
+          name: "Sunset Paradise",
+          description:
+            "Private, gated French country chateau-inspired home sits at the end of a cul de sac ",
           price: 45,
         },
         {
@@ -59,9 +61,9 @@ module.exports = {
           country: "USA",
           lat: "01.04",
           lng: "1.04",
-          name: "Pearl",
+          name: "Luxury Tuscan Resort",
           description:
-            "Can't wait to see the beach? This is it, it's next to the beach!",
+            "Unwind in 12 themed bedrooms, each with a full bathroom, plus 3 half bathrooms.",
           price: 50,
         },
         {
@@ -72,9 +74,9 @@ module.exports = {
           country: "USA",
           lat: "01.05",
           lng: "1.02",
-          name: "Icebox",
+          name: "Las Ventanas 113",
           description:
-            "Love BTS? Well this is it.",
+            "If you love the original Orlando Theme Home, but need a few more bedrooms, we’ve got you covered with Orlando Theme Home 2.",
           price: 150,
         },
         {
@@ -85,9 +87,9 @@ module.exports = {
           country: "USA",
           lat: "01.0",
           lng: "1.1",
-          name: "Heaven",
+          name: "Sandy Beach Estate",
           description:
-            "Come explore a great city with a house that has a view",
+            "Feel like a VIP with our dedicated concierge who is always on call to help you with any extra services or reservations you may need such as a yacht, night club, restaurants, private chef, massage therapist etc.",
           price: 200,
         },
         {
@@ -98,9 +100,9 @@ module.exports = {
           country: "USA",
           lat: "01.1",
           lng: "1.3",
-          name: "Beachside",
+          name: "15 Acre Luxury Estate",
           description:
-            "Do you love Minecraft? This house is inspired by Haven from Valorant.",
+            "The home is located between the most attractive areas on the coveted East end of 30A.",
           price: 100,
         },
         {
@@ -111,7 +113,7 @@ module.exports = {
           country: "USA",
           lat: "01.2",
           lng: "1.9",
-          name: "Ascent",
+          name: "The Cape Coral Mansion",
           description:
             "Do you like fallen cities? This has a view that overlooks one",
           price: 400,
@@ -124,9 +126,9 @@ module.exports = {
           country: "USA",
           lat: "01.05",
           lng: "1.02",
-          name: "Tree Haven",
+          name: "Old-World Italian Resort Villa",
           description:
-            "A house that has a room with trees in it",
+            "This 7BD 5BA mansion comes with two very spacious living rooms, plenty of lounge space, and two fully equipped kitchen. Not to mention an air hockey table.",
           price: 1000,
         },
         {
@@ -137,9 +139,9 @@ module.exports = {
           country: "USA",
           lat: "01.05",
           lng: "1.02",
-          name: "Squishies",
+          name: "The Mansion at Reunion",
           description:
-            "Love BTS? Well this is it.",
+            "Welcome to The Mansion at Reunion, a luxury vacation pool home overlooking the 14th Hole of the signature Jack Nicklaus golf course.",
           price: 900,
         },
       ],
