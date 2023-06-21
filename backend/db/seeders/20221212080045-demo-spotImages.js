@@ -52,12 +52,12 @@ module.exports = {
         },
         {
           spotId: 5,
-          url: "https://a0.muscache.com/im/pictures/miso/Hosting-12427317/original/f26a8663-fbad-48c7-9992-22eaf93b3a98.jpeg?im_w=1200",
+          url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-578287662374491744/original/4bbe3da8-7c7c-4f1f-bf29-2c8548f1ad56.jpeg?im_w=1440",
           preview: true,
         },
         {
           spotId: 6,
-          url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-52991512/original/17739141-c832-4e64-8efa-e8818cd471aa.jpeg?im_w=1200",
+          url: "https://a0.muscache.com/im/pictures/miso/Hosting-48272221/original/b2991099-0d0b-443c-83df-ca6694b14a65.jpeg?im_w=1440",
           preview: true,
         },
         {
