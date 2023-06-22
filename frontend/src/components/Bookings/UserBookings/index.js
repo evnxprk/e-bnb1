@@ -25,7 +25,7 @@ export default function UserBookings() {
   return (
     <div className="my-bookings">
       <div className="my-bookings-header-div">
-        <span className="no-trips-title">Trips</span>
+        <h2 className="no-trips-title">Trips</h2>
       </div>
       <div className="my-bookings-modal-div">
         {Object.values(userBookings).length ? (
@@ -37,14 +37,19 @@ export default function UserBookings() {
                     src={booking.Spot.previewImage}
                     alt="Preview"
                     className="preview-image"
-                    style={{ width: "500px", borderRadius: "20px" }}
+                    style={{
+                      width: "500px",
+                      borderRadius: "20px",
+                    }}
                   />
                 )}
                 <div
                   className="trips-name"
                   style={{ fontWeight: "bold", fontSize: "24px" }}
                 >
-                  {booking.Spot && booking.Spot.name}
+                  <span style={{ textDecoration: "underline" }}>
+                    {booking.Spot && booking.Spot.name}
+                  </span>
                 </div>
                 <div className="booking-start-date">
                   Start Date: {booking.startDate}

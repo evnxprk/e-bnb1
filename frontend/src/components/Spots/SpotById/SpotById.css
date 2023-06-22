@@ -104,7 +104,7 @@
   border: none;
   font-size: 13px;
   cursor: pointer;
-  background-color: #fff;
+  background-color: rgb(211, 135, 135);
   color: #222;
   display: flex;
   align-items: center;
@@ -112,7 +112,7 @@
   text-align: center;
   padding: 8px 16px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); Add box-shadow */
   transition: background-color 0.3s ease;
 }
 
@@ -125,6 +125,7 @@
 .edit-spot {
   background-color: #fff;
   color: #222;
+  
 }
 
 .delete-spot {
