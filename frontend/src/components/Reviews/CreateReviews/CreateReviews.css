@@ -1,52 +1,69 @@
+.review-form {
+  width: 400px;
+  margin: auto;
+}
+
 .create-review-form {
-color: rgb(0, 0, 0);
-    background-color: white;
-    border-radius: 13px;
-    width: 125px;
-    /* display: grid; */
-    /* grid-template:auto; */
-    height: 40px;
-    margin-right: 20px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 13px;
+  width: 125px;
+  height: 40px;
+  margin-right: 20px;
 }
 
 .errors {
- margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-
 
 .review-input-title {
- margin-left: 4px;
-    margin-bottom: 2px;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    display: flex;
-    /* justify-content:; */
-    align-items: center;
+  margin-left: 4px;
+  margin-bottom: 2px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
-.create-reviews-submit{
- color: white;
-    background-color: rgb(185, 196, 95);
-    height: 60px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: bold;
+.create-reviews-submit {
+  color: #fff;
+  background-color: #b9c45f;
+  height: 60px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
 }
 
-#review-form-inputs {
-     padding: 4px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    height: 50px;
-    font-size: 20px;
-}
-
+#review-form-inputs,
 #rating-form-inputs {
-     padding: 4px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    height: 50px;
-    font-size: 20px;
+  padding: 4px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star-rating label {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 20px;
+  color: #ccc;
+}
+
+.star.filled {
+  color: orange;
+}
+
+.star-rating input[type="radio"] {
+  display: none;
 }

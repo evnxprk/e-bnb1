@@ -24,7 +24,7 @@ module.exports = {
           name: "Sea Turtle Suite",
           description:
             "Step through the gates of paradise and experience true luxury at Rancho Magdalena.",
-          price: 103,
+          price: 3000,
         },
         {
           ownerId: 2,
@@ -37,7 +37,7 @@ module.exports = {
           name: "Casa Vinedo Estate",
           description:
             "This is the retreat that you see on TV or in the movies. Come and enjoy one of the most unique and spectacular properties in the country.",
-          price: 300,
+          price: 4300,
         },
 
         {
@@ -51,7 +51,7 @@ module.exports = {
           name: "Sunset Paradise",
           description:
             "Private, gated French country chateau-inspired home sits at the end of a cul de sac ",
-          price: 45,
+          price: 2390,
         },
         {
           ownerId: 4,
@@ -64,7 +64,7 @@ module.exports = {
           name: "Luxury Tuscan Resort",
           description:
             "Unwind in 12 themed bedrooms, each with a full bathroom, plus 3 half bathrooms.",
-          price: 50,
+          price: 3300,
         },
         {
           ownerId: 5,
@@ -77,7 +77,7 @@ module.exports = {
           name: "Las Ventanas 113",
           description:
             "If you love the original Orlando Theme Home, but need a few more bedrooms, we’ve got you covered with Orlando Theme Home 2.",
-          price: 150,
+          price: 1300,
         },
         {
           ownerId: 5,
@@ -90,7 +90,7 @@ module.exports = {
           name: "Sandy Beach Estate",
           description:
             "Feel like a VIP with our dedicated concierge who is always on call to help you with any extra services or reservations you may need such as a yacht, night club, restaurants, private chef, massage therapist etc.",
-          price: 200,
+          price: 2900,
         },
         {
           ownerId: 1,
@@ -103,7 +103,7 @@ module.exports = {
           name: "15 Acre Luxury Estate",
           description:
             "The home is located between the most attractive areas on the coveted East end of 30A.",
-          price: 100,
+          price: 8000,
         },
         {
           ownerId: 3,
@@ -116,7 +116,7 @@ module.exports = {
           name: "The Cape Coral Mansion",
           description:
             "Do you like fallen cities? This has a view that overlooks one",
-          price: 400,
+          price: 4380,
         },
         {
           ownerId: 2,
@@ -129,7 +129,7 @@ module.exports = {
           name: "Old-World Italian Resort Villa",
           description:
             "This 7BD 5BA mansion comes with two very spacious living rooms, plenty of lounge space, and two fully equipped kitchen. Not to mention an air hockey table.",
-          price: 1000,
+          price: 5000,
         },
         {
           ownerId: 4,
@@ -142,7 +142,7 @@ module.exports = {
           name: "The Mansion at Reunion",
           description:
             "Welcome to The Mansion at Reunion, a luxury vacation pool home overlooking the 14th Hole of the signature Jack Nicklaus golf course.",
-          price: 900,
+          price: 2350,
         },
       ],
       {}
