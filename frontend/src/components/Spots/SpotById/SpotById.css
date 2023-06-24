@@ -280,8 +280,8 @@
   border: 2px solid transparent;
 }
 
-.delete-review-button:hover {
+/* .delete-review-button:hover {
   background-color: rgba(255, 90, 95, 0.1);
   border-color: #ff5a5f;
   color: #ff5a5f;
-}
+} */
