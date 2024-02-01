@@ -1,0 +1,16 @@
+/* Add this to your CSS file */
+.delete-button {
+  background-color: #dc3545; /* Bootstrap's danger color */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* Darker shade on hover */
+}

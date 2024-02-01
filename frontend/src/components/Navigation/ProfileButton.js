@@ -5,7 +5,6 @@ import OpenModalMenuItem from "../OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
-import GetAllSpots from "../Spots/GetAllSpots/GetSpots";
 import "./profilebutton.css";
 
 function ProfileButton({ user }) {
@@ -13,14 +12,13 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
-  const [localUser, setLocalUser] = useState(sessionUser); // Track sessionUser locally
+  const [localUser, setLocalUser] = useState(sessionUser);
   const ulRef = useRef(null);
 
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
-
 
   const reviewClick = () => {
     closeMenu();
@@ -35,23 +33,22 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   useEffect(() => {
-    // Update localUser when sessionUser changes
     setLocalUser(sessionUser);
   }, [sessionUser]);
 
-useEffect(() => {
-  if (!showMenu) return;
+  useEffect(() => {
+    if (!showMenu) return;
 
-  const closeMenu = (e) => {
-    if (ulRef.current && !ulRef.current.contains(e.target)) {
-      setShowMenu(false);
-    }
-  };
+    const closeMenu = (e) => {
+      if (ulRef.current && !ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
 
-  document.addEventListener("click", closeMenu);
+    document.addEventListener("click", closeMenu);
 
-  return () => document.removeEventListener("click", closeMenu);
-}, [showMenu]);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   const logout = (e) => {
     e.preventDefault();
@@ -59,7 +56,7 @@ useEffect(() => {
     closeMenu();
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = `profile-dropdown ${showMenu ? "show" : "hidden"}`;
 
   return (
     <>
@@ -74,12 +71,7 @@ useEffect(() => {
             {localUser ? (
               <button
                 className="linkedin-button"
-                color="black"
-                style={{
-                  border: "none",
-                  backgroundColor: "transparent",
-                  cursor: "pointer",
-                }}
+                style={{ cursor: "pointer" }}
                 onClick={() =>
                   window.open("https://www.linkedin.com/in/eunicexpark01")
                 }
@@ -87,33 +79,33 @@ useEffect(() => {
                 LinkedIn
               </button>
             ) : null}
-            <span>
+            <div>
               {localUser ? (
-                <button
-                  onClick={bookingClick}
-                  className="my-bookings"
-                  style={{ cursor: "pointer" }}
-                >
-                  My Bookings
-                </button>
-              ) : null}
-              {localUser ? (
-                <button
-                  onClick={reviewClick}
-                  className="my-reviews"
-                  style={{ cursor: "pointer" }}
-                >
-                  My Reviews
-                </button>
+                <>
+                  <button
+                    onClick={bookingClick}
+                    className="my-bookings"
+                    style={{ cursor: "pointer" }}
+                  >
+                    My Bookings
+                  </button>
+                  <button
+                    onClick={reviewClick}
+                    className="my-reviews"
+                    style={{ cursor: "pointer" }}
+                  >
+                    My Reviews
+                  </button>
+                </>
               ) : null}
               <button
                 className="logout-button"
                 onClick={logout}
                 style={{ cursor: "pointer" }}
               >
-                Log aOut
+                Log Out
               </button>
-            </span>
+            </div>
           </>
         ) : (
           <>
