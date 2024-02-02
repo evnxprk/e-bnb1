@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editReviewsThunk } from "../../../store/review-reducer";
 import { useModal } from "../../../context/Modal";
-import "./editreviewmodal.css"; // Import your CSS file for styling
+import "./editreviews.css"; // Import your CSS file for styling
 
 function EditReviewModal({ reviewId, onClose }) {
   const dispatch = useDispatch();

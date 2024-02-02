@@ -8,7 +8,7 @@ import {
 } from "../../../store/review-reducer";
 import { useModal } from "../../../context/Modal";
 import "./myreviews.css";
-import EditReviewModal from ""; // Import the modal for editing reviews
+import EditReviewModal from "../EditReviews/editmodal"; // Import the modal for editing reviews
 
 function UserReviews() {
   const dispatch = useDispatch();
@@ -30,10 +30,8 @@ function UserReviews() {
   };
 
   const handleEditReview = (reviewId) => {
-    setShowModal(true);
-    // Save the reviewId to state or pass it directly to EditReviewModal
-    // I'll pass it directly in this example
-    setShowModal({ reviewId });
+    // Pass the reviewId directly to setShowModal
+    setShowModal(reviewId);
   };
 
   if (!userReviews) {
@@ -73,7 +71,12 @@ function UserReviews() {
         )}
       </div>
       {/* Render the EditReviewModal component when the modal is open */}
-      {showModal && <EditReviewModal onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <EditReviewModal
+          reviewId={showModal}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 }
