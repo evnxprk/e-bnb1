@@ -5,7 +5,7 @@ import {
   deleteBookingsThunk,
 } from "../../../store/bookings";
 import DeleteBooking from "../DeleteBookings";
-import
+import "./delete.css"
 
 export default function UserBookings() {
   const dispatch = useDispatch();

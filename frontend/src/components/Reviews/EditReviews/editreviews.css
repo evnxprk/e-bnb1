@@ -1,0 +1,43 @@
+/* editreviews.css */
+
+.edit-review-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.edit-review-modal h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.edit-review-textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+}
+
+.edit-review-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-review-save,
+.edit-review-cancel {
+  background-color: rgba(67, 116, 133, 0.898);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.edit-review-save:hover,
+.edit-review-cancel:hover {
+  background-color: rgb(38, 93, 56);
+}
