@@ -1,14 +1,6 @@
 // UserReviews.js
 
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getUserReviewsThunk,
-  deleteReviewsThunk,
-} from "../../../store/review-reducer";
-import { useModal } from "../../../context/Modal";
-import "./myreviews.css";
-import EditReviewModal from "../EditReviews/editmodal"; // Import the modal for editing reviews
+// ... (other imports)
 
 function UserReviews() {
   const dispatch = useDispatch();
@@ -31,7 +23,7 @@ function UserReviews() {
 
   const handleEditReview = (reviewId) => {
     // Pass the reviewId directly to setShowModal
-    setShowModal(reviewId);
+    setShowModal((prev) => ({ ...prev, editReviewId: reviewId }));
   };
 
   if (!userReviews) {
@@ -40,41 +32,31 @@ function UserReviews() {
 
   return (
     <div className="my-reviews">
-      <div className="my-reviews-header-div">
-        <h1>
-          My Reviews <i className="fas fa-pencil-alt"></i>
-        </h1>
-      </div>
-      <div className="my-reviews-modal-div">
-        {Object.values(userReviews).length ? (
-          Object.values(userReviews).map((review) => (
-            <div className="my-reviews-card-div" key={review.id}>
-              <div className="review-place">Place: {review.Spot.name}</div>
-              <div className="review-text">Review: {review.review}</div>
-              <div className="review-stars">Stars: {review.stars}</div>
-              <button
-                className="edit-review-button"
-                onClick={() => handleEditReview(review.id)}
-              >
-                Edit Review
-              </button>
-              <button
-                className="delete-review-button"
-                onClick={() => handleDeleteReview(review.id)}
-              >
-                Delete Review
-              </button>
-            </div>
-          ))
-        ) : (
-          <div>You have no reviews.</div>
-        )}
-      </div>
+      {/* ... (other JSX) */}
+
+      {Object.values(userReviews).length ? (
+        Object.values(userReviews).map((review) => (
+          <div className="my-reviews-card-div" key={review.id}>
+            {/* ... (other JSX) */}
+            <button
+              className="edit-review-button"
+              onClick={() => handleEditReview(review.id)}
+            >
+              Edit Review
+            </button>
+            {/* ... (other JSX) */}
+          </div>
+        ))
+      ) : (
+        <div>You have no reviews.</div>
+      )}
       {/* Render the EditReviewModal component when the modal is open */}
-      {showModal && (
+      {showModal.editReviewId && (
         <EditReviewModal
-          reviewId={showModal}
-          onClose={() => setShowModal(false)}
+          reviewId={showModal.editReviewId}
+          onClose={() =>
+            setShowModal((prev) => ({ ...prev, editReviewId: null }))
+          }
         />
       )}
     </div>
