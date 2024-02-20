@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { NavLink } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -35,16 +36,14 @@ function LoginFormModal() {
           ))}
         </ul>
 
-
         <label id="login-form-title">LOGIN FORM</label>
-        <label id="welcome-back-login">
-         Welcome to Cloudy Nights!
-        </label>
+        <label id="welcome-back-login">Welcome to Cloudy Nights!</label>
 
         <label id="login-input-title">Username or Email</label>
         <input
           id="login-form-inputs"
           type="text"
+          placeholder="Username or Email"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
@@ -53,10 +52,12 @@ function LoginFormModal() {
         <input
           id="login-form-inputs"
           type="password"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+
         <button className="login-submit-button" type="submit">
           Log In
         </button>
@@ -70,6 +71,8 @@ function LoginFormModal() {
         >
           Demo User Log In
         </button>
+        <label> Don't have an account? Create one now!</label>
+        
       </form>
     </div>
   );
