@@ -12,47 +12,52 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
- const handleSubmit = (e) => {
-   e.preventDefault();
-   setErrors([]);
-   return dispatch(sessionActions.login({ credential, password }))
-     .then(closeModal)
-     .catch(async (res) => {
-       if (res.status === 401) {
-         setErrors(["Incorrect email or password"]);
-       } else {
-         const data = await res.json();
-         if (data && data.errors) setErrors(data.errors);
-       }
-     });
- };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(sessionActions.login({ credential, password }))
+      .then(closeModal)
+      .catch(async (res) => {
+        if (res.status === 401) {
+          setErrors(["Incorrect email or password"]);
+        } else {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        }
+      });
+  };
 
   return (
     <div className="login-modal">
       <form id="login-form" onSubmit={handleSubmit}>
-        <ul>
+        <ul className="error-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
 
-        <label id="login-form-title">LOGIN FORM</label>
-        <label id="welcome-back-login">Welcome to Cloudy Nights!</label>
+        <h2 className="login-form-title">Welcome Back!</h2>
 
-        <label id="login-input-title">Username or Email</label>
+        <label className="login-input-title" htmlFor="credential">
+          Username or Email
+        </label>
         <input
-          id="login-form-inputs"
+          id="credential"
+          className="login-form-inputs"
           type="text"
           placeholder="Username or Email"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
-        <label id="login-input-title">Password</label>
+        <label className="login-input-title" htmlFor="password">
+          Password
+        </label>
         <input
-          id="login-form-inputs"
+          id="password"
+          className="login-form-inputs"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -67,12 +72,13 @@ function LoginFormModal() {
             setCredential("justin@user.io");
             setPassword("password");
           }}
-          type="submit"
+          type="button"
         >
           Demo User Log In
         </button>
-        <label> Don't have an account? Create one now!</label>
-        
+        <p className="create-account-text">
+          Don't have an account? <NavLink to="/signup">Sign Up</NavLink>
+        </p>
       </form>
     </div>
   );
