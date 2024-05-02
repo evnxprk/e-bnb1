@@ -4,7 +4,9 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { useModal } from "../../context/Modal";
 import './SignupForm.css'
-import validator from 'validator'
+import * as validator from "validator";
+
+
 
 
 function SignupFormPage() {

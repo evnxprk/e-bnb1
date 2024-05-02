@@ -15,7 +15,8 @@
     "pg": "^8.8.0",
     "react-datepicker": "^4.11.0",
     "sequelize": "^6.26.0",
-    "sequelize-cli": "^6.5.2"
+    "sequelize-cli": "^6.5.2",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",

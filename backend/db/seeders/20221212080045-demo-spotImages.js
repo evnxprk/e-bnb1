@@ -57,7 +57,7 @@ module.exports = {
         },
         {
           spotId: 6,
-          url: "https://a0.muscache.com/im/pictures/miso/Hosting-48272221/original/b2991099-0d0b-443c-83df-ca6694b14a65.jpeg?im_w=1440",
+          url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-734596846818164578/original/626404c5-4909-4bab-96eb-9c241e8a0e72.jpeg?im_w=1200",
           preview: true,
         },
         {
