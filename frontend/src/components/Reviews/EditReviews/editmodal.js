@@ -8,12 +8,12 @@ import "./editreviews.css"; // Import your CSS file for styling
 
 function EditReviewModal({ reviewId, onClose }) {
   const dispatch = useDispatch();
-  const [editedReview, setEditedReview] = useState(""); // Add state for edited review text
+  const [editedReview, setEditedReview] = useState("");
 
-  const handleEditSubmit = (e) => {
+  const handleEditSubmit = async (e) => {
     e.preventDefault();
-    // Perform your logic to update the review in the backend
-    dispatch(editReviewsThunk({ review: editedReview }, reviewId));
+    // Dispatch the editReviewsThunk to update the review
+    await dispatch(editReviewsThunk({ review: editedReview }, reviewId));
     onClose(); // Close the modal after editing
   };
 
@@ -36,5 +36,6 @@ function EditReviewModal({ reviewId, onClose }) {
     </div>
   );
 }
+
 
 export default EditReviewModal;

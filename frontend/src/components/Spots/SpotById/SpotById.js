@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getOneSpotThunk,
@@ -9,6 +9,7 @@ import { useParams, useHistory, NavLink } from "react-router-dom";
 import "./SpotById.css";
 import AllReviews from "../../Reviews/AllReviews/AllReviews";
 import CreateReviews from "../../Reviews/CreateReviews/CreateReviews";
+import CreateReviewModal from "../../Reviews/CreateReviews/reviewSpotModal";
 import Bookings from "./booking";
 import {
   deleteReviewsThunk,
@@ -52,6 +53,7 @@ const MySpot = () => {
   const spots = Object.values(spot);
   const reviews = useSelector((state) => state.review);
   const allReviews = reviews ? Object.values(reviews) : [];
+  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
 
   useEffect(() => {
     dispatch(getOneSpotThunk(spotId));
@@ -59,6 +61,16 @@ const MySpot = () => {
   }, [dispatch, spotId]);
 
   if (!spots.length) return null;
+
+  // Check if the current user has already reviewed the spot
+  let hasReview = false;
+  if (allReviews.length && sessionUser) {
+    allReviews.forEach((review) => {
+      if (review.userId === sessionUser.id) {
+        hasReview = true;
+      }
+    });
+  }
 
   const spotRemoval = async (e) => {
     e.preventDefault();
@@ -77,15 +89,6 @@ const MySpot = () => {
     await dispatch(getOneSpotThunk(spotId));
   };
 
-  let hasReview = false;
-  if (allReviews.length && sessionUser) {
-    allReviews.forEach((review) => {
-      if (review.userId === sessionUser.id) {
-        hasReview = true;
-      }
-    });
-  }
-
   return (
     <div className="spot-details-container">
       <div className="spots-description">
@@ -94,9 +97,8 @@ const MySpot = () => {
           <div className="review-count">
             <div className="location-details">
               {renderStarRating(spot.avgStarRating)}
-              {spot.avgStarRating} ∙
-              <i className="fas fa-award"></i> Superhost ∙ {spot.city},{" "}
-              {spot.state} {spot.country} ∙ ${spot.price} per night
+              {spot.avgStarRating} ∙<i className="fas fa-award"></i> Superhost ∙{" "}
+              {spot.city}, {spot.state} {spot.country} ∙ ${spot.price} per night
             </div>
           </div>
           <>
@@ -268,12 +270,12 @@ const MySpot = () => {
           {sessionUser &&
           sessionUser.id !== spot.ownerId &&
           hasReview === false ? (
-            <NavLink
-              to={`/create/${spot.id}`}
-              style={{ textDecoration: "none" }}
+            <button
+              className="review-spot-button"
+              onClick={() => setShowModal(true)}
             >
-              <button className="review-spot-button">Review Spot</button>
-            </NavLink>
+              Review Spot
+            </button>
           ) : null}
         </div>
         <div className="all-reviews">
@@ -310,8 +312,7 @@ const MySpot = () => {
                       {sessionUser && sessionUser.id === review.userId ? (
                         <button
                           className="delete-review-button"
-                          onClick={async (e) => {
-                            e.preventDefault();
+                          onClick={async () => {
                             await dispatch(deleteReviewsThunk(review.id));
                             refreshPage();
                           }}
@@ -327,6 +328,14 @@ const MySpot = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal component */}
+      {showModal && (
+        <CreateReviewModal
+          spotId={spotId}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 };

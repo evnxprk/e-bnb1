@@ -10,10 +10,8 @@ import EditReviewModal from "../EditReviews/editmodal";
 
 function UserReviews() {
   const dispatch = useDispatch();
-
   const [errors, setErrors] = useState([]);
   const { showModal, setShowModal } = useModal();
-
   const userReviews = useSelector((state) => state.review.user);
 
   useEffect(() => {
@@ -23,13 +21,14 @@ function UserReviews() {
     });
   }, [dispatch]);
 
-  const handleDeleteReview = (reviewId) => {
-    dispatch(deleteReviewsThunk(reviewId));
+  const handleDeleteReview = async (reviewId) => {
+    await dispatch(deleteReviewsThunk(reviewId));
+    // After deletion, refetch the user's reviews to update the UI
+    dispatch(getUserReviewsThunk());
   };
 
   const handleEditReview = (reviewId) => {
     if (setShowModal) {
-      // Check if setShowModal is defined
       setShowModal((prev) => ({ ...prev, editReviewId: reviewId }));
     }
   };
@@ -43,26 +42,34 @@ function UserReviews() {
       {Object.values(userReviews).length ? (
         Object.values(userReviews).map((review) => (
           <div className="my-reviews-card-div" key={review.id}>
-            <button
-              className="edit-review-button"
-              onClick={() => handleEditReview(review.id)}
-            >
-              Edit Review
-            </button>
+            <div>
+              <p>{review.review}</p>
+              <button
+                className="edit-review-button"
+                onClick={() => handleEditReview(review.id)}
+              >
+                Edit Review
+              </button>
+              <button
+                className="delete-review-button"
+                onClick={() => handleDeleteReview(review.id)}
+              >
+                Delete Review
+              </button>
+            </div>
           </div>
         ))
       ) : (
         <div>You have no reviews.</div>
       )}
-      {showModal &&
-      showModal.editReviewId && ( // Check if showModal exists before accessing editReviewId
-          <EditReviewModal
-            reviewId={showModal.editReviewId}
-            onClose={() =>
-              setShowModal((prev) => ({ ...prev, editReviewId: null }))
-            }
-          />
-        )}
+      {showModal && showModal.editReviewId && (
+        <EditReviewModal
+          reviewId={showModal.editReviewId}
+          onClose={() =>
+            setShowModal((prev) => ({ ...prev, editReviewId: null }))
+          }
+        />
+      )}
     </div>
   );
 }

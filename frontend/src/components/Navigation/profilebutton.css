@@ -1,13 +1,11 @@
-/* profilebutton.css */
-
 .profile-dropdown {
-  list-style-type: none; /* Remove bullet points */
+  list-style-type: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
   position: absolute;
   right: 15px;
   top: 60px;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
   min-width: 200px;
@@ -17,7 +15,6 @@
   transform: translateY(-10px);
   transition: opacity 0.2s, transform 0.2s;
   transform-origin: top;
-  cursor: pointer;
 }
 
 .profile-dropdown.show {
@@ -29,40 +26,24 @@
   display: block;
   margin: 12px 0;
   padding: 0 20px;
-  font-size: 14px;
+  font-size: 16px;
   color: #484848;
 }
 
 .profile-dropdown button {
   width: 100%;
-  padding: 12px;
-  background-color: #008489;
-  color: white;
+  padding: 16px 20px;
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
-  margin-top: 10px;
+  color: #484848;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .profile-dropdown button:hover {
-  background-color: #006C70;
-}
-
-.my-bookings,
-.my-reviews {
-  display: block;
-  padding: 12px 20px;
-  margin: 5px 0;
-  font-size: 14px;
-  color: #484848;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.my-bookings:hover,
-.my-reviews:hover {
-  background-color: rgba(0, 132, 137, 0.1);
+  background-color: #f7f7f7;
+  color: #ff385c;
 }
 
 .linkedin-button {
@@ -71,13 +52,54 @@
   border: none;
   color: #008489;
   cursor: pointer;
-  font-size: 14px;
-  padding: 12px 20px;
+  font-size: 16px;
+  padding: 16px 20px;
   transition: color 0.2s;
 }
 
 .linkedin-button:hover {
-  color: #006C70;
+  color: #006c70;
 }
 
-/* Add any additional styling based on your design preferences */
+.github-button {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #484848;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 16px 20px;
+  transition: color 0.2s;
+}
+
+.github-button:hover {
+  color: #ff385c;
+}
+
+.profile-dropdown div {
+  border-top: 1px solid #f7f7f7;
+}
+
+.logout-button {
+  color: #ff385c;
+}
+
+.logout-button:hover {
+  color: #ff0047;
+}
+.github-button {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #484848;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 16px 20px;
+  transition: color 0.2s;
+  text-align: center;
+  text-decoration: none;
+}
+
+.github-button:hover {
+  color: #ff385c;
+}

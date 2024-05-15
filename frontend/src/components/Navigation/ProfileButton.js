@@ -96,15 +96,23 @@ function ProfileButton({ user }) {
                   >
                     My Reviews
                   </button>
+                  <button
+                    className="logout-button"
+                    onClick={logout}
+                    style={{ cursor: "pointer" }}
+                  >
+                    Log Out
+                  </button>
+                  {/* GitHub button for logged in users */}
+                  <a
+                    className="github-button"
+                    href="https://github.com/evnxprk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  > GitHub
+                  </a>
                 </>
               ) : null}
-              <button
-                className="logout-button"
-                onClick={logout}
-                style={{ cursor: "pointer" }}
-              >
-                Log Out
-              </button>
             </div>
           </>
         ) : (

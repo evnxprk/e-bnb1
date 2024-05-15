@@ -37,9 +37,7 @@ export default function Bookings({ spot }) {
       return (
         <div className="login-message" style={{ fontWeight: "bold" }}>
           Please
-          <span
-            className="login-link"
-            style={{ fontWeight: "bold" }}>
+          <span className="login-link" style={{ fontWeight: "bold" }}>
             {" "}
             log in
           </span>
@@ -51,7 +49,7 @@ export default function Bookings({ spot }) {
   };
 
   return (
-    <div>
+    <div className="booking-form-container">
       <div className="create-booking-container">
         {renderLoginMessage()}
         <div>
@@ -65,7 +63,7 @@ export default function Bookings({ spot }) {
           <h1>Book your stay with us!</h1>
         </div>
         <section className="form-body-container">
-          <form className="form-body" onSubmit={handleSubmit} style={{padding:'10px'}}>
+          <form className="form-body" onSubmit={handleSubmit}>
             <label className="form-label">
               Start date:
               <input
@@ -84,7 +82,8 @@ export default function Bookings({ spot }) {
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </label>
-            <div className="cleaning-fees" style={{ fontSize: "20px" }}>Cleaning fee: $17
+            <div className="cleaning-fees" style={{ fontSize: "20px" }}>
+              Cleaning fee: $17
             </div>
             {/* <div className="taxes-fees" style={{ fontSize: "20px" }}>
               Taxes and fees: $80
@@ -96,7 +95,8 @@ export default function Bookings({ spot }) {
                 paddingBottom: "15px",
                 // padding: "5px",
               }}
-            >Total before taxes: ${mySpot.price}
+            >
+              Total before taxes: ${mySpot.price}
             </div>
             {sessionUser ? (
               <button className="button form-button" type="submit">

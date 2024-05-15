@@ -1,69 +1,91 @@
-.review-form {
-  width: 400px;
-  margin: auto;
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.create-review-form {
-  color: #000;
+.modal-content {
   background-color: #fff;
-  border-radius: 13px;
-  width: 125px;
-  height: 40px;
-  margin-right: 20px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 600px; /* Adjust as needed */
+  width: 90%;
 }
 
-.errors {
+.modal-content h2 {
   margin-bottom: 20px;
-}
-
-.review-input-title {
-  margin-left: 4px;
-  margin-bottom: 2px;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
-  text-align: center;
-  display: flex;
-  align-items: center;
 }
 
-.create-reviews-submit {
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content label {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.modal-content textarea,
+.modal-content select {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-content .button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-content button {
+  padding: 10px; /* Keep the padding consistent for both buttons */
+  margin: 0 5px; /* Add margin to create space between buttons */
+  border: none;
+  border-radius: 8px;
+  background-color: #008489;
   color: #fff;
-  background-color: #b9c45f;
-  height: 60px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
-}
-
-#review-form-inputs,
-#rating-form-inputs {
-  padding: 4px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  height: 50px;
-  font-size: 20px;
-}
-
-.star-rating {
-  display: flex;
-  align-items: center;
-}
-
-.star-rating label {
-  margin-right: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.star {
-  font-size: 20px;
-  color: #ccc;
-}
 
-.star.filled {
-  color: orange;
-}
 
-.star-rating input[type="radio"] {
-  display: none;
+/* .submit-button {
+  background-color: #008489;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 20px;
+  border: none;
+  border-radius: 8px;
+} */
+
+.modal-content button:hover {
+  background-color: #005857;
+}
+.modal-content textarea {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  min-height: 100px; /* Set a minimum height */
+  max-height: 200px; /* Set a maximum height */
+  height: auto; /* Allow the textarea to expand */
+  overflow-y: auto; /* Add vertical scroll if needed */
 }
