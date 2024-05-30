@@ -67,7 +67,7 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <span>{user.email}</span>
+            <span className="username-profile">Welcome, {user.firstName} {user.lastName}</span>
             {localUser ? (
               <button
                 className="linkedin-button"
@@ -77,6 +77,17 @@ function ProfileButton({ user }) {
                 }
               >
                 LinkedIn
+              </button>
+            ) : null}
+            {localUser ? (
+              <button
+                className="github-button"
+                style={{ cursor: "pointer" }}
+                onClick={() =>
+                  window.open("https://www.github.com/evnxprk")
+                }
+              >
+                Github
               </button>
             ) : null}
             <div>

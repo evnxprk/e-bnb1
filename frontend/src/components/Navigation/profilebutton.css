@@ -19,6 +19,12 @@
   transform-origin: top;
   cursor: pointer;
 }
+.username-profile {
+font-weight: bold;
+font-size: 35px;
+margin: 10px;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
 
 .profile-dropdown.show {
   opacity: 1;
