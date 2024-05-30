@@ -6,63 +6,47 @@ import {
 } from "../../../store/review-reducer";
 import { useModal } from "../../../context/Modal";
 import "./myreviews.css";
-import EditReviewModal from "../EditReviews/editmodal";
+import EditReviewModal from "../EditReviews/EditReviewModal";
 
 function UserReviews() {
   const dispatch = useDispatch();
-
-  const [errors, setErrors] = useState([]);
   const { showModal, setShowModal } = useModal();
-
   const userReviews = useSelector((state) => state.review.user);
+  const spots = useSelector((state) => state.spots); // Assuming you have spots in your state
+  const user = useSelector((state) => state.session.user); // Access session user
+  console.log("user: ", user);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getUserReviewsThunk()).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+    dispatch(getUserReviewsThunk())
+      .then(() => setLoading(false))
+      .catch(async (res) => {
+        const data = await res.json();
+        console.error("Error fetching user reviews:", data.errors);
+      });
   }, [dispatch]);
 
-  const handleDeleteReview = (reviewId) => {
-    dispatch(deleteReviewsThunk(reviewId));
-  };
-
-  const handleEditReview = (reviewId) => {
-    if (setShowModal) {
-      // Check if setShowModal is defined
-      setShowModal((prev) => ({ ...prev, editReviewId: reviewId }));
-    }
-  };
-
-  if (!userReviews) {
-    return null;
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div className="my-reviews">
-      {Object.values(userReviews).length ? (
-        Object.values(userReviews).map((review) => (
-          <div className="my-reviews-card-div" key={review.id}>
-            <button
-              className="edit-review-button"
-              onClick={() => handleEditReview(review.id)}
-            >
-              Edit Review
-            </button>
-          </div>
-        ))
+      {userReviews && userReviews.length > 0 ? (
+        userReviews.map((review) => {
+          const spot = spots[review.spotId]; // Get spot details from spots state
+          if (!spot) return null; // If spot details not available, skip rendering
+          return (
+            <div className="my-reviews-card-div" key={review.id}>
+              <p className="spot-name">{spot.name}</p>
+              <p className="username-says">{user.firstName} says... </p>
+              <p className="review-text">Review: {review.review}</p>
+            </div>
+          );
+        })
       ) : (
         <div>You have no reviews.</div>
       )}
-      {showModal &&
-      showModal.editReviewId && ( // Check if showModal exists before accessing editReviewId
-          <EditReviewModal
-            reviewId={showModal.editReviewId}
-            onClose={() =>
-              setShowModal((prev) => ({ ...prev, editReviewId: null }))
-            }
-          />
-        )}
     </div>
   );
 }

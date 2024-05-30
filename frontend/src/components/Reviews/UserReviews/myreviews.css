@@ -1,13 +1,20 @@
-
 .my-reviews {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* Align items to the center */
+  margin: 0 auto; /* Center the container */
+  max-width: 1200px; /* Limit the width of the container */
+   padding: 20px;
 }
+
 
 .my-reviews-header-div {
   margin-bottom: 20px;
+}
+
+.username-says{
+  /* font-weight: bold; */
+  font-size: 33px;
 }
 
 .my-reviews-card-div {
@@ -47,4 +54,23 @@
 
 .delete-review-button:hover {
   background-color: #c82333;
+}
+
+.header {
+  font-size: 48px; 
+  font-weight: 800; 
+  font-family: "Circular", Arial, sans-serif; 
+  color: #333; 
+  letter-spacing: -0.02em; 
+}
+
+
+.spot-name {
+font-weight: bold;
+font-size: 35px;
+}
+
+.review-text{
+font-size: 20px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
